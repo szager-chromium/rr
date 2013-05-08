@@ -1,0 +1,13 @@
+rr's requirements for a build system are relatively light.  The goals are
+# Ability to run builds and tests in automated infrastructure
+# Ability to do cross-platform builds
+# (nice to have) Support a variety of editors / build drivers, like Eclipse, Visual Studio, emacs/GMake, etc.
+# Keep it simple and don't litter the source directory with cruft
+
+All these goals point to a "build system generator", like CMake or gyp, as a good solution.  Such a system is kick-started from the command line, generating whichever set of configuration files the user prefers.  The two main use cases would be
+* An automated testing infrastructure asks the generator to spit out a Makefiles build driver.  The infrastructure drives the build thereafter using the shell.
+* A developer asks the generator to spit out an Eclipse project (or Visual Studio, etc.).  The developer drives things from then on from within their IDE.
+
+Thankfully, rr's needs are quite minimal at the moment so the choice probably doesn't matter too much.  CMake is a relatively simple and pretty widely used system that satisfies the constraints above.
+
+So, rr uses [http://cmake.org/ CMake].
