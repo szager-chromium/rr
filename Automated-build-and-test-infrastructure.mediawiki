@@ -5,3 +5,5 @@ rr uses [https://travis-ci.org/mozilla/rr travis-ci] for automated builds and te
 # When the task completes, the results are posted [https://travis-ci.org/mozilla/rr here]
 
 Commits that break the build or tests will notify '''''TBD'''''.
+
+The travis-ci configuration file is stored in <code>$rr/.travis.yml</code>.  It first invokes the script <code>src/script/setup_travis.sh</code> to configure the travis slave for rr, and then invokes the <code>make</code> and <code>make check</code> targets.  (It's really that simple!)
