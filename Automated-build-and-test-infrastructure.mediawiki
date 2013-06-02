@@ -1,9 +1,0 @@
-rr uses [https://travis-ci.org/mozilla/rr travis-ci] for automated builds and tests.  The lifetime of a build/test run is as follows
-# A committer pushes commit ''X'' to mozilla/rr
-# ''X'' triggers a github service hook that notifies travis-ci
-# The travis-ci infrastructure schedules a build/test task for ''X''.  The pending job shows up [https://travis-ci.org/mozilla/rr/builds here].  The output shows up "live" once the task commences, so you can watch the results come in if you're extremely bored.
-# When the task completes, the results are posted [https://travis-ci.org/mozilla/rr here]
-
-Commits that break the build or tests will notify '''''TBD'''''.
-
-The travis-ci configuration file is stored in <code>$rr/.travis.yml</code>.  It first invokes the script <code>src/script/setup_travis.sh</code> to configure the travis slave for rr, and then invokes the <code>make</code> and <code>make check</code> targets.  (It's really that simple!)
