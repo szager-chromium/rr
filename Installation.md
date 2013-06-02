@@ -11,12 +11,7 @@ Currently rr supports only recording and replaying of 32-bit x86 Linux processes
 rr can run in a virtual machine that supports virtualization of performance counters, such as VMWare Workstation 9.  If you use a VM, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  On at least
 VMWare Workstation 9, the default is for counter virtualization to be disabled.  Installing the latest 32-bit Ubuntu in a VM is an easy way to get rr working.
 
-<pre>
-===============================================================================
-*********************************** WARNING ***********************************
-===============================================================================
-</pre>
-rr needs to disable some modern OS security features to run correctly; see below for more details.  Disabling these features in a "production" system will put that system at significantly higher
+<font color="red" size="70pt">WARNING</font>: rr needs to disable some modern OS security features to run correctly; see below for more details.  Disabling these features in a "production" system will put that system at significantly higher
 security risk.  This is another very good reason to run rr in a virtual machine.  Disabling network access to the VM is further recommended.
 
 rr requires libpfm-4.3.0 and libdisasm-0.23.  Follow the instructions below to install the libraries for your distribution.  It's easiest to set up rr on Ubuntu x86 >= 12.04, so that configuration is recommended.
