@@ -74,7 +74,20 @@ kernel.randomize_va_space = 0
 kernel.yama.ptrace_scope = 0
 </pre>
 
-and rebooting.  This is only recommended if you're using an isolated VM.  Alternatively, if you're running rr "one-off" on a production machine (not recommended), you can temporarily configure your kernel
+and rebooting.  This is only recommended if you're using an isolated VM.
+
+rr also doesn't handle shared memory correctly currently, so X11 applications can't use the MIT-SHM extension.  To disable this, create a file called `/usr/share/X11/xorg.conf.d/60-rr.conf` with these contents
+<pre>
+Section "Extensions"
+	Option "MIT-SHM" "disable"
+EndSection
+
+Section "Module"
+	Disable "dri"
+EndSection
+</pre>
+
+then reboot.  Alternatively, if you're running rr "one-off" on a production machine (not recommended), you can temporarily configure your kernel
 for rr by running
 
     $rr/src/script/setup.sh
