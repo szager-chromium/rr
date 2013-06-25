@@ -1,3 +1,6 @@
+<font color="red" size="70pt">WARNING</font>: rr needs to disable some modern OS security features to run correctly; see below for more details.  Disabling these features in a "production" system will put that system at significantly higher
+security risk.  This is another very good reason to [run rr in a virtual machine](Installation).  Disabling network access to the VM is further recommended.
+
 rr cannot run with address space randomization (for obvious reasons) or ptrace hardening, because rr must write to /proc/$pid/mem.  These must be disabled before calling either the recorder or the replayer.
 You can do this "permanently" (persistent across reboots) by adding these lines to your system's /etc/sysctl.conf
 <pre>
@@ -20,23 +23,23 @@ Section "Module"
 EndSection
 </pre>
 
-then reboot.  Alternatively, if you're running rr "one-off" on a production machine (not recommended), you can temporarily configure your kernel
-for rr by running
+then reboot.
 
-    $rr/src/script/setup.sh
+Running rr in "record" mode creates a path in the current directory which contains the trace file(s).  To invoke the recorder, run
 
-Running rr in "record" mode creates a path in the current directory which contains the trace file(s).  It's recommended to run rr from within a scratch directory outside the $rr clone.  For example
-    cd $rr/..
-    mkdir scratch-rr
-    cd scratch-rr
-
-Then to invoke the recorder, run
     rr --record /path/to/binary
 
 The trace is saved to the path `trace_$n`.
 
 To replay an application trace saved to the directory trace_$n, run
+
     rr --replay trace_$n
+
+It's recommended to run rr from within a scratch directory outside the $rr clone.  For example
+
+    cd $rr/..
+    mkdir scratch-rr
+    cd scratch-rr
 
 Other command line options:
 * `--filter_lib=<path>` : Only for kernels >= 3.5; this installs a wrapper for several system calls (look at share/wrap_syscalls.c) to speed up their handling and save on the ptrace() context switch. The
