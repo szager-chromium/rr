@@ -31,7 +31,7 @@ then reboot.
 
 Running rr in "record" mode creates a path in the current directory which contains the trace file(s).  To invoke the recorder, run
 
-    rr --record /path/to/binary
+    rr --record /path/to/binary [arguments to binary]
 
 The trace is saved to the path `trace_$n`.
 
