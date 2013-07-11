@@ -1,6 +1,8 @@
 <font color="red" size="70pt">WARNING</font>: rr needs to disable some modern OS security features to run correctly; see below for more details.  Disabling these features in a "production" system will put that system at significantly higher
 security risk.  This is another very good reason to [run rr in a virtual machine](Installation).  Disabling network access to the VM is further recommended.
 
+rr can only record and replay x86 binaries.  This restriction will be lifted in a future version.  rr also requires a relatively recent chip, Merom or so and later.  That, unfortunately, may be a permanent restriction.
+
 ## Set up your machine
 
 rr cannot run with address space randomization (for obvious reasons) or ptrace hardening, because rr must write to /proc/$pid/mem.  These must be disabled before calling either the recorder or the replayer.
