@@ -31,7 +31,7 @@ then reboot.
 
 Running rr in "record" mode creates a path in the current directory which contains the trace file(s).  To invoke the recorder, run
 
-    rr --record /path/to/binary [arguments to binary]
+    rr record /path/to/binary [arguments to binary]
 
 The trace is saved to the path `trace_$n`.
 
@@ -39,7 +39,7 @@ The trace is saved to the path `trace_$n`.
 
 To start a debugging server for the recording `trace_$n`, run
 
-    rr --replay trace_$n
+    rr replay trace_$n
 
 By default, rr will print a message like
 
@@ -58,7 +58,7 @@ However, in exchange, each debugging session on an rr recording is **entirely de
 
 If for some reason you just want to replay your recording outside a debugger,
 
-    rr --replay --autopilot trace_$n
+    rr replay -a trace_$n
 
 will do the trick.
 
@@ -86,7 +86,14 @@ Otherwise, due to frequent context switches between rr and the traced process, t
 
 ## Other command line options
 
-* <font color="red">**NOTE**</font>: this library is not well supported yet and its use is not recommended.  `--filter_lib=<path>` : Only for kernels >= 3.5; this installs a wrapper for several system calls (look at share/wrap_syscalls.c) to speed up their handling and save on the ptrace() context switch. The
+Run `rr -h` or `rr --help` to see the most up-to-date list.
+
+Scheduler parameters:
+* `-c, --num-cpu-ticks=NUM`: maximum number of 'CPU ticks' (currently retired conditional branches) to allow a task to run before interrupting it.
+* `-e, --num-events=<NUM>`: maximum number of events (syscall enter/exit, signal, CPU interrupt, ...) to allow a task before descheduling it.
+
+Syscall buffer:
+* <font color="red">**NOTE**</font>: this library is not well supported yet and its use is not recommended.  `-b` : Only for kernels >= 3.5; this installs a wrapper for several system calls (look at share/wrap_syscalls.c) to speed up their handling and save on the ptrace() context switch. The
 wrapper is compiled as a shared object called `$rr/obj/lib/librrwrap_syscalls.so` (as part of rr compilation process).
 
 Debug command line options:
