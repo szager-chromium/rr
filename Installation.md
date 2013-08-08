@@ -45,17 +45,23 @@ If you're using a distribution other than Ubuntu and cross compiling from x86-64
 
 ## Building
 
-rr uses the CMake build system, which is able to generate multiple build environments.  So you can choose whichever build driver you prefer to use.
+rr uses the CMake build system, which is able to generate multiple build environments.  So you can choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because cmake generates a *lot* of auxiliary files.
 
 ### To use Eclipse
 
-    cmake -G "Eclipse CDT4 - Unix Makefiles"
+    cd ../
+    mkdir obj
+    cd obj
+    cmake -G "Eclipse CDT4 - Unix Makefiles" ../rr
 
 Next, import the project into Eclipse.  By default Eclipse will automatically build the project when files change.  You can force Eclipse to rebuild the project by pressing Ctrl-B.
 
 ### To use Makefiles
 
-    cmake .
+    cd ../
+    mkdir obj
+    cd obj
+    cmake ../rr
 
 Then the command
 
