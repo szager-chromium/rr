@@ -47,6 +47,8 @@ If you're using a distribution other than Ubuntu and cross compiling from x86-64
 
 rr uses the CMake build system, which is able to generate multiple build environments.  So you can choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because cmake generates a *lot* of auxiliary files.
 
+It can be convenient to have a bare-bones VM that shares an rr source directory with its host, which is set up for day-to-day development.  So you hack in the host, then build and run in the VM.  If your workflow is similar, ensure that you *do not share the rr objdir* through your hypervisor.  This is tremendously slower, and at least in VMWare Workstation 9.0, extremely buggy.
+
 ### To use Eclipse
 
     cd ../
