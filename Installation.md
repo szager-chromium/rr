@@ -94,4 +94,5 @@ To build the 32-bit version of [libdisasm-0.23](http://sourceforge.net/projects/
     ./configure --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32"
 
 To build the 32-bit version of [libpfm-4.3.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.3.0.tar.gz/download), download and extract, then build
+
     make OPTIM="-m32 -O3"
