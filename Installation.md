@@ -89,14 +89,9 @@ Each test consists of a C source file and a `.run` file, which is a shell script
 
 ## Appendix: Building on x86_64 systems other than Ubuntu
 
-On a 64-bit system, rr expects to find the 32-bit versions of those libraries installed under `$(HOME)/32bit`, so you should download those libraries and build them yourself.
+To build the 32-bit version of [libdisasm-0.23](http://sourceforge.net/projects/bastard/files/libdisasm/0.23/libdisasm-0.23.tar.gz/download), download and extract the package, then configure like so:
 
-To build the 32-bit version of libdisasm-dev, run configure like so:
+    ./configure --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32"
 
-    ./configure --prefix=$HOME/32bit --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32"
-
-To build the 32-bit version of libpfm-4.3.0, run
-
-    make OPTIM="-m32 -O3" PREFIX="$HOME/32bit"
-
-You will need to run rr with `LD_LIBRARY_PATH=$HOME/32bit/lib`.
+To build the 32-bit version of [libpfm-4.3.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.3.0.tar.gz/download), download and extract, then build
+    make OPTIM="-m32 -O3"
