@@ -1,8 +1,8 @@
 The "official" rr system configuration is
 
-    Fedora 19 x86-64 OS (linux 3.11 kernel)
-    running in a guest VM on top of VMWare 9
-    on an Intel Ivy Bridge series CPU
+* Fedora 19 x86-64 OS (linux 3.11 kernel)
+* running in a guest VM on top of VMWare 9
+* on an Intel Ivy Bridge series CPU
 
 No guarantees are made about rr behavior on other configurations. That said, rr is known to work in other setups. In the future, more configurations will be officially supported.
 
