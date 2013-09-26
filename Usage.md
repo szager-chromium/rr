@@ -14,17 +14,15 @@ rr can currently only record and replay 32-bit objects.  This restriction will b
 ## Set up your machine
 
 rr cannot run with address space randomization (for obvious reasons) or ptrace hardening, because rr must write to /proc/$pid/mem.  These must be disabled before calling either the recorder or the replayer.
-You can do this "permanently" (persistent across reboots) by adding these lines to your system's /etc/sysctl.conf
+You can do this "permanently" (persistent across reboots) by creating a file `/etc/sysctl.d/60-rr.conf` with these contents
 <pre>
-###################################################################
-## Options for rr
 kernel.randomize_va_space = 0
 kernel.yama.ptrace_scope = 0
 </pre>
 
 and rebooting.  This is only recommended if you're using an isolated VM.
 
-rr also doesn't handle shared memory correctly currently, so X11 applications can't use the MIT-SHM extension.  To disable this, create a file called `/usr/share/X11/xorg.conf.d/60-rr.conf` with these contents
+rr also doesn't handle shared memory correctly currently, so X11 applications can't use the MIT-SHM extension.  To disable this, create a file called `/etc/X11/xorg.conf.d/60-rr.conf` with these contents
 <pre>
 Section "Extensions"
 	Option "MIT-SHM" "disable"
