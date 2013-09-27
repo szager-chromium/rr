@@ -46,6 +46,10 @@ rr uses the CMake build system, which is able to generate multiple build environ
 
 If you intend to use rr to debug Firefox, follow [these instructions](https://developer.mozilla.org/en-US/docs/Compiling_32-bit_Firefox_on_a_Linux_64-bit_OS#Instructions_for_Fedora_19) to create a Firefox build for Fedora 19 that's compatible with rr.
 
+**NB**: you must disable the gstreamer media backend to record Firefox.  gstreamer uses some features that aren't currently supported (mmaps of unlinked inodes and exec'ing 64-bit processes).  Add this option to your mozconfig
+
+    ac_add_options --disable-gstreamer
+
 ### To use Eclipse
 
     cd ../
