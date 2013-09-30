@@ -19,7 +19,8 @@ If you run rr in a virtual machine, as is recommended, **MAKE SURE VIRTUALIZATIO
 First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. 
 <pre>
 sudo yum install \
-  ccache cmake gcc gcc-c++ glibc-devel.i686 \
+  ccache cmake gcc gcc-c++ \
+  glibc-devel glibc-devel.i686 \
   libstdc++-devel libstdc++-devel.i686
 sudo yum install python-pexpect
 sudo yum install man-pages
