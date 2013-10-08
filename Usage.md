@@ -35,6 +35,16 @@ EndSection
 
 then reboot.
 
+If you see an error message like the following when you run rr
+
+    ERROR: ld.so: object 'librr_syscall_buffer.so' from LD_PRELOAD cannot be preloaded: ignored.
+
+then rr's objdir isn't in your `LD_LIBRARY_PATH`.  You should never see this if you installed rr from a distribution package.  To fix this problem, add a line like the following to your .bashrc
+
+    export LD_LIBRARY_PATH="$HOME/rr/obj/lib:${LD_LIBRARY_PATH}"
+
+where `$HOME/rr/obj/` is your rr objdir.
+
 ## Recording an execution
 
 Running rr in "record" mode creates a path in the current directory which contains the trace file(s).  To invoke the recorder, run
