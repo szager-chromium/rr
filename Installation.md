@@ -2,7 +2,7 @@
 
 The "official" rr system configuration is
 
-* Fedora 19 x86-64 OS (linux 3.11 kernel)
+* Fedora 19 x86 OS (linux 3.11 kernel)
 * running in a guest VM on top of VMWare 9
 * on an Intel Ivy Bridge series CPU
 
