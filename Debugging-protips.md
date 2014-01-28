@@ -17,6 +17,64 @@ static FILE* locallog = fopen("/tmp/rr-sched.log", "w");
 #include "dbg.h"
 </pre>
 
+**Be sure to load the right executable image for gdb'ing a tracee**: rr doesn't implement gdb multi-process support yet, so you're using 1980s/1990s-era debugging technology.  If you `gdb the-wrong-image`, gdb will get very confused.  If you're trying to attach to a tracee after seeing
+<pre>(rr debug server listening on :X)</pre>
+then you can use
+<pre>ls -l /proc/X/exe</pre>
+to print the tracee's executable image.
+
+**Dump a full tracee tree with pstree**: useful for many things.  For example
+<pre>
+$ pstree -p $(pidof rr)
+rr(1969)───firefox(1975)─┬─Browser(2178)─┬─{Browser}(2179)
+                         │               ├─{Browser}(2180)
+                         │               ├─{Browser}(2181)
+                         │               ├─{Browser}(2182)
+                         │               ├─{Browser}(2183)
+                         │               ├─{Browser}(2184)
+                         │               ├─{Browser}(2185)
+                         │               ├─{Browser}(2186)
+                         │               ├─{Browser}(2187)
+                         │               ├─{Browser}(2188)
+                         │               ├─{Browser}(2189)
+                         │               ├─{Browser}(2190)
+                         │               ├─{Browser}(2191)
+                         │               └─{Browser}(2192)
+                         ├─{firefox}(1982)
+                         ├─{firefox}(1983)
+                         ├─{firefox}(1984)
+                         ├─{firefox}(1985)
+                         ├─{firefox}(1986)
+                         ├─{firefox}(1987)
+                         ├─{firefox}(1988)
+                         ├─{firefox}(1989)
+                         ├─{firefox}(1990)
+                         ├─{firefox}(1991)
+                         ├─{firefox}(1992)
+                         ├─{firefox}(1993)
+                         ├─{firefox}(1994)
+                         ├─{firefox}(1995)
+                         ├─{firefox}(1996)
+                         ├─{firefox}(1997)
+                         ├─{firefox}(1998)
+                         ├─{firefox}(2000)
+                         ├─{firefox}(2001)
+                         ├─{firefox}(2002)
+                         ├─{firefox}(2003)
+                         ├─{firefox}(2004)
+                         ├─{firefox}(2005)
+                         ├─{firefox}(2006)
+                         ├─{firefox}(2008)
+                         ├─{firefox}(2010)
+                         ├─{firefox}(2011)
+                         ├─{firefox}(2012)
+                         ├─{firefox}(2013)
+                         ├─{firefox}(2014)
+                         ├─{firefox}(2016)
+                         └─{firefox}(2115)
+</pre>
+Listed tasks that are in `{curly-brackets}(tid)` are clone children, aka threads. Other tasks listed `not-in-curly-brackets(tid)` are fork children, aka subprocesses.
+
 **Use assert_exec() to launch a gdbserver for a tracee**: if you want to debug a tracee `t`, add a call like the following `assert_exec(t, false, "")`.  A gdbserver will launch for `t` with a message like
 <pre>
 [EMERGENCY] (file:line:function: errno: None) (task X (rec:Y) at trace line Z)
