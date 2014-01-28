@@ -79,6 +79,13 @@ rr(1969)───firefox(1975)─┬─Browser(2178)─┬─{Browser}(2179)
 </pre>
 Listed tasks that are in `{curly-brackets}(tid)` are clone children, aka threads. Other tasks listed `not-in-curly-brackets(tid)` are fork children, aka subprocesses.
 
+#### Dump attributes of all tracee tasks in rr debugger session
+`(gdb) call 'Task::dump_all'(0)` dumps information about all known tracees to stderr.  F.e.
+<pre>
+Task<0x81bae80>(tid:7373 rec_tid:7373 status:0x857f)
+[INFO] (log_event) SYSCALL: futex
+</pre>
+
 #### Force rr to always launch a gdbserver, even if it thinks that's a bad idea
 Sometimes you'll be debugging and see output like
 <pre>
