@@ -114,7 +114,7 @@ $ gdb -p $(pidof rr)
 ...
 (gdb) p 'Task::find'([tid])
 $1 = (Task *) 0x818c1c8
-(gdb) call emergency_debug($1)
+(gdb) call start_debug_server($1)
 (rr debug server listening on :X)
 </pre>
 Then in another shell, follow the instructions above for attaching to a tracee.
