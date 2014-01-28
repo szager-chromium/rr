@@ -19,6 +19,55 @@ static FILE* locallog = fopen("/tmp/rr-sched.log", "w");
 #include "dbg.h"
 </pre>
 
+#### Dump a trace event or range of events
+
+It's often useful to see raw recorded event information.  For example, if you see a failure like
+<pre>
+[EMERGENCY] (/home/cjones/rr/rr/src/share/util.cc:628:compare_register_files: errno: None) (task 14611 (rec:14257) at trace line 116336)
+</pre>
+`trace line 116336` is the failing event.  To see that event,
+<pre>
+$ rr dump trace_0/ 116336
+{
+  global_time:116336, event:`futex' (state:0), tid:14257, thread_time:5243
+  hw_ints:0, faults:0, rbc:243, insns:3131
+  eax:0xffffffda ebx:0x467d17c0 ecx:0x87 edx:0x4a76e000 esi:0x467d17c0 edi:0x467d17c0 ebp:0x467d17c0
+  eip:0x40000424 esp:0x5857aef0 eflags:0x200286 orig_eax:240
+}
+</pre>
+Or to see a few events leading up to that one
+<pre>
+$ rr dump trace_0/ 116331-116336
+{
+  global_time:116331, event:`USR_SYSCALLBUF_FLUSH' (state:0), tid:14257, thread_time:5238
+}
+{
+  global_time:116332, event:`socketcall' (state:0), tid:14257, thread_time:5239
+  hw_ints:0, faults:0, rbc:279, insns:2780
+  eax:0xffffffda ebx:0x9 ecx:0x5857ae70 edx:0x4a76e000 esi:0x0 edi:0x467adeec ebp:0x14
+  eip:0x40000424 esp:0x5857ae58 eflags:0x200293 orig_eax:102
+}
+{
+  global_time:116333, event:`USR_SYSCALLBUF_RESET' (state:0), tid:14257, thread_time:5240
+}
+{
+  global_time:116334, event:`socketcall' (state:1), tid:14257, thread_time:5241
+  hw_ints:0, faults:0, rbc:0, insns:0
+  eax:0x14 ebx:0x9 ecx:0x5857ae70 edx:0x4a76e000 esi:0x0 edi:0x467adeec ebp:0x14
+  eip:0x40000424 esp:0x5857ae58 eflags:0x200293 orig_eax:102
+}
+{
+  global_time:116335, event:`USR_SYSCALLBUF_FLUSH' (state:0), tid:14257, thread_time:5242
+}
+{
+  global_time:116336, event:`futex' (state:0), tid:14257, thread_time:5243
+  hw_ints:0, faults:0, rbc:243, insns:3131
+  eax:0xffffffda ebx:0x467d17c0 ecx:0x87 edx:0x4a76e000 esi:0x467d17c0 edi:0x467d17c0 ebp:0x467d17c0
+  eip:0x40000424 esp:0x5857aef0 eflags:0x200286 orig_eax:240
+}
+</pre>
+Invoking `rr dump` without any arguments dumps all events, which is useful for grepping over a trace.
+
 #### Be sure to load the right executable image for gdb'ing a tracee
 rr doesn't implement gdb multi-process support yet, so you're using 1980s/1990s-era debugging technology.  If you `gdb the-wrong-image`, gdb will get very confused.  If you're trying to attach to a tracee after seeing
 <pre>(rr debug server listening on :X)</pre>
