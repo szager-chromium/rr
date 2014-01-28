@@ -113,3 +113,6 @@ Then in another shell, follow the instructions above for attaching to a tracee.
 
 #### Iterate through all tracee Tasks
 `Task` has a helper method `next_roundrobin()` that returns a successor task in round-robin order, meaning each task is cycled through circularly.  So if you can locate a single `Task*` in a debugger, then you can find all the others as well by successive calls to `t->next_roundrobin()`.
+
+#### You may find this helper repository useful
+[cgjones/rr-workbench](https://github.com/cgjones/rr-workbench): collection of helpers for automating rr tasks (especially running FF unit tests), and for random things like stringifying `waitpid` status codes (status2text).  It also contains an llvm Bell-Larus path logger and some proof-of-concept programs that have been written to prototype rr features.
