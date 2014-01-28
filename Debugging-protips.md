@@ -22,9 +22,9 @@ static FILE* locallog = fopen("/tmp/rr-sched.log", "w");
 #### Be sure to load the right executable image for gdb'ing a tracee
 rr doesn't implement gdb multi-process support yet, so you're using 1980s/1990s-era debugging technology.  If you `gdb the-wrong-image`, gdb will get very confused.  If you're trying to attach to a tracee after seeing
 <pre>(rr debug server listening on :X)</pre>
-then you can use
-<pre>ls -l /proc/X/exe</pre>
-to print the tracee's executable image.
+then you can make use of the fact that *X* is the tid of the task for which a debugger server has been started.  Launch gdb using the following command
+<pre>gdb /proc/X/exe</pre>
+and gdb will load the right executable image for the tracee.
 
 #### Dump a full tracee tree with pstree
 Useful for many things.  For example
