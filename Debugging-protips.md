@@ -168,6 +168,10 @@ $1 = (Task *) 0x818c1c8
 </pre>
 Then in another shell, follow the instructions above for attaching to a tracee.
 
+#### rr and tracees can be debugged simulataneously
+
+For example, if an `assert_exec()` fails and you want to inspect both the tracee and rr, it's perfectly find to `gdb -p $(pidof rr)` in one session and `gdb failing-prog; (gdb) target remote :X` in another.  Obviously though, rr has to be not-stopped to respond to debugger requests.
+
 #### Iterate through all tracee Tasks
 `Task` has a helper method `next_roundrobin()` that returns a successor task in round-robin order, meaning each task is cycled through circularly.  So if you can locate a single `Task*` in a debugger, then you can find all the others as well by successive calls to `t->next_roundrobin()`.
 
