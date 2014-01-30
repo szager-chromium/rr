@@ -10,6 +10,8 @@ TODO: support multiple pending signals; received SIGSYS (code: %d) at $ip:%p whi
 </pre>
 The tests that interact with gdb will also fail if the rr process is unluckily assigned a pid < 1000.  There will be a message that says something to the effect of "can't bind to port X", where X < 1000.
 
+&#9633; If you created new files for your PR, did you `git add` them?  Habitually (or with a script or push hook) checking `git status` is a good habit to acquire.
+
 &#9633; Does your PR apply cleanly on top of upstream/master HEAD?  It's dangerous to have someone else sort out your merge conflicts, so just don't do it.  Best of all is to have a PR *rebased* on top of upstream/master HEAD, so that the merge is simply a fast-forward.
 
 &#9633; If your PR includes multiple changesets, do they all (i) build cleanly in sequence; (ii) pass all tests in sequence?  This is important for bisecting over commit history.
