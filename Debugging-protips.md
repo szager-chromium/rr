@@ -13,7 +13,7 @@ Uncomment the definition and you'll get full, verbose, debug-level logging outpu
 #### Send logging to non-default FILE
 In the .cc file you want to redirect
 <pre>
-#include <stdio.h>
+#include &lt;stdio.h&gt;
 static FILE* locallog = fopen("/tmp/rr-sched.log", "w");
 #define LOG_FILE locallog
 //...
