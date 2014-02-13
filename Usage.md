@@ -1,11 +1,3 @@
-The "official" rr system configuration is
-
-* Fedora 19 x86 OS (linux 3.11 kernel)
-* running in a guest VM on top of VMWare 9
-* on an Intel Ivy Bridge series CPU
-
-No guarantees are made about rr behavior on other configurations. That said, rr is known to work in other setups. In the future, more configurations will be officially supported.
-
 <font color="red" size="70pt">WARNING</font>: rr needs to disable some modern OS security features to run correctly; see below for more details.  Disabling these features in a "production" system will put that system at significantly higher
 security risk.  This is another very good reason to [run rr in a virtual machine](Installation).  Disabling network access to the VM is further recommended.
 
