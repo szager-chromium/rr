@@ -78,10 +78,6 @@ It's recommended to run rr from within a scratch directory outside the $rr clone
     mkdir scratch-rr
     cd scratch-rr
 
-## Note about GPU drivers
-
-Note that talking to particular kernel drivers (by `ioctl(...)`) requires the rr to have knowledge about what the driver is doing. For example, if you record GUI applications that make use a graphics driver with 3d-support rr will fail. If you're using NVidia binary drivers, removing the xorg-x11-drv-nvidia-libs package will avoid this problem.
-
 ## Further machine configuration
 
 It is advised to turn off any CPU frequency scaling capabilities, such as Intel Speed Step.  This can be achieved by either turning it off in the BIOS or by disabling it in the kernel, e.g. by setting the CPU governor to 'performance'. If neither of these solutions is feasible, rr and its child processes should be pinned on a certain core, e.g. by running rr with:
