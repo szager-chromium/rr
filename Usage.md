@@ -38,29 +38,15 @@ However, in exchange, each debugging session on an rr recording is **entirely de
 
 **Note**: currently, the `/path/to/binary` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  This limitation will be lifted in the future.
 
-If for some reason you just want to replay your recording outside a debugger,
+If for some reason you just want to replay your recording outside a debugger, invoke
 
     rr replay -a trace_$n
-
-will do the trick.
 
 It's recommended to run rr from within a scratch directory outside the $rr clone.  For example
 
     cd $rr/..
     mkdir scratch-rr
     cd scratch-rr
-
-## Further machine configuration
-
-It may help performance to turn off any CPU frequency scaling capabilities, such as Intel Speed Step.  This can be achieved by either turning it off in the BIOS or by disabling it in the kernel, e.g. by setting the CPU governor to 'performance'. If neither of these solutions is feasible, rr and its child processes can be pinned on a certain core, e.g. by running rr with:
-
-    taskset 0x1 rr <options>
-
-or, in the case of a CPU that is able to run multiple threads on one core in parallel, such as Intel CPUs with Hyperthreading capabilities, it is better to use:
-
-    taskset 0x3 rr <options>
-
-Otherwise, due to frequent context switches between rr and the traced process, the different cores will often scale down their frequency which can lead to slowdowns of up to 2x.
 
 ## Other command line options
 
@@ -74,7 +60,19 @@ Recorder parameters:
 * `-c, --num-cpu-ticks=<NUM>`: maximum number of 'CPU ticks' (currently retired conditional branches) to allow a task to run before interrupting it.
 * `-e, --num-events=<NUM>`: maximum number of events (syscall enter/exit, signal, CPU interrupt, ...) to allow a task before descheduling it.
 
+Recording traces under different scheduling params can help reproduce nondeterministic bugs.  rr's scheduler is relatively deterministic.
+
 Replay parameters:
 * `-f, --onfork=<PID>`: debug <PID> when forked
 * `-p, --onprocess=<PID>`: debug <PID> when execed
 * `-g, --goto=<EVENT-NUM>`: execute forward until event <EVENT-NUM> is reached before debugging
+
+## Getting the best performance on your machine
+
+rr doesn't take advantage of hardware parallelism yet.  So it often runs faster when the tracer and tracee processes are pinned to single virtual CPU.  This will probably end up the default for 1.0, but you can always manually pin rr by running
+
+    taskset 0x1 rr ...
+
+It may also help to disable CPU frequency scaling, such as Intel Speed Step.  It can be disabled in either the BIOS or the kernel, e.g. by setting the CPU governor to 'performance'.
+
+Otherwise, frequent context switches between rr and tracees on different cores are expensive, and can cause unlucky migrations to scaled-down cores.
