@@ -2,9 +2,7 @@
 
 Currently rr only supports recording and replaying of 32-bit x86 Linux processes.  rr and its dependencies must be built as a 32-bit objects on x86-64 kernels; instructions are below.
 
-<font color="red" size="70pt">WARNING</font>: rr needs to disable some modern OS security features to run correctly; see below for more details.  Disabling these features in a "production" system will put that system at significantly higher security risk.  This is another reason it's recommend to run rr in a virtual machine.  Disabling network access to the VM when not needed is further recommended.
-
-If you run rr in a virtual machine, as is recommended, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  On at least VMWare Workstation 9, the default is for counter virtualization to be disabled.
+If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  On at least VMWare Workstation 9, the default is for counter virtualization to be disabled.
 
 ## Build prerequisites
 
