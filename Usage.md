@@ -68,7 +68,7 @@ Run `rr -h` or `rr --help` to see the most up-to-date list.  The options below a
 
 General options:
 * `-v, --verbose`: log messages that may not be urgently critical to the user.
-* `-m, --mark-stdio`: write event counters before every stdio output line (see `rr replay -g` below)
+* `-m, --mark-stdio`: write "current event number" before every stdio output line (see `rr replay -g` below).
 
 Recorder parameters:
 * `-c, --num-cpu-ticks=<NUM>`: maximum number of 'CPU ticks' (currently retired conditional branches) to allow a task to run before interrupting it.
