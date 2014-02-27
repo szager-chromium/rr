@@ -175,7 +175,7 @@ For example, if an `assert_exec()` fails and you want to inspect both the tracee
 
 #### Finding the precise event during recording at which some tracee state changes
 
-Add code that reads the tracee state to `collect_exec_info()`.  Save the previous state somewhere.  Compare previous state to newly-read state.
+Add code that reads the tracee state to `collect_exec_info()`.  Save the previous state somewhere.  Compare previous state to newly-read state.  If they differ, the current event, `get_global_time()`, is the culprit, and you can abort (or whatever) and debug.
 
 #### You may find this helper repository useful
 [cgjones/rr-workbench](https://github.com/cgjones/rr-workbench): collection of helpers for automating rr tasks (especially running FF unit tests), and for random things like stringifying `waitpid` status codes (status2text).  It also contains an llvm Bell-Larus path logger and some proof-of-concept programs that have been written to prototype rr features.
