@@ -173,8 +173,9 @@ Then in another shell, follow the instructions above for attaching to a tracee.
 
 For example, if an `assert_exec()` fails and you want to inspect both the tracee and rr, it's perfectly find to `gdb -p $(pidof rr)` in one session and `gdb failing-prog; (gdb) target remote :X` in another.  Obviously though, rr has to be not-stopped to respond to debugger requests.
 
-#### Iterate through all tracee Tasks
-`Task` has a helper method `next_roundrobin()` that returns a successor task in round-robin order, meaning each task is cycled through circularly.  So if you can locate a single `Task*` in a debugger, then you can find all the others as well by successive calls to `t->next_roundrobin()`.
+#### Finding the precise event during recording at which some tracee state changes
+
+Add code that reads the tracee state to `collect_exec_info()`.  Save the previous state somewhere.  Compare previous state to newly-read state.
 
 #### You may find this helper repository useful
 [cgjones/rr-workbench](https://github.com/cgjones/rr-workbench): collection of helpers for automating rr tasks (especially running FF unit tests), and for random things like stringifying `waitpid` status codes (status2text).  It also contains an llvm Bell-Larus path logger and some proof-of-concept programs that have been written to prototype rr features.
