@@ -1,3 +1,5 @@
+List of linux kernel work that would help rr.
+
 ### In-kernel buffering of syscall outparam data
 
 Syscallbuf+vsyscall hooking works OK in practice, but the kernel can do so much better, so much more easily.  Essentially it "just" has to record copy_to_user() within syscall handlers, plus a bit of metadata.  Perhaps could be exposed through perf_event.
