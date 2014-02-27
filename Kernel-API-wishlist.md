@@ -18,4 +18,4 @@ rr wants to use this for efficiently waiting on CLONE_CLEAR_CHILDTID futexes.
 
 ### Bugfix: pwrite64/pread64 modify registers in a way visible to userspace
 
-Counter to the syscall ABI.  Bug that we shouldn't let slip through the cracks.
+Counter to the syscall ABI.  Bug that we shouldn't let slip through the cracks.  [Ubuntu bug](https://bugs.launchpad.net/ubuntu/+source/linux-lts-quantal/+bug/1206746) isn't moving, need to test on kernel HEAD and upstream to kernel folks.
