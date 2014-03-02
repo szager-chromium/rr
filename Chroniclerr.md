@@ -72,4 +72,4 @@ We *absolutely must* have the indexer/compressor running in parallel to the emul
 
 If done generally enough, this instrumentation framework can be used in the same way as valgrind, but *retroactively* on a recorded trace.  That is, a user could repeatedly, quickly, record a buggy workload until an intermittent crash is triggered, then hand off to a memcheck-like tool for analysis.  (Built similarly to the chroniclerr tool described above.)  On the plus side, the instrumentation tools wouldn't share (real) address space with the instrument-ees, so they could be written more simply in a higher-level language.  The downside is that redirecting memory accesses through an emulated MMU adds overhead.  It remains to be seen whether these will be good tradeoffs.
 
-The pseudo-mmap machinery may allow us to drop the requirement of disabling ASLR, which would be a big usability win.
+<s>The pseudo-mmap machinery may allow us to drop the requirement of disabling ASLR, which would be a big usability win.</s>
