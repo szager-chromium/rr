@@ -8,7 +8,6 @@ Please make sure you go through this list before submitting a patch.  The rules 
 <pre>
 TODO: support multiple pending signals; received SIGSYS (code: %d) at $ip:%p while trying to deliver SIGSTKFLT (code: %d)
 </pre>
-The tests that interact with gdb will also fail if the rr process is unluckily assigned a pid < 1000.  There will be a message that says something to the effect of "can't bind to port X", where X < 1000.
 
 &#9633; If you created new files for your PR, did you `git add` them?  Habitually (or with a script or push hook) checking `git status` is a good habit to acquire.
 
