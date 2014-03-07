@@ -26,4 +26,4 @@ See #692: the kernel munges sigstate to enable SIGSEGV traps when SIGSEGV is blo
 
 ### Bugfix: raise PTRACE_O_SYSGOOD traps when PTRACE_SINGLESTEP'ing into syscalls?
 
-See #212.
+See #212.  Alternatively, create a new ptrace request analogous to PTRACE_SINGLESTEP_SYSEMU, perhaps PTACE_SINGLESTEP_SYSCALL.
