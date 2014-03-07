@@ -23,3 +23,7 @@ Counter to the syscall ABI.  Bug that we shouldn't let slip through the cracks. 
 ### Bugfix: agree a kernel/userspace contract for ptrace traps of PR_TSC_SIGSEGV
 
 See #692: the kernel munges sigstate to enable SIGSEGV traps when SIGSEGV is blocked, but apparently doesn't un-munge the state.
+
+### Bugfix: raise PTRACE_O_SYSGOOD traps when PTRACE_SINGLESTEP'ing into `int 0x80` insn
+
+See #212.
