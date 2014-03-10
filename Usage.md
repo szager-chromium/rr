@@ -147,10 +147,4 @@ Replay parameters:
 
 ## Getting the best performance on your machine
 
-rr doesn't take advantage of hardware parallelism yet.  So it often runs faster when the tracer and tracee processes are pinned to single virtual CPU.  This will probably end up the default for 1.0, but you can always manually pin rr by running
-
-    taskset 0x1 rr ...
-
-It may also help to disable CPU frequency scaling, such as Intel Speed Step.  It can be disabled in either the BIOS or the kernel, e.g. by setting the CPU governor to 'performance'.
-
-Otherwise, frequent context switches between rr and tracees on different cores are expensive, and can cause unlucky migrations to scaled-down cores.
+Disabling CPU frequency scaling, such as Intel Speed Step, may improve performance.  It can be disabled in either the BIOS or the kernel, by setting the CPU governor to 'performance', for example.
