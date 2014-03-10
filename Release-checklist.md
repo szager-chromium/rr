@@ -1,8 +1,6 @@
-□ Bump version number in CMakeList.txt.  `git commit`.
+□ Bump version: `cd $rr && ./src/script/tag-release.sh MAJOR MINOR PATCH`.
 
-□ `git tag` the new version.  `git push --tags`.
-
-□ `git fetch` and `merge` changes on the build machine.
+□ `git fetch` and `merge` changes on the build machines.
 
 □ `git checkout` the tag that was created.
 
