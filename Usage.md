@@ -20,17 +20,21 @@ where `$HOME/rr/obj/` is your rr objdir.
 
 ## Recording an execution
 
-Running rr in "record" mode creates a path in the current directory which contains the trace file(s).  To invoke the recorder, run
+Running rr in "record" mode creates a path in the current directory into which the trace files are saved.  To invoke the recorder, run
 
     rr record /path/to/binary [arguments to binary]
 
 The trace is saved to the path `trace_$n`.
 
+The overhead of recording an application with rr is pretty low, but it depends on the application's workload.  In general you should expect around a 1.2x to 1.4x slowdown.  At the lowest end, a purely CPU-bound tracee will incur around 1.1x-1.2x overhead.  At the high end, a tracee that just makes syscalls in a tight loop can have 4x slowdown or more.
+
+rr doesn't record shared-memory multithreading, so it forces your application's threads to execute serially.  Your application can see an additional slowdown if it takes advantage of hardware parallelism.
+
 ## Debugging a recording
 
 To begin debugging a recording `trace_$n`, run
 <pre>
-$ rr replay trace_$n
+$ rr replay trace_0
 GNU gdb (GDB) Fedora 7.6.50.20130731-19.fc20
 ...
 0x4cee2050 in _start () from /lib/ld-linux.so.2
@@ -87,21 +91,40 @@ $ rr -m replay -g 164788 trace_0
 (gdb) 
 </pre>
 
-What you *cannot* do is set register or memory values.  This can cause the replay to diverge.
+The target process and/or event persist through your debugging session.  That means issuing the gdb `run` command to restart replay will go back to the targeted process/event.
+<pre>
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+...
+[rr 2789 163548]LoadPlugin() /tmp/tmpUrp7e7/plugins/libnptest.so returned 5a7c7140
 
-However, in exchange, each debugging session on an rr recording is **entirely deterministic**.  The order of execution of each machine instruction, the value of every bit of memory, will be identical from one run to the next, as seen by your debugger client.  The replayed execution will also often be considerably faster than "real time".  This allows you to quickly "binary search" over a recording to see where some value in memory went bad.  Of course, in the future rr will be able to do this itself.
+--------------------------------------------------
+ ---> Reached target process 0 at event 164788.
+--------------------------------------------------
+</pre>
 
-**Note**: currently, the `/path/to/binary` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  This limitation will be lifted in the future.
+If you want to restart replay at a different event, you can pass the event number as an argument to the gdb `run` command, like so
+<pre>
+(gdb) run 159937
+...
+[rr 2734 159846]For application/x-test found plugin libnptest.so
 
-If for some reason you just want to replay your recording outside a debugger, invoke
+--------------------------------------------------
+ ---> Reached target process 0 at event 159937.
+--------------------------------------------------
+</pre>
 
-    rr replay -a trace_$n
+If you just want to replay your recording without attaching a debugger client, invoke
+<pre>
+rr -m replay -a trace_$n
+</pre>
 
-It's recommended to run rr from within a scratch directory outside the $rr clone.  For example
+## Limitations
 
-    cd $rr/..
-    mkdir scratch-rr
-    cd scratch-rr
+Unlike in "normal" gdb, the rr debug server doesn't allow you to set register or memory values.  A corollary of this restriction is that you can't call tracee functions from within a debugging session.  For example, `(gdb) call Foo()` won't work.  Eventually this will be supported.
+
+Currently, the `/path/to/binary` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  This will be fixed in the future.
 
 ## Other command line options
 
