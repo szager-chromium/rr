@@ -28,11 +28,66 @@ The trace is saved to the path `trace_$n`.
 
 ## Debugging a recording
 
-To start a debugging server for the recording `trace_$n`, run
+To begin debugging a recording `trace_$n`, run
+<pre>
+$ rr replay trace_$n
+GNU gdb (GDB) Fedora 7.6.50.20130731-19.fc20
+...
+0x4cee2050 in _start () from /lib/ld-linux.so.2
+(gdb)
+</pre>
+rr automatically spawns a gdb client and connects it to the replay server. You can set breakpoints within the gdb session, step, continue, interrupt, etc. as you would normally in gdb.
 
-    rr replay trace_$n
+What's special about rr is *restarting* the replayed execution.  Within the same gdb session, you can replay execution from the beginning again by issuing the `run` command:
+<pre>
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+...
+</pre>
+gdb preserves all your breakpoints and debugging state across the `run` command.  Because rr replay is entirely deterministic, the restarted replay session will execute exactly the same sequence of instructions as the previous replay session.  This allows you to take debugging "shortcuts" like hard-coding memory addresses to examine: all pointers have the same values in every replaying of your recorded trace.
 
-By default, rr will automatically spawn gdb to debug the process. You can set breakpoints within the recording, step, continue, interrupt, etc.  What you *cannot* do is set register or memory values.  This can cause the replay to diverge.
+To more precisely target your debugging session, you can set things up so that the debugger is only spawned after a target OS process is `fork`d or `exec`d, and/or when a particular execution event is reached.  If your test suite prints a message that reveals the process IDs of launched subprocesses, like for example
+<pre>
+[2789] WARNING: '!compMgr', file /home/cjones/rr/mozilla-central/xpcom/glue/nsComponentManagerUtils.cpp, line 59
+ ^^^^
+</pre>
+then you can program rr to launch gdb when that process is `exec`d by using the `-p PID` option:
+<pre>
+$ rr replay -p 2789 trace_0
+...
+For application/x-test found plugin libnptest.so
+
+--------------------------------------------------
+ ---> Reached target process 2789 at event 159937.
+--------------------------------------------------
+...
+(gdb) 
+</pre>
+(Remember, rr sets things up so that processes look like they have the same PID in replay as they did during recording.)  If you instead want to launch the debugger when that process is `fork`d, use the `-f 
+PID` option.
+
+rr associates an "event number" with each event it records.  You can have rr mark writes to stdio with the corresponding event number and PID that made the write by using the `-m` switch
+<pre>
+$ rr -m replay trace_0
+...
+[rr 2789 163548]LoadPlugin() /tmp/tmpUrp7e7/plugins/libnptest.so returned 5a7c7140
+[rr 2789 164788][2789] WARNING: '!compMgr', file /home/cjones/rr/mozilla-central/xpcom/glue/nsComponentManagerUtils.cpp, line 59
+</pre>
+Note that rr tagged the output with `[rr PID EVENT-NUMBER]`, in this case 2789/164788.  You can program rr to launch the debugger at a specific event by using the `-g EVENT` options
+<pre>
+$ rr -m replay -g 164788 trace_0
+...
+[rr 2789 163548]LoadPlugin() /tmp/tmpUrp7e7/plugins/libnptest.so returned 5a7c7140
+
+--------------------------------------------------
+ ---> Reached target process 0 at event 164788.
+--------------------------------------------------
+...
+(gdb) 
+</pre>
+
+What you *cannot* do is set register or memory values.  This can cause the replay to diverge.
 
 However, in exchange, each debugging session on an rr recording is **entirely deterministic**.  The order of execution of each machine instruction, the value of every bit of memory, will be identical from one run to the next, as seen by your debugger client.  The replayed execution will also often be considerably faster than "real time".  This allows you to quickly "binary search" over a recording to see where some value in memory went bad.  Of course, in the future rr will be able to do this itself.
 
