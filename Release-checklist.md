@@ -1,19 +1,15 @@
 □ Bump version: `cd $rr && ./src/script/tag-release.sh MAJOR MINOR PATCH`.
 
-□ `git fetch` and `merge` changes on the build machines.
+□ `git fetch` and `merge` changes on the x64 build machine.
 
 □ `git checkout` the tag that was created.
 
 □ `mkdir obj && cd obj && cmake ../rr && make && make check && make package`
 
-□ Copy `obj/dist/` files to machine hosting rr/gh-pages branch.
+□ Copy `obj/dist/` files to directory `reldist` on machine hosting rr/gh-pages branch.
 
-□ On gh-pages branch, `git pull`.
+□ Repeat above steps for x86 build machine.
 
-□ For now, update gh-pages/index.html with the new version number.  #753 will obsolete that.
-
-□ For now, copy the built packages into gh-pages/release/.  #753 will obsolete that.
-
-□ `git commit` the new files and index.html change.
+□ Update gh-pages: `cd $gh-pages-dir && ../rr/src/script/update-gh-pages.sh MAJOR MINOR PATCH reldist`
 
 □ Post to rr-dev mailing list.
