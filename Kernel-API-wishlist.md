@@ -27,3 +27,7 @@ See #692: the kernel munges sigstate to enable SIGSEGV traps when SIGSEGV is blo
 ### Bugfix: raise PTRACE_O_SYSGOOD traps when PTRACE_SINGLESTEP'ing into syscalls?
 
 See #212.  Alternatively, create a new ptrace request analogous to PTRACE_SINGLESTEP_SYSEMU, perhaps PTACE_SINGLESTEP_SYSCALL.
+
+### Bugfix: are drivers really allowed to use userspace stack as scratch memory?
+
+See #876.  That's generally not a good idea because it can let sensitive data leak into userspace.
