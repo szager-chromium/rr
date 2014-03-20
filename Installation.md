@@ -25,7 +25,7 @@ make
 sudo make install
 </pre>
 
-* [Download libpfm-4.3.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.5.0.tar.gz/download) and extract the package.
+* [Download libpfm-4.5.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.5.0.tar.gz/download) and extract the package.
 * <pre>
 make OPTIM="-m32 -O3"
 sudo make install
