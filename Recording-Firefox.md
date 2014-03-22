@@ -4,7 +4,9 @@ This page is intended to help Firefox/Gecko developers get started using rr to d
 
 Before beginning, ensure that you've [installed](http://rr-project.org/) or [built](https://github.com/mozilla/rr/wiki/Installation) rr and have [used it successfully](https://github.com/mozilla/rr/wiki/Usage).
 
-rr can only record 32-bit processes.  That means that if you're running a 64-bit kernel, you'll need to build Firefox as a 32-bit binary.  Luckily, it's pretty straightforward to set this up.  There are instructions for [Fedora](https://developer.mozilla.org/en-US/docs/Compiling_32-bit_Firefox_on_a_Linux_64-bit_OS#Instructions_for_Fedora_20_and_19) (recommended) and [Ubuntu](https://developer.mozilla.org/en-US/docs/Compiling_32-bit_Firefox_on_a_Linux_64-bit_OS#Instructions_for_Ubuntu_13.10).
+rr can only record 32-bit processes.  That means that if you're running a 64-bit kernel, you'll need to build Firefox as a 32-bit binary.  Luckily, it's pretty straightforward to set this up.
+
+Here are the instructions for [Fedora](https://developer.mozilla.org/en-US/docs/Compiling_32-bit_Firefox_on_a_Linux_64-bit_OS#Instructions_for_Fedora_20_and_19) (recommended) and [Ubuntu](https://developer.mozilla.org/en-US/docs/Compiling_32-bit_Firefox_on_a_Linux_64-bit_OS#Instructions_for_Ubuntu_13.10).
 
 Another option is set up a virtual machine in which to record Firefox.  Be forewarned though that
 
