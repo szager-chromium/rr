@@ -147,4 +147,4 @@ Replay parameters:
 
 ## Getting the best performance on your machine
 
-Disabling CPU frequency scaling, such as Intel Speed Step, may improve performance.  It can be disabled in either the BIOS or the kernel, by setting the CPU governor to 'performance', for example.
+Disabling CPU frequency scaling, such as Intel Speed Step, may improve performance.  It can be disabled in either the BIOS, or the kernel by setting the CPU governor to 'performance', for example.
