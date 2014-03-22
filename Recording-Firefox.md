@@ -8,8 +8,17 @@ rr can only record 32-bit processes.  That means that if you're running a 64-bit
 
 Another option is set up a virtual machine in which to record Firefox.  Be forewarned though that
 
-* rr requires a VM hypervisor that virtualizes CPU performance counters.  VMWare Workstation supports this.
-* there's a 20% or so performance hit from running in a VM; generally speaking recorder overhead increases from ~1.2x to 1.4x.  (It's a feather in the cap of the hypervisor authors that the hit is that small, though!)
+* rr requires a VM hypervisor that virtualizes CPU performance counters.  VMWare Workstation supports that.
+* there's a 20% or so performance hit from running in a VM; generally speaking recorder overhead increases from ~1.2x to ~1.4x.  (It's a feather in the cap of the hypervisor authors that the hit is that small, though!)
 
 If you do install a VM, a 32-bit Fedora installation is recommended because it has the best debugging environment and can build Firefox "natively" as a 32-bit binary.  However, any of { Fedora, Ubuntu } x { 32-bit, 64-bit } will work.
 
+## Recording Firefox
+
+To record Firefox running normally, simply launch it under rr as you would if running it under valgrind or gdb
+<pre>
+rr record $ff-objdir/dist/bin/firefox -no-remote ...
+</pre>
+This will save a trace to your working directory as described in the [usage instructions](https://github.com/mozilla/rr/wiki/Usage).  Please refer to [those instructions](https://github.com/mozilla/rr/wiki/Usage) for details on how to debug the recording, which isn't covered in this document.
+
+## Recording unit test suites
