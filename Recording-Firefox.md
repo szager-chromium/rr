@@ -52,4 +52,6 @@ If you encounter a problem with rr, please [file an issue](https://github.com/mo
 
 If you want to chat with rr developers, because you need more help or want to contribute or want to complain, we hang out in the #research channel on moznet.
 
+You also may find [these debugging protips](https://github.com/mozilla/rr/wiki/Debugging-protips) helpful, though many are for rr developers, not users.
+
 Happy debugging!
