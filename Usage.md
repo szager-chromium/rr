@@ -147,12 +147,15 @@ Replay parameters:
 * `-p, --onprocess=<PID>`: debug <PID> when execed
 * `-g, --goto=<EVENT-NUM>`: execute forward until event <EVENT-NUM> is reached before debugging
 
-## Getting the best performance on your machine
+## Getting the best performance on your machine (especially laptops!)
 
-Disabling CPU frequency scaling, such as Intel Speed Step, may improve performance.  It can be disabled in either the BIOS, or the kernel by setting the CPU governor to 'performance', for example.
+If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
 
-On fedora, the easiest way to change this temporarily (i.e. until the next reboot) is to run
+The easiest to squeeze out max performance is to change the CPU governor to 'performance'.  For example, on Fedora:
 <pre>
 sudo yum install kernel-tools
 sudo cpupower frequency-set -g performance
 </pre>
+This setting is only temporary however; it persists until the next reboot. 
+
+Frequency scaling can also be disabled in the BIOS.
