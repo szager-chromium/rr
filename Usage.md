@@ -150,3 +150,9 @@ Replay parameters:
 ## Getting the best performance on your machine
 
 Disabling CPU frequency scaling, such as Intel Speed Step, may improve performance.  It can be disabled in either the BIOS, or the kernel by setting the CPU governor to 'performance', for example.
+
+On fedora, the easiest way to change this temporarily (i.e. until the next reboot) is to run
+<pre>
+sudo yum install kernel-tools
+sudo cpupower frequency-set -g performance
+</pre>
