@@ -20,6 +20,19 @@ where `$HOME/rr/obj/` is your rr objdir.
 
 You don't have to worry about this if you installed rr from a distribution package.  
 
+## Getting the best performance on your machine (especially laptops!)
+
+If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
+
+The easiest way to squeeze out max perf is to change the CPU governor to 'performance'.  For example, on Fedora:
+<pre>
+sudo yum install kernel-tools
+sudo cpupower frequency-set -g performance
+</pre>
+This setting is only temporary however; it only lasts until the next reboot. 
+
+Frequency scaling can also be disabled in the BIOS.
+
 ## Recording an execution
 
 Running rr in "record" mode creates a path in the current directory into which the trace files are saved.  To invoke the recorder, run
@@ -146,16 +159,3 @@ Replay parameters:
 * `-f, --onfork=<PID>`: debug <PID> when forked
 * `-p, --onprocess=<PID>`: debug <PID> when execed
 * `-g, --goto=<EVENT-NUM>`: execute forward until event <EVENT-NUM> is reached before debugging
-
-## Getting the best performance on your machine (especially laptops!)
-
-If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
-
-The easiest to squeeze out max performance is to change the CPU governor to 'performance'.  For example, on Fedora:
-<pre>
-sudo yum install kernel-tools
-sudo cpupower frequency-set -g performance
-</pre>
-This setting is only temporary however; it persists until the next reboot. 
-
-Frequency scaling can also be disabled in the BIOS.
