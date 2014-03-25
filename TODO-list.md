@@ -4,7 +4,7 @@ We maintain a set of issues that should be easy to resolve, but aren't necessari
 https://github.com/mozilla/rr/issues?labels=goodfirstbug&page=1&state=open
 
 ## Projects
-Projects fall into a space of easy vs. hard, small vs. big, important vs. not-so-important, and well-defined vs. open-ended.  For example, all of the "good first bugs" above are considered easy/small/not-so-important/well-defined.  On the other hand, a pure-research topic for an academic paper would might be hard/important/open-ended.  The projects are listed along with their classification.
+Projects fall into a space of easy vs. hard, small vs. big, important vs. not-so-important, and well-defined vs. open-ended.  For example, all of the "good first bugs" above are considered easy/small/not-so-important/well-defined.  On the other hand, a pure-research topic for an academic paper might be hard/large/important/open-ended.  The projects are listed along with their classification.
 
 Project | Difficulty | Size | Importance | Defined-ness
 --------|------------|------|------------|-------------
