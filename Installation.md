@@ -15,6 +15,11 @@ sudo yum install \
 sudo yum install python-pexpect
 sudo yum install man-pages
 </pre>
+<pre>
+sudo apt-get install ccache cmake g++-multilib
+sudo apt-get install python-pexpect
+sudo apt-get install manpages-dev
+</pre>
 
 rr requires libpfm-4.3.0 and libdisasm-0.23 for using performance counters and disassembling x86 code, respectively.  In the officially supported configuation, you'll need to build 32-bit versions of these libraries.
 
@@ -29,6 +34,12 @@ sudo make install
 * <pre>
 make OPTIM="-m32 -O3"
 sudo make install
+</pre>
+
+On Ubuntu 13.10, you can also use binary packages. (Older Ubuntu versions do not have a libpfm package.)
+<pre>
+sudo apt-get install libdisasm-dev libpfm4-dev # 32-bit
+sudo apt-get install libdisasm-dev:i386 libpfm4-dev # 64-bit
 </pre>
 
 ## Building
