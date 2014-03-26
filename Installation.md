@@ -39,7 +39,7 @@ sudo make install
 On Ubuntu 13.10, you can also use binary packages. (Older Ubuntu versions do not have a libpfm package.)
 <pre>
 sudo apt-get install libdisasm-dev libpfm4-dev # 32-bit
-sudo apt-get install libdisasm-dev:i386 libpfm4-dev # 64-bit
+sudo apt-get install libdisasm-dev:i386 libpfm4-dev:i386 # 64-bit
 </pre>
 
 ## Building
