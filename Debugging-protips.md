@@ -177,5 +177,12 @@ For example, if an `assert_exec()` fails and you want to inspect both the tracee
 
 Add code that reads the tracee state to `collect_exec_info()`.  Save the previous state somewhere.  Compare previous state to newly-read state.  If they differ, the current event, `get_global_time()`, is the culprit, and you can abort (or whatever) and debug.
 
+#### Test failures that only reproduce during "make check"
+
+During `make check`, the tests run in parallel and really beat on your machine.  Running a test by itself is much less stressful.  To stress your machine in a similar way with just one test, you can run them in parallel
+<pre>
+for i in $(seq 20); do (cd $rr/src/test && bash test.run) & done
+</pre>
+
 #### You may find this helper repository useful
 [cgjones/rr-workbench](https://github.com/cgjones/rr-workbench): collection of helpers for automating rr tasks (especially running FF unit tests), and for random things like stringifying `waitpid` status codes (status2text).  It also contains an llvm Bell-Larus path logger and some proof-of-concept programs that have been written to prototype rr features.
