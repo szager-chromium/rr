@@ -179,7 +179,7 @@ Add code that reads the tracee state to `collect_exec_info()`.  Save the previou
 
 #### Test failures that only reproduce during "make check"
 
-During `make check`, the tests run in parallel and really beat on your machine.  Running a test by itself is much less stressful.  To stress your machine in a similar way with just one test, you can run them in parallel
+During `make check`, the tests run in parallel and really beat on your machine.  Running a test by itself is much less stressful.  To stress your machine in a similar way with just one test, you can run just that test in parallel with itself
 <pre>
 for i in $(seq 20); do (cd $rr/src/test && bash test.run) & done
 </pre>
