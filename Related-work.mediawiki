@@ -21,6 +21,10 @@ Process record and replay works by logging the execution of each machine instruc
 
 [http://blogs.vmware.com/workstation/2008/04/enhanced-execut.html VMWare Record & Replay]
 
+== Performance Counters ==
+
+[http://web.eece.maine.edu/~vweaver/projects/deterministic/deterministic_counters.pdf Non-Determinism and Overcount on Modern Hardware Performance Counter Implementations (Weaver, Terpstra, Moore)]
+
 == (Not yet categorized) ==
 
 [http://www.cs.columbia.edu/~nieh/pubs/sigmetrics2010_scribe.pdf‎ Scribe]
