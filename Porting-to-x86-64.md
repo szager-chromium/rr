@@ -40,7 +40,7 @@ rr already monkeypatches the `__kernel_vsyscall()` helper in the vDSO to jump in
 
 I don't know of any ways this could fall over.
 
-## Step 2: replace hard-coded x86-isms with arch-neutral indirection
+## Step 2: Replace hard-coded x86-isms with arch-neutral indirection
 
 rr has many direct references to x86 register names, like `regs.eax`.  We would need to replace this with a layer of indirection that hides the raw register manipulation.
 
@@ -58,3 +58,15 @@ class Registers {
 We would then create implementations `RegistersX86` and `RegistersX64` or whatever.  Access to the `Task` registers would go through the virtual method calls to the right implementation.
 
 With that in hand, we would finally "just" rewrite all of the direct uses of register names to the helper :).
+
+## Step 3: Make remaining x86-isms conditional on tracee address space type
+
+We have some further x86-isms like monkeypatching the `__kernel_vsyscall()` interface that need to be made conditional on tracee image type.  Another one is decoding the instruction that caused a `SEGV` trap to see if it's a `rdtsc`.  (Hopefully the encoding is the same in x86-64, but we need to check.)
+
+## Step 4: Ensure rr records the correct-sized structure for outparams
+
+There are several places where we have the choice of storing e.g. `flock` or `flock64`.  We need to audit this callsites and ensure that we're using the right struct for the tasks's address space.
+
+## Step 5: Check the Task's image type at exec time and update it accordingly
+
+This is essentially the "turn everything on" step.  Note, it's possible for a 32-bit process to exec a 64-bit image and vice versa, so Tasks have to be able to change personality.
