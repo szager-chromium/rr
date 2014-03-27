@@ -26,7 +26,7 @@ Also extremely simple: take the `clock_gettime()` case above.  Add a `clock_gett
 
 This scheme falls over if there are glibc-internal calls to `__vdso_clock_gettime()` that don't go through a public POSIX interface.  It also falls over if there are __vdso_* symbols not exposed under POSIX APIs that rrpreload can interpose on.  Both of these are highly probable.
 
-## Possible solution: trap on access of kernel data
+### Possible solution: trap on access of kernel data
 
 Map the kernel data page that the __vdso_*() helpers read from at PROT_NONE.  Access of the page raises a trap to the rr tracer.  rr does the read on  behalf of the tracee, updates its registers appropriately, records the data to trace, then sets its $ip past the load instruction.
 
@@ -34,8 +34,27 @@ This is known to be slow in general.  However, it may be good enough for the (li
 
 I don't know of any ways this could fall over.
 
-## Possible solution: monkeypatch more of the vDSO
+### Possible solution: monkeypatch more of the vDSO
 
 rr already monkeypatches the `__kernel_vsyscall()` helper in the vDSO to jump into rr.  Our nuclear option for the __vdso_*() pseudosyscalls is to similarly monkeypatch them to jump into rr code.  This is far more delicate and complicated than the __kernel_vsyscall patch, so should only be the absolute last resort.
 
 I don't know of any ways this could fall over.
+
+## Step 2: replace hard-coded x86-isms with arch-neutral indirection
+
+rr has many direct references to x86 register names, like `regs.eax`.  We would need to replace this with a layer of indirection that hides the raw register manipulation.
+
+Further, we'd like to eventually support mixed-architecture tracees, where some are running 32-bit images and others 64-bit images.  That means we need yet another level of indirection.
+
+The helper interface might look like
+<pre>
+class Registers {
+  virtual int& call() = 0;
+  virtual long& arg1() = 0;
+  virtual void*& arg1p() = 0;
+};
+</pre>
+
+We would then create implementations `RegistersX86` and `RegistersX64` or whatever.  Access to the `Task` registers would go through the virtual method calls to the right implementation.
+
+With that in hand, we would finally "just" rewrite all of the direct uses of register names to the helper :).
