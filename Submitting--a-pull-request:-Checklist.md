@@ -4,12 +4,11 @@ Please make sure you go through this list before submitting a patch.  The rules 
 
 &#9633; Did you run the rr test suite (including your new tests, if any), and pass all the tests?  `make -C $objdir check`.  Unfortunately, rr doesn't have automated infrastructure that can run the tests yet, so developers have to run them locally.
 
-**Note**: the `alarm` test fails sporadically for a known (NYI) reason, < 1/10 runs, with an error that looks like
-<pre>
-TODO: support multiple pending signals; received SIGSYS (code: %d) at $ip:%p while trying to deliver SIGSTKFLT (code: %d)
-</pre>
-
 &#9633; If you created new files for your PR, did you `git add` them?  Habitually (or with a script or push hook) checking `git status` is a good habit to acquire.
+
+&#9633; If you changed the trace layout or format, did you bump `TRACE_VERSION_NUMBER`?
+
+&#9633; If you added new command-line parameters, did you update `print_usage()` to document them?
 
 &#9633; Does your PR apply cleanly on top of upstream/master HEAD?  It's dangerous to have someone else sort out your merge conflicts, so just don't do it.  Best of all is to have a PR *rebased* on top of upstream/master HEAD, so that the merge is simply a fast-forward.
 
