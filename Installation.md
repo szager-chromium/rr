@@ -21,7 +21,7 @@ sudo apt-get install python-pexpect
 sudo apt-get install manpages-dev
 </pre>
 
-rr requires libpfm-4.3.0 and libdisasm-0.23 for using performance counters and disassembling x86 code, respectively.  In the officially supported configuation, you'll need to build 32-bit versions of these libraries.
+rr requires libpfm-4.5.0 and libdisasm-0.23 for using performance counters and disassembling x86 code, respectively.  In the officially supported configuation, you'll need to build 32-bit versions of these libraries.
 
 * [Download libdisasm-0.23](http://sourceforge.net/projects/bastard/files/libdisasm/0.23/libdisasm-0.23.tar.gz/download) extract the package.
 * <pre>
