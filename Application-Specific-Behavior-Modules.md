@@ -2,7 +2,7 @@ For issue #1044 and others it might be a good idea to add application-specific c
 
 * default treatment of certain signal handlers
 * application-specific overrides of various heuristics
-** which files get copied or don't get copied
+ * which files get copied or don't get copied
 
 Proposal: Let the filename of the binary image be F. Then search ~/.rr/behaviors/F.ini and path_to_rr_binary/../behaviors/F.ini (the latter being a set of configurations that is bundled with rr and lives in the rr github repo). Use a simple INI parser like https://code.google.com/p/inih/.
 
