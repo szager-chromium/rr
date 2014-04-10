@@ -80,7 +80,21 @@ See [this page](Usage).
 
 ## Tests
 
-rr has a suite of tests in `$rr/src/test`.  To run the tests with minimal output,
+rr has a suite of tests in `$rr/src/test`.  The test harness expects that your rr disk environment is layed out like the following
+<pre>
+$rr/     # toplevel
+  rr/    # srcdir
+  $obj/  # objdir
+</pre>
+The actual names of the `$rr` toplevel and `$obj` directories don't actually matter.  However, the `rr` srcdir actually has to be named "rr" for the tests to run correctly.  If you run the tests and see errors like
+<pre>
+27: Test 'breakpoint' FAILED
+27: Test breakpoint failed, leaving behind /tmp/rr-test-breakpoint-nChiktKdP
+27: python: can't open file '/home/tinuviel/github/mozilla/rr/obj/../rr/src/test/breakpoint.py': [Errno 2] No such file or directory
+</pre>
+then your directories aren't laid out as rr expects.
+
+To run the tests with minimal output,
 
     make test
 
