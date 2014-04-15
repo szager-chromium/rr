@@ -8,18 +8,6 @@ kernel.yama.ptrace_scope = 0
 </pre>
 and reboot.
 
-**IMPORTANT**: If you built rr from source, then `$rrobjdir/lib` must be in your `LD_LIBRARY_PATH`.  Otherwise you'll see an error message like the following when you run rr
-
-    ERROR: ld.so: object 'librrpreload.so' from LD_PRELOAD cannot be preloaded: ignored.
-
-And you may see rr abort with a message like `-> Unhandled IPC call 23`.  To fix this problem, add a line like the following to your .bashrc
-
-    export LD_LIBRARY_PATH="$HOME/rr/obj/lib:${LD_LIBRARY_PATH}"
-
-where `$HOME/rr/obj/` is your rr objdir.
-
-You don't have to worry about this if you installed rr from a distribution package.  
-
 ## Getting the best performance on your machine (especially laptops!)
 
 If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
