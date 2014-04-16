@@ -21,14 +21,7 @@ sudo apt-get install python-pexpect
 sudo apt-get install manpages-dev
 </pre>
 
-rr requires libpfm-4.5.0 and libdisasm-0.23 for using performance counters and disassembling x86 code, respectively.  In the officially supported configuation, you'll need to build 32-bit versions of these libraries.
-
-* [Download libdisasm-0.23](http://sourceforge.net/projects/bastard/files/libdisasm/0.23/libdisasm-0.23.tar.gz/download) extract the package.
-* <pre>
-./configure --build=i686-pc-linux-gnu "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32"
-make
-sudo make install
-</pre>
+rr requires libpfm-4.5.0 for using performance counters.  You'll need to build a 32-bit version of this library.
 
 * [Download libpfm-4.5.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.5.0.tar.gz/download) and extract the package.
 * <pre>
@@ -38,8 +31,8 @@ sudo make install
 
 On Ubuntu 13.10, you can also use binary packages. (Older Ubuntu versions do not have a libpfm package.)
 <pre>
-sudo apt-get install libdisasm-dev libpfm4-dev # 32-bit
-sudo apt-get install libdisasm-dev:i386 libpfm4-dev:i386 # 64-bit
+sudo apt-get install libpfm4-dev # 32-bit
+sudo apt-get install libpfm4-dev:i386 # 64-bit
 </pre>
 
 ## Building
