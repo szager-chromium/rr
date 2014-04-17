@@ -7,6 +7,8 @@ If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS 
 ## Build prerequisites
 
 First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. 
+
+On Fedora:
 <pre>
 sudo yum install \
   ccache cmake gcc gcc-c++ \
@@ -15,6 +17,8 @@ sudo yum install \
 sudo yum install python-pexpect
 sudo yum install man-pages
 </pre>
+
+On Ubuntu:
 <pre>
 sudo apt-get install ccache cmake g++-multilib
 sudo apt-get install python-pexpect
