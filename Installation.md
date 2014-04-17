@@ -29,7 +29,7 @@ make OPTIM="-m32 -O3"
 sudo make install
 </pre>
 
-On Ubuntu 13.10, you can also use binary packages. (Older Ubuntu versions do not have a libpfm package.)
+<s>On Ubuntu 13.10, you can also use binary packages.  (Older Ubuntu versions do not have a libpfm package.)</s>  NB: The libpfm binary package shipped with ubuntu may be too old to recognize your CPU.  Please only develop against the binary package if you're confident it will work with your CPU.
 <pre>
 sudo apt-get install libpfm4-dev # 32-bit
 sudo apt-get install libpfm4-dev:i386 # 64-bit
