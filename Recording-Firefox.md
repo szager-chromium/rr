@@ -35,7 +35,7 @@ Third, the test harnesses disable the slow-script timeout when the `--debugger` 
 
 Fourth, you need to pass the "record" argument to rr when it's launched, so that it knows it's supposed to record Firefox.  You can use the test harness `--debugger-args` option to do this, however see below.
 
-Obviously you'll want to script away these distractions.  [This example setup](https://github.com/cgjones/rr-workbench/blob/master/Makefile) is used by one rr developer.  Another rr developer has a script called `rrrecord` that looks like
+Obviously you'll want to script away these distractions.  [This example setup](https://github.com/cgjones/rr-workbench/blob/master/Makefile) is used by one rr developer.  Another rr developer has a script called `rr-record` that looks like
 <pre>
 #!/usr/bin/bash
 
@@ -44,7 +44,11 @@ exec rr record "$@"
 </pre>
 Put this script in a directory in your `$PATH`.  Then use it as the `--debugger` option for the test harnesses, for example
 <pre>
-make -C $ff-objdir EXTRA_TEST_ARGS="--debugger=rrrecord --slowscript" mochitest-plain
+./mach mochitest-plain --debugger=rr-record
+</pre>
+or the old-style
+<pre>
+make -C $ff-objdir EXTRA_TEST_ARGS="--debugger=rr-record --slowscript" mochitest-plain
 </pre>
 and at the end of the test run, a recording will be located in whichever `$HOME/ff-working-dir` you configured in the script.
 
