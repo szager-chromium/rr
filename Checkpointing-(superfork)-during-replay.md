@@ -35,3 +35,9 @@ An interesting question is whether it's better to re-`mmap` all regions in the s
 ## Cloning file resources
 
 Luckily, in replay, the only way a tracee can directly access file resources is by replaying an mmap call that create a shared region.  This causes rr to create a file in its "emulated file system", and then that file is mapped on behalf of the tracee.  So wrt the invariants mentioned above, cloning file resources just reduces to the problem of cloning a tracee's EmuFS.  In other words, no additional invariants are added here.
+
+## Strawman superfork algorithm
+
+## Prior art (CRIU)
+
+[CRIU](http://criu.org/Main_Page) seems to be the state-of-the-art in linux checkpoint/restore software.  CRIU aims for fully-generic checkpointing, which is massive overkill for rr's replay checkpointing.  Even so, it would have been nice to use reuse CRIU, but this doesn't appear possible.  However, if the rr superfork implementation gets stuck, CRIU may be a source of inspiration on how to get un-stuck.
