@@ -69,6 +69,13 @@ There are asterisks `*` and `**` in the algorithm above that represent unknowns.
 * `*`: at these places, we rely on injecting code into the cloned process's main thread.  This is absolutely required for the `fork()` call, because we don't have any other way of setting up the new process's main thread stack/heap.  (For the other injected syscalls, it doesn't particularly matter which thread runs the syscalls.)  However, I think it's possible in theory for a linux process's main thread to die before its child threads.  We need to experiment to see if this can happen in practice.  If so, it's possible to fix the algorithm above: we fork from an arbitrary thread in the original tree, do the setup from that new main thread, and then SYS_exit that main thread instead of restoring its registers.
 * `**`: if `p` was configured with a `CLEARTID` futex when it itself was forked, then we won't be able to set up a corresponding `CLEARTID` futex for `p'` using this simple algorithm.  (I think that glibc does this, for a reason I don't understand.)  If we need to support this in practice, then I don't believe we'll be able to use this efficient fork-based algorithm.  I think instead we'll have to walk the tracee process tree in top-down order, and replay the necessary fork/clone calls to recreate it in the superfork.  Then memory contents will need to be manually cloned.
 
+## Implementation in rr
+
+The key design questions are
+
+* which process "owns" the superfork: the original rr tracer process, or a new tracer process?
+* depending on that answer, how is a separate view of the trace files created?  The state of the files objects in the TraceIfstream used by the original tracee tree must remain intact after the superfork.
+
 ## Prior art (CRIU)
 
 [CRIU](http://criu.org/Main_Page) seems to be the state-of-the-art in linux checkpoint/restore software.  CRIU aims for fully-generic checkpointing, which is massive overkill for rr's replay checkpointing.  Even so, it would have been nice to use reuse CRIU, but this doesn't appear possible.  However, if the rr superfork implementation gets stuck, CRIU may be a source of inspiration on how to get un-stuck.
