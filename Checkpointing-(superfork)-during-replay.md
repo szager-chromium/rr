@@ -37,6 +37,37 @@ An interesting question is whether it's better to re-`mmap` all regions in the s
 Luckily, in replay, the only way a tracee can directly access file resources is by replaying an mmap call that create a shared region.  This causes rr to create a file in its "emulated file system", and then that file is mapped on behalf of the tracee.  So wrt the invariants mentioned above, cloning file resources just reduces to the problem of cloning a tracee's EmuFS.  In other words, no additional invariants are added here.
 
 ## Strawman superfork algorithm
+<pre>
+for each process(address space) p:
+  [*] inject a remote fork() syscall into p's main thread
+  [**] run the fork() to create p'
+  # we may also want to set up p' to deliver SIGCHLD to a non-default process.
+  # It may be annoying to have the superfork sending SIGCHLD to its source tree.
+
+  for each mmap m in p:
+    if m is a shared mapping:
+      [*] unmap m in p'  # injecting and running the required remote syscalls
+      copy the EmuFS file f backing m to f'
+      re-map m with the same attributes, but referring to f'
+
+  for each task t in p that's not the thread-group leader:
+    [*] inject a clone() syscall into the thread-group leader task
+    set up the clone() to set the current cleartid futex address, stack pointer, and TLS addr from t
+    run the clone() to create task t'
+    set the registers of t' to be the same as t
+
+  [*] set the registers of the thread-group leader p' to be the same as p
+</pre>
+This algorithm attempts to use the `fork()` approach discussed above to clone memory contents.  Because it takes that approach, it *will not* preserve the task tree.  And in fact, the superfork will be a child of its origin, which will look odd in `pstree`.  However, the attraction of CoW memory outweighs my desire for a clean `pstree`.
+
+If we prefer to use the superfork for throwaway uses like #604 and #605, then the process tree will remain looking somewhat saner (i.e. the superfork will always die first, so the original task tree will always be intact).
+
+This algorithm elides the mechanics of "restarting" emulated syscalls that are "interrupted" by the superfork operation.
+
+There are asterisks `*` and `**` in the algorithm above that represent unknowns.  They are
+
+* `*`: at these places, we rely on injecting code into the cloned process's main thread.  This is absolutely required for the `fork()` call, because we don't have any other way of setting up the new process's main thread stack/heap.  (For the other injected syscalls, it doesn't particularly matter which thread runs the syscalls.)  However, I think it's possible in theory for a linux process's main thread to die before its child threads.  We need to experiment to see if this can happen in practice.  If so, it's possible to fix the algorithm above: we fork from an arbitrary thread in the original tree, do the setup from that new main thread, and then SYS_exit that main thread instead of restoring its registers.
+* `**`: if `p` was configured with a `CLEARTID` futex when it itself was forked, then we won't be able to set up a corresponding `CLEARTID` futex for `p'` using this simple algorithm.  (I think that glibc does this, for a reason I don't understand.)  If we need to support this in practice, then I don't believe we'll be able to use this efficient fork-based algorithm.  I think instead we'll have to walk the tracee process tree in top-down order, and replay the necessary fork/clone calls to recreate it in the superfork.  Then memory contents will need to be manually cloned.
 
 ## Prior art (CRIU)
 
