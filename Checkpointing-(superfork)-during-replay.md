@@ -76,6 +76,10 @@ The key design questions are
 * which process "owns" the superfork: the original rr tracer process, or a new tracer process?
 * depending on that answer, how is a separate view of the trace files created?  The state of the files objects in the TraceIfstream used by the original tracee tree must remain intact after the superfork.
 
+rr has less global state now than in the past, but it still has a fair amount.  For that reason alone, it's probably easier to fork a new replay process.  Forking another replayer also simplifies having separate trace-file state in the superfork and its parent.
+
+One difficulty that will arise is that linux tasks can only be traced by one tracer process.  So we're probably going to need to run the superfork algorithm in the superfork rr process, and then do so some ipc with the original rr.
+
 ## Prior art (CRIU)
 
 [CRIU](http://criu.org/Main_Page) seems to be the state-of-the-art in linux checkpoint/restore software.  CRIU aims for fully-generic checkpointing, which is massive overkill for rr's replay checkpointing.  Even so, it would have been nice to use reuse CRIU, but this doesn't appear possible.  However, if the rr superfork implementation gets stuck, CRIU may be a source of inspiration on how to get un-stuck.
