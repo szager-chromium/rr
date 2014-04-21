@@ -93,12 +93,6 @@ So the proposed changes are
 * when a session is restarted to event `x`, see if the stashed session is for `x`.  If so, set it as the new current session.  Otherwise, discard it and set the current session to a fresh session.
 * (continue replaying the session up to the target event/process.  For the superfork fastpath, this will simply be a no-op.)
 
-## Future migration to record-time checkpoint/superfork
-
-Replay-time superfork is pretty easy because tracees have very little OS state to clone.  At record time, though, tracees have the full complement of OS state.  We can treat the superfork described here as a simple initial v0 of the fully-general record-time superfork.  The same impl should be shared between both record/replay if at all possible.
-
-The fully general algorithm might require throwing away this impl and startin over.
-
 ## Prior art (CRIU)
 
 [CRIU](http://criu.org/Main_Page) seems to be the state-of-the-art in linux checkpoint/restore software.  CRIU aims for fully-generic checkpointing, which is massive overkill for rr's replay checkpointing.  Even so, it would have been nice to use reuse CRIU, but this doesn't appear possible.  However, if the rr superfork implementation gets stuck, CRIU may be a source of inspiration on how to get un-stuck.
