@@ -76,9 +76,22 @@ The key design questions are
 * which process "owns" the superfork: the original rr tracer process, or a new tracer process?
 * depending on that answer, how is a separate view of the trace files created?  The state of the files objects in the TraceIfstream used by the original tracee tree must remain intact after the superfork.
 
-rr has less global state now than in the past, but it still has a fair amount.  For that reason alone, it's probably easier to fork a new replay process.  Forking another replayer also simplifies having separate trace-file state in the superfork and its parent.
+Only the original replayer process can force-inject `clone` calls.  And the child tasks created by those calls will be traced by that replayer process too.  It's quite annoying to transfer "ownership" of a tracee from an old tracer to a new one.  That all leans towards the side of abstracting trace-replay state and hosting the original trace and superfork in the same replay process.
 
-One difficulty that will arise is that linux tasks can only be traced by one tracer process.  So we're probably going to need to run the superfork algorithm in the superfork rr process, and then do so some ipc with the original rr.
+The first use case for superfork checkpoint/restore is optimizing the gdb `restart` command.  Currently on restarts, rr does a little dance to exec a new replayer process over the old one (prepping debugger socket state in shmem, to be re-mapped intact after the exec).  This isn't too complicated but it's not simple.  (Even with superfork, we'll still have to do from-the-beginning replay restarts when the user restarts at an earlier event than the original session.)
+
+Considering this, it seems best to invest some time in encapsulating all global (replay?) state in a new replay session class.  In this way we can have multiple "live" replay sessions coexisting within the same replayer process.  Sessions being controlled by the same gdb client would explicitly share some kind of gdb client session state, instead of magically sharing it through shmem between restarts.  The replayer outer loop would then maintain a current session, passed along where needed, and replay restart would simply change that "current session" (either to a stashed superfork, or to a fresh session).
+
+Part of a replay session would be its TraceIfstream.  The superfork operation would act at the level of a replay session, perhaps through a `clone()` interface.  Then to ensure multiple sessions don't interfere with each other's trace-file state, the session `clone()` would also clone the TraceIfstream.  A TraceIfstream `clone()` is relatively trivial to implement.
+
+So the proposed changes are
+
+* create a new class `ReplaySession`.  Migrate relevant global state into ReplaySession.  This includes at least the Task map.
+* (most likely) create a new class `RecordSession` to provide the global state moved into ReplaySession, where needed.  They should subclass a common class that can provide common state like the task map, e.g.
+* pass Replay(Record)Session around where needed
+* before starting the replay of a session, `clone()` the session in the expectation that it will be restarted.  (Except for `--autopilot`.)/  Stash the superfork somewhere.
+* when a session is restarted to event `x`, see if the stashed session is for `x`.  If so, set it as the new current session.  Otherwise, discard it and set the current session to a fresh session.
+* (continue replaying the session up to the target event/process.  For the superfork fastpath, this will simply be a no-op.)
 
 ## Prior art (CRIU)
 
