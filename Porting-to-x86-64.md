@@ -40,7 +40,13 @@ rr already monkeypatches the `__kernel_vsyscall()` helper in the vDSO to jump in
 
 I don't know of any ways this could fall over.
 
-## Step 2: Replace hard-coded x86-isms with arch-neutral indirection
+## Step 2: Refactor away hard-coded x86-isms with arch-neutral indirection
+
+Currently pointers to tracee memory have the same type as pointers to rr memory. I find this makes code harder to read. I suggest introducing a remote_ptr<T> type which is a pointer to T in tracee memory. This would be a struct wrapping a uintptr_t. We'd use it for all tracee pointers.
+
+* Then we can have a Task::record(remote_ptr<T> p) variant that records sizeof(T) bytes.
+* read_mem can type-check its remote_ptr parameter by taking (remote_ptr<T>, T*).
+* We can also have a read_mem(remote_ptr<T>) variant that returns T directly, replacing read_word.
 
 rr has many direct references to x86 register names, like `regs.eax`.  We would need to replace this with a layer of indirection that hides the raw register manipulation.
 
@@ -51,13 +57,17 @@ The helper interface might look like
 class Registers {
   virtual int& call() = 0;
   virtual long& arg1() = 0;
-  virtual void*& arg1p() = 0;
+  virtual remote_ptr<T>& arg1p() = 0;
 };
 </pre>
 
 We would then create implementations `RegistersX86` and `RegistersX64` or whatever.  Access to the `Task` registers would go through the virtual method calls to the right implementation.
 
-With that in hand, we would finally "just" rewrite all of the direct uses of register names to the helper :).
+With that in hand, we would finally "just" rewrite all of the direct uses of register names to the helper :).  Change the SYSCALL_DEF macros to take syscall arg indices instead of register names.
+
+Note: syscall numbers aren't all the same across x86 and x64.  So there need to be *two* `switch` statements that dispatch syscall processing, one for x86 and one for x64.  The common cases `SYSCALL_DEFN()` should be generated from the same code, and the irregular cases should be templatized on architecture.
+
+This probably means rr will have to maintain its own list of syscalls, as it will have to do for arch-dependent kernel ABI structs.  See below.
 
 ## Step 3: Make remaining x86-isms conditional on tracee address space type
 
@@ -65,7 +75,28 @@ We have some further x86-isms like monkeypatching the `__kernel_vsyscall()` inte
 
 ## Step 4: Ensure rr records the correct-sized structure for outparams
 
-There are several places where we have the choice of storing e.g. `flock` or `flock64`.  We need to audit this callsites and ensure that we're using the right struct for the tasks's address space.
+Problems
+
+0. Many kernel ABI structs have different layouts for 32-bit vs 64-bit, e.g. iovec, stat64, getrusage
+0. Some kernel ABI structs of different layouts can be used within the same architecture, for different syscalls.
+
+I don't think we can pull the definitions of these structs from #include files in a way that makes both the 32-bit definition and the 64-bit definition visible to rr. It would also be a little painful to use two separate definitions. So how about:
+
+* Create ArchX86 and ArchX86_64 classes, each containing typedefs for architecture-dependent types like "long" and pointers (e.g. ArchX86(_64)::Long, ArchX86(_64)::Ptr<T>).
+* Create a header file kernel_ABI.h with templated definitions for kernel ABI structs, in the rr namespace, e.g.
+```C++
+template <class Arch>
+struct iovec : public Arch {
+  Ptr<void> iov_base;
+  SizeT iov_len;
+};
+```
+
+* Introduce implicit conversions from Arch::Ptr<T> to remote_ptr<T>
+* Make some functions like rec_process_syscall wrappers around templatized helper functions taking Arch as a template parameter. Then in syscall_defs.h we can write
+```C++
+SYSCALL_DEF1(getrusage, EMU, rusage<Arch>, 2 /* 2nd syscall arg */)
+```
 
 ## Step 5: Check the Task's image type at exec time and update it accordingly
 
