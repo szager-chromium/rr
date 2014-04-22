@@ -4,7 +4,7 @@ When writing code, aim for (1) clarity; (2) brevity, except where it conflicts w
 
 Headers are named like `my_header.h`.  Implementations are named like `my_implementation.cc`.
 
-rr uses tab characters indented with 8-character offset.
+rr uses tab characters indented with 8-character offset. The code below renders with only a 4-character offset in github's HTML; view markdown source for the actual code.
 ```C++
 /* -*- Mode: C++; tab-width: 8; c-basic-offset: 8; indent-tabs-mode: t; -*- */
 
