@@ -53,13 +53,13 @@ rr has many direct references to x86 register names, like `regs.eax`.  We would 
 Further, we'd like to eventually support mixed-architecture tracees, where some are running 32-bit images and others 64-bit images.  That means we need yet another level of indirection.
 
 The helper interface might look like
-<pre>
+```C++
 class Registers {
   virtual int& call() = 0;
   virtual long& arg1() = 0;
   virtual remote_ptr<T>& arg1p() = 0;
 };
-</pre>
+```
 
 We would then create implementations `RegistersX86` and `RegistersX64` or whatever.  Access to the `Task` registers would go through the virtual method calls to the right implementation.
 
