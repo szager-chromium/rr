@@ -18,13 +18,13 @@ The work here is a straightforward modification of the TraceOfstream/Ifstream in
 
 This will most likely make recording faster, but a speedup isn't required.  (A regression would be very surprising and should be investigated.) 
 
-The next step is to add background writer threads to TraceOfstream (resp. reader / TraceIfstream).  The simplest model is producer/consumer, where the recorder produces data for the TraceOfstream consumer (resp. TraceIfstream / replayer).  The two threads synchronize over shared `queue<unique_ptr>`.  In the TraceOfstream `write()` helpers, the client's `unique_ptr` is given to the queue within a lock.  The write thread(s) then take that `unique_ptr` within the same lock.  (Condvar synchronization around the queue is as in vanilla producer/consumer.)
+The next step is to add background writer threads to TraceOfstream (resp. reader / TraceIfstream).  The simplest model is producer/consumer, where the recorder produces data for the TraceOfstream consumer (resp. TraceIfstream / replayer).  The two threads synchronize over shared `queue<unique_ptr>`.  In the TraceOfstream `write()` helpers, the client's `unique_ptr` is given to the queue within a lock on the recorder thread.  The write thread(s) then take that `unique_ptr` within the same lock on the background thread.  (Condvar synchronization around the queue is as in vanilla producer/consumer.)
 
 It's up for discussion whether there should be a single background writer thread or multiple.  It's probably easiest to use the following setup
 
 * `data` / `data_header`: share their own background thread.  `data` is the most important file to write in the background.  It's not worth the hassle write `data_header` on a different thread than `data`.
-* `events`: have its own background thread.  Almost certainly worth compressing.  It's awkward to design a shared queue that allows easily sharing a thread with `data`, and threads are cheap enough what the heck.
-* `args_env`: only written once so don't bother with a thread.  (This doesn't have a persistent `fstream` anyway.)
+* `events`: have its own background thread.  Almost certainly worth compressing.  It's awkward to design a shared queue that allows easily sharing a thread with the `data` writer, and threads are cheap enough that don't bother trying.  Possible perf advantage too.
+* `args_env`: only written once so don't bother with a thread.  (This doesn't have a persistent `fstream` in TraceOfstream anyway.)
 * `mmaps`: not clear what's best yet.  Probably not worth compressing.  Easier to start without a mmaps thread.
 
 These changes should be local to trace.{c,h} only.
@@ -33,4 +33,4 @@ These changes should be local to trace.{c,h} only.
 
 The project is to replace `write(bytes, len)` calls with calls to a compressed-write() helper from a compression library, and similarly for `read()`.  Which compression algorithm / library to use initially is an open question.
 
-It's probably only worth compressing the files that are worth writing on background threads: `data` / `data_header` and `events`.
+It's probably only worth compressing the files that are worth writing on background threads per above: `data` / `data_header` and `events`.
