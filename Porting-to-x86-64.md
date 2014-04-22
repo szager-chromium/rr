@@ -42,11 +42,11 @@ I don't know of any ways this could fall over.
 
 ## Step 2: Refactor away hard-coded x86-isms with arch-neutral indirection
 
-Currently pointers to tracee memory have the same type as pointers to rr memory. I find this makes code harder to read. I suggest introducing a remote_ptr<T> type which is a pointer to T in tracee memory. This would be a struct wrapping a uintptr_t. We'd use it for all tracee pointers.
+Currently pointers to tracee memory have the same type as pointers to rr memory. I find this makes code harder to read. I suggest introducing a remote_ptr&lt;T&gt; type which is a pointer to T in tracee memory. This would be a struct wrapping a uintptr_t. We'd use it for all tracee pointers.
 
-* Then we can have a Task::record(remote_ptr<T> p) variant that records sizeof(T) bytes.
-* read_mem can type-check its remote_ptr parameter by taking (remote_ptr<T>, T*).
-* We can also have a read_mem(remote_ptr<T>) variant that returns T directly, replacing read_word.
+* Then we can have a Task::record(remote_ptr&lt;T&gt; p) variant that records sizeof(T) bytes.
+* read_mem can type-check its remote_ptr parameter by taking (remote_ptr&lt;T&gt;, T*).
+* We can also have a read_mem(remote_ptr&lt;T&gt;) variant that returns T directly, replacing read_word.
 
 rr has many direct references to x86 register names, like `regs.eax`.  We would need to replace this with a layer of indirection that hides the raw register manipulation.
 
