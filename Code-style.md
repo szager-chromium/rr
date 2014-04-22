@@ -84,7 +84,7 @@ class my_special_ptr {
 #include "log.h"
 // Did I mention alphabetical order? ;)
 
-// Don't infect the code with |std::|s.
+// Don't infect .cc files with |std::|s.  However, don't add toplevel |using| directives to headers.
 using namespace std;
 
 // Use C++ smart pointers when ownership semantics is important or not immediately obvious.
