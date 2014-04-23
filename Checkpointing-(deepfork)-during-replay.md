@@ -28,7 +28,7 @@ Here are the invariants constraining tracee-tree cloning
 In theory, this sounds easy: recreate all the mmaps in the cloned process and copy the memory contents.  In practice there are some subtleties.  Here are the invariants; they're listed as if for a single process, but of course they apply to all address spaces being deepforked.
 
 * Each memory mapping `m` must have a corresponding clone `m'` in the clone, covering the same region, with the same protection and flags, and with the same memory contents.  (Duh.)
-* The memory backing `m'' must be a *semantic copy* of the region backing `m`.  For private mappings, this is natural and obvious.  For shared mappings, the resource backing `m` must itself be cloned, and then the cloned region mapped at `m'`.
+* The memory backing `m'` must be a *semantic copy* of the region backing `m`.  For private mappings, this is natural and obvious.  For shared mappings, the resource backing `m` must itself be cloned, and then the cloned region mapped at `m'`.
 
 An interesting question is whether it's better to re-`mmap` all regions in the deepfork and copy memory contents over, or attempt to do something clever with `fork`.  The fork approach is better in theory because the deepfork and its superparent will share as many memory pages as possible.  For that reason, it should also be much faster.  And with programs like Firefox that map a *lot* of memory, can have many child processes, and expect to share a significant portion of mapped memory among all the processes, the fork-to-share approach may be important.
 
