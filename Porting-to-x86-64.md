@@ -55,9 +55,19 @@ Further, we'd like to eventually support mixed-architecture tracees, where some 
 The helper interface might look like
 ```C++
 class Registers {
-  virtual int& call() = 0;
-  virtual long& arg1() = 0;
-  virtual remote_ptr<T>& arg1p() = 0;
+  // Separate syscall and syscall-result accessors
+  // because we'll need that for ARM.
+  virtual uint64_t syscall() = 0;
+  virtual void set_syscall(int) = 0;
+  virtual uint64_t syscall_result() = 0;
+  // Need separate getter for signed values because the
+  // getter needs to sign-extend for 32-bit signed values,
+  // and not sign-extend for 32-bit unsigned values.
+  virtual int64_t syscall_result_signed() = 0;
+  virtual void set_syscall_result(uint64_t) = 0;
+  virtual uint64_t arg1() = 0;
+  virtual int64_t arg1_signed() = 0;
+  virtual void set_arg1(uint64_t) = 0;
 };
 ```
 
