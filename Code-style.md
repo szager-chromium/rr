@@ -19,6 +19,10 @@ static void local_bare_function(Type* t)
 
 /**
  * Summary comments for classes encouraged.
+ *
+ * Use a |class| when all/most members are private and/or when a strict object
+ * lifetime cycle needs to enforced by careful use of copy/assignment.
+ * Use a |struct| when all/most members are public and objects can be copied willy-nilly.
  */
 class Type {
 public:
