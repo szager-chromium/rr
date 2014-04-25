@@ -10,10 +10,9 @@ Project | Difficulty | Size | Importance | Defined-ness
 --------|------------|------|------------|-------------
 Remove dependencies on libpfm (issue #974) | Pretty easy | Small | Pretty important for new devs | Well defined |
 When btrfs is being used, use the equivalent of "cp --reflink" to cheaply copy all input files into the trace directory (#602) | Moderate | Medium | Important[1] | Well defined[1]
-Figure out if Haswell has a deterministic performance counter we can use (#973) | Pretty hard | Small | Critical | Well defined
+Figure out problems with some Haswell systems (#1054) | Pretty hard | Small | Critical | Well defined
 Compress trace data (#700) | Moderate | Medium | Important | Less well defined
 Port to x86-64 (#606) | Moderate[2] | Large | Important for new users | Moderately well defined
-Implement fork-based checkpointing of an entire replay session (#603) | Hard | Large | Important | Somewhat open ended
 Finish implementing gdb machine interface (#488 and followups) | Moderate | Medium | Nice for users | Pretty well defined
 Profile rr with real-time-sampling profiler (like Zoom) | Easy | Small | Nice to have | Well defined
 Somehow show recorded graphics during replay | Hard | Large | Nice for users | Open ended
