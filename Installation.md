@@ -79,6 +79,8 @@ See [this page](Usage).
 
 ## Tests
 
+Be sure to read the [usage instructions](Usage) before running tests.
+
 rr has a suite of tests in `$rr/src/test`.  The test harness expects that your rr disk environment is layed out like the following
 <pre>
 $rr/     # toplevel
