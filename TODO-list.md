@@ -8,7 +8,7 @@ Projects fall into a space of easy vs. hard, small vs. big, important vs. not-so
 
 Project | Difficulty | Size | Importance | Defined-ness
 --------|------------|------|------------|-------------
-Remove dependencies on libdisasm and libpfm (issues #974 / #954) | Pretty easy | Small | Pretty important for new devs | Well defined |
+Remove dependencies on libpfm (issue #974) | Pretty easy | Small | Pretty important for new devs | Well defined |
 When btrfs is being used, use the equivalent of "cp --reflink" to cheaply copy all input files into the trace directory (#602) | Moderate | Medium | Important[1] | Well defined[1]
 Figure out if Haswell has a deterministic performance counter we can use (#973) | Pretty hard | Small | Critical | Well defined
 Compress trace data (#700) | Moderate | Medium | Important | Less well defined
