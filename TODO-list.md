@@ -25,6 +25,7 @@ Have rr inject random system faults (#778) | Moderate | Medium | Important | Ope
 Enable rr to record itself recording something | Hard | Large | Nice to have | Well defined
 Get rr working with valgrind (or vice versa) #16 | Moderate | Small | Important | Well defined
 Get rr to record Rust programs | Hard | Large | Will be important | Well defined
+Support mutable replay (replay of a program with a patch) | Hard | Medium | Important | Open ended
 
 0. The actual work is not too difficult and is well-defined, but btrfs isn't the default fs for any shipping linux distro as of this writing.  The quality of btrfs isn't known either.  So this this code may not be used for a long time.
 0. On the surface, porting to x86-64 is easy.  However, there may be some difficulties that arise from x64 "virtual syscalls" that make this project very hard.
