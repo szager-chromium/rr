@@ -25,7 +25,7 @@ sudo apt-get install python-pexpect
 sudo apt-get install manpages-dev
 </pre>
 
-rr requires libpfm-4.5.0 for using performance counters.  You'll need to build a 32-bit version of this library.
+rr requires libpfm-4.5.0 for using performance counters.  You'll need to build a 32-bit version of this library. (It is enough to install libpfm-static package if you are on Fedora i386.)
 
 * [Download libpfm-4.5.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.5.0.tar.gz/download) and extract the package.
 * <pre>
