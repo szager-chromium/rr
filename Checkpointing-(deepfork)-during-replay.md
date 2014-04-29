@@ -54,8 +54,10 @@ for each process(address space) p:
     [*] inject a clone() syscall into the thread-group leader task
     set up the clone() to set the current cleartid futex address, stack pointer, and TLS addr from t
     run the clone() to create task t'
+    restore the robust_list of t' to the last set value
     set the registers of t' to be the same as t
 
+  restore the robust_list of thread-group leader p' to the last set value
   [*] set the registers of the thread-group leader p' to be the same as p
 </pre>
 This algorithm attempts to use the `fork()` approach discussed above to clone memory contents.  Because it takes that approach, it *will not* preserve the task tree.  And in fact, the deepfork will be a child of its origin, which will look odd in `pstree`.  However, the attraction of CoW memory outweighs my desire for a clean `pstree`.
