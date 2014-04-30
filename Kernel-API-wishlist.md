@@ -31,3 +31,7 @@ See #212.  Alternatively, create a new ptrace request analogous to PTRACE_SINGLE
 ### Bugfix: are drivers really allowed to use userspace stack as scratch memory?
 
 See #876.  That's generally not a good idea because it can let sensitive data leak into userspace.
+
+### Bugfix?: ability to open perf_event_open() fds through /proc/TID/fd/x
+
+See #603.  We fall back on using SCM_RIGHTS, but it's considerably more complicated than needs to be.
