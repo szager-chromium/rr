@@ -12,11 +12,20 @@ and reboot.
 
 If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
 
-The easiest way to squeeze out max perf is to change the CPU governor to 'performance'.  For example, on Fedora:
+The easiest way to squeeze out max perf is to change the CPU governor to 'performance'.
+
+On Fedora:
 <pre>
 sudo yum install kernel-tools
 sudo cpupower frequency-set -g performance
 </pre>
+
+On Ubuntu:
+<pre>
+sudo apt-get install cpufrequtils
+sudo cpufreq-set -g performance
+</pre>
+
 This setting is only temporary however; it only lasts until the next reboot. 
 
 Frequency scaling can also be disabled in the BIOS.
