@@ -3,10 +3,12 @@ rr can currently only record and replay 32-bit objects.  This restriction will b
 ## Set up your machine
 
 **For Ubuntu**: rr cannot run with ptrace hardening, because rr must write to /proc/$pid/mem.  Currently Ubuntu enables ptrace hardening but Fedora does not. To disable ptrace hardening "permanently" (persistent across reboots), create a file `/etc/sysctl.d/60-rr.conf` with these contents
-<pre>
-kernel.yama.ptrace_scope = 0
-</pre>
-and reboot.
+
+    kernel.yama.ptrace_scope = 0
+
+and restart sysctl:
+
+    sudo /etc/init.d/procps restart
 
 ## Getting the best performance on your machine (especially laptops!)
 
