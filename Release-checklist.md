@@ -1,15 +1,8 @@
-□ Bump version: `cd $rr && ./src/script/tag-release.sh MAJOR MINOR PATCH`.
-
-□ `git fetch` and `merge` changes on the x64 build machine.
-
-□ `git checkout` the tag that was created.
-
-□ `mkdir obj && cd obj && cmake ../rr && make && make check && make package`
-
-□ Copy `obj/dist/` files to directory `reldist` on machine hosting rr/gh-pages branch.
-
-□ Repeat above steps for x86 build machine.
-
-□ Update gh-pages: `cd $gh-pages-dir && ../rr/src/script/update-gh-pages.sh MAJOR MINOR PATCH reldist`
-
-□ Post to rr-dev mailing list.
+- [ ] Bump version: `cd $rr && ./src/script/tag-release.sh MAJOR MINOR PATCH`.
+- [ ] `git fetch` and `merge` changes on the x64 build machine.
+- [ ] `git checkout` the tag that was created.
+- [ ] `mkdir obj && cd obj && cmake ../rr && make && make check && make package`
+- [ ] Copy `obj/dist/` files to directory `reldist` on machine hosting rr/gh-pages branch.
+- [ ] Repeat above steps for x86 build machine.
+- [ ] Update gh-pages: `cd $gh-pages-dir && ../rr/src/script/update-gh-pages.sh MAJOR MINOR PATCH reldist`
+- [ ] Post to rr-dev mailing list.
