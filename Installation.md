@@ -17,16 +17,14 @@ On Fedora:
 sudo yum install \
   ccache cmake gcc gcc-c++ \
   glibc-devel glibc-devel.i686 \
-  libstdc++-devel libstdc++-devel.i686
-sudo yum install python-pexpect
-sudo yum install man-pages
+  libstdc++-devel libstdc++-devel.i686 \
+  python-pexpect man-pages
 </pre>
 
 On Ubuntu:
 <pre>
-sudo apt-get install ccache cmake g++-multilib
-sudo apt-get install python-pexpect
-sudo apt-get install manpages-dev
+sudo apt-get install ccache cmake g++-multilib \
+  realpath python-pexpect manpages-dev 
 </pre>
 
 rr requires libpfm-4.5.0 for using performance counters.  You'll need to build a 32-bit version of this library. (It is enough to install libpfm-static package if you are on Fedora i386.)
