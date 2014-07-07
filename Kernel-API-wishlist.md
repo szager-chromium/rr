@@ -35,3 +35,7 @@ See #876.  That's generally not a good idea because it can let sensitive data le
 ### Bugfix?: ability to open perf_event_open() fds through /proc/TID/fd/x
 
 See #603.  We fall back on using SCM_RIGHTS, but it's considerably more complicated than needs to be.
+
+### Bugfix?: wait status 0x80007f seems invalid
+
+See #1198.  This wait_status (in response to a PTRACE_INTERRUPT) seems to contradict documentation. It's received when we interrupt a task blocked in an untraced system call.
