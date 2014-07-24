@@ -10,7 +10,7 @@ Consider a `bc` request. Call the current registers+rbc the "origin". If there a
 
 If no breakpoints were hit between checkpoint N and the origin, resume at checkpoint N-1 and execute forward to checkpoint N. Continue searching earlier checkpoint intervals until at least one breakpoint is hit. If no breakpoints are ever hit, reset to the beginning of the trace.
 
-## Implementing 'bs`
+## Implementing `bs`
 
 Choose some skid constant K, restore to the previous checkpoint (or if necessary the one before that) and play forward until rbc is origin-rbc - K. Of course we'll overshoot that value but hopefully not the actual instruction we want to reach. Single-step forward until the origin point is reached, logging the register+rbc state at each instruction. Then restore the checkpoint again and execute forward until we hit the last instruction state before the origin.
 
