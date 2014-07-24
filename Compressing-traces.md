@@ -34,3 +34,7 @@ These changes should be local to trace.{c,h} only.
 The project is to replace `write(bytes, len)` calls with calls to a compressed-write() helper from a compression library, and similarly for `read()`.  Which compression algorithm / library to use initially is an open question.
 
 It's probably only worth compressing the files that are worth writing on background threads per above: `data` / `data_header` and `events`.
+
+## CLOEXEC
+
+When making these changes, move away from using C++ streams so we can set CLOEXEC on trace file descriptors. This will avoid the current situation where trace file descriptors leak into the fd space of every tracee.
