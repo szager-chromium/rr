@@ -35,6 +35,23 @@ The project is to replace `write(bytes, len)` calls with calls to a compressed-w
 
 It's probably only worth compressing the files that are worth writing on background threads per above: `data` / `data_header` and `events`.
 
+## Compression algorithms
+
+I did trial compression of a short Firefox run. The results are for compressing the `data` file. The uncompressed size of `data` was 1079MB. By comparison, the next biggest file was `events` at 151MB.
+
+| Algorithm     | Elapsed Time (s) | Compressed File Size |
+| ------------- | ----------------:| --------------------:|
+| `bzip2` (1.0.6) | 144 | 48 |
+| `xz` (5.1.2alpha) | 157 | 16 |
+| `xz -T 0` (5.1.2alpha) | 36 | 16 |
+| `gzip` (5.1.2alpha) | 10 | 45 |
+| `lz4` (r119) | 1 | 103 |
+| `lzo` (2.08) | 2 | 285 |
+
+`xz` uses LZMA. `xz -T 0` uses all available cores (4 cores, 8 hyperthreads in my case). All other algorithms used only a single core. All algorithms used default compression options.
+
+Based on these results I think `gzip` is a reasonable choice. It's efficient and compresses well. I don't see any need to compress further at the risk of recording overhead.
+
 ## CLOEXEC
 
 When making these changes, move away from using C++ streams so we can set CLOEXEC on trace file descriptors. This will avoid the current situation where trace file descriptors leak into the fd space of every tracee.
