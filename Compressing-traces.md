@@ -44,7 +44,7 @@ I did trial compression of a short Firefox run. The results are for compressing 
 | `bzip2` (1.0.6) | 144 | 48 |
 | `xz` (5.1.2alpha) | 157 | 16 |
 | `xz -T 0` (5.1.2alpha) | 36 | 16 |
-| `gzip` (5.1.2alpha) | 10 | 45 |
+| `gzip` (1.6) | 10 | 45 |
 | `lz4` (r119) | 1 | 103 |
 | `lzo` (2.08) | 2 | 285 |
 
