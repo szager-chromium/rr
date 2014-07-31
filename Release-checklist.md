@@ -21,7 +21,7 @@ Recommended testing
     * crashtest
     * crashtest-ipc
     * reftest (**Warning**: this can generate a large amount of trace data)
-    * reftest-ipc
+    * reftest-ipc (**Warning**: this can generate a large amount of trace data)
 * recording overhead has not regressed (**TODO**)
     * see [this blog post](http://robert.ocallahan.org/2014/03/introducing-rr.html)
 
