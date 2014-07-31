@@ -25,6 +25,8 @@ Recommended testing
 * recording overhead has not regressed (**TODO**)
     * see [this blog post](http://robert.ocallahan.org/2014/03/introducing-rr.html)
 
+For major releases, multiple runs of the test schedule above are recommended.
+
 We of course want to automate this process as soon as possible/practical.
 
 ## Step 2: Building and shipping
