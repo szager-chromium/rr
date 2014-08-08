@@ -1,5 +1,12 @@
 rr can currently only record and replay 32-bit objects.  This restriction will be lifted in a future version.
 
+## tl;dr
+
+```bash
+rr record /path/to/my/program --args
+rr replay
+```
+
 ## Getting the best performance on your machine (especially laptops!)
 
 If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
