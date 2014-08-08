@@ -27,22 +27,6 @@ sudo apt-get install ccache cmake g++-multilib \
   realpath python-pexpect manpages-dev 
 </pre>
 
-rr requires libpfm-4.5.0 for using performance counters.  You'll need to build a 32-bit version of this library. (It is enough to install libpfm-static package if you are on Fedora i386.)
-
-* [Download libpfm-4.5.0](http://sourceforge.net/projects/perfmon2/files/libpfm4/libpfm-4.5.0.tar.gz/download) and extract the package.
-* <pre>
-make OPTIM="-m32 -O3"
-sudo make install
-</pre>
-
-If that doesn't work, try building libpfm with `CFLAGS="-O3" CXXFLAGS="-O3" make OPTIM="-m32"`.
-
-<s>On Ubuntu 13.10, you can also use binary packages.  (Older Ubuntu versions do not have a libpfm package.)</s>  NB: The libpfm binary package shipped with ubuntu may be too old to recognize your CPU.  Please only develop against the binary package if you're confident it will work with your CPU.
-<pre>
-sudo apt-get install libpfm4-dev # 32-bit
-sudo apt-get install libpfm4-dev:i386 # 64-bit
-</pre>
-
 ## Building
 
 rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because cmake generates a *lot* of auxiliary files.
