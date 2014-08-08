@@ -1,3 +1,47 @@
+## tl;dr
+
+Fedora
+```bash
+sudo yum install \
+  ccache cmake gcc gcc-c++ \
+  glibc-devel glibc-devel.i686 \
+  libstdc++-devel libstdc++-devel.i686 \
+  python-pexpect man-pages
+```
+Ubuntu
+```bash
+sudo apt-get install ccache cmake g++-multilib \
+  realpath python-pexpect manpages-dev
+```
+then
+```bash
+mkdir rr
+cd rr
+git clone https://github.com/mozilla/rr.git
+mkdir obj
+cd obj
+cmake ../rr
+make -j8
+make check
+```
+
+Ubuntu
+```bash
+
+```
+then
+```bash
+mkdir rr
+cd rr
+git clone https://github.com/mozilla/rr.git
+mkdir obj
+cd obj
+cmake ../rr
+make
+make check
+
+```
+
 ## Hardware/software requirements
 
 Currently rr only supports recording and replaying of 32-bit x86 Linux processes.  rr and its dependencies must be built as a 32-bit objects on x86-64 kernels; instructions are below.
