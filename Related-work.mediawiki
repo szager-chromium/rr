@@ -79,4 +79,4 @@ See [http://read.seas.harvard.edu/cs261/2011/doubleplay.html this page].
 
 [http://dl.acm.org/citation.cfm?id=1772958 PinPlay]
 
-[http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java Chronon]
+[http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java Chronon] [http://chrononsystems.com/blog/design-and-architecture-of-the-chronon-record-0#!/]
