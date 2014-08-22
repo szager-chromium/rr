@@ -7,13 +7,22 @@ No target recompilation or VM hypervisor required.
 [http://code.google.com/p/chronomancer/ Chronomancer]/[http://code.google.com/p/chronicle-recorder/ Chronicle]
 
 [http://sourceware.org/gdb/wiki/ReverseDebug gdb reverse debugging] ([http://sourceware.org/gdb/wiki/ProcessRecord "process recorder"])
-<blockquote>
+
+cjones: <blockquote>
 Process record and replay works by logging the execution of each machine instruction in the child process (the program being debugged), together with each corresponding change in machine state (the values of memory and registers).
 </blockquote>
 * unclear how modification of user memory during syscalls is recorded
 * unclear how process-shared memory is dealt with
 * very very high overhead
 * good approach for efficient replaying reverse-step et al.
+
+[http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java Chronon]
+
+roc: <blockquote>
+It sounds like a very similar architecture to Chronomancer, but for the Java VM: instrument code to record variable changes and memory writes, pass raw trace data to helper threads which use carefully optimized compression, and provide a query engine to build a debugger on. Overheads quoted in that slide deck range from >200x (even more than Chronomancer) for well-optimized Java code that's CPU bound, down to 2x when you spend plenty of time in I/O or code that's excluded from Chronon instrumentation. That's probably a reasonable thing to do for J2EE code, and they get to use multiple cores to run the application. For something like Firefox though, where you really want to instrument the entire software stack and parallelism is not a big issue, rr's approach seems much better. Also I suspect they don't actually have complete heap information when they're not instrumenting the entire program, though they might do some heap traversal to mitigate that.
+
+Also it sounds like they don't have divergence support. Of course Java VMs don't support cloning, so they could only implement divergence using emulation, but you'd need a lot of heap data to make that work reliably.
+</blockquote>
 
 == Hypervisor recording ==
 
@@ -31,7 +40,7 @@ Process record and replay works by logging the execution of each machine instruc
 
 [http://www.cs.columbia.edu/~nieh/pubs/sigmetrics2010_scribe.pdf‎ Scribe]
 
-Thus spake roc:
+roc:
 <blockquote>
 There are a few major differences between Scribe and rr:
 * Scribe doesn't serialize all threads. Instead they do a bunch of work to make sure all threads can run simultaneously. This reduces overhead in some places and adds overhead in others.
