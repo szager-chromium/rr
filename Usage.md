@@ -135,6 +135,14 @@ If you just want to replay your recording without attaching a debugger client, i
 rr -m replay -a
 </pre>
 
+### Calling program functions from gdb
+
+When you call a program function from the debugger, rr temporarily clones the current program state, runs your function in the clone (echoing console output), and then throws away the clone so replay can continue from the state before running the function. Therefore attempting to alter program state persistently by calling functions will not work.
+
+### Checkpointing
+
+rr supports gdb's `checkpoint`, `restart` and `delete checkpoint` commands.
+
 ## Limitations
 
 Currently, the `/path/to/your/application` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  This will be fixed in the future.
