@@ -41,6 +41,8 @@ The overhead of recording an application with rr is pretty low, but it depends o
 
 rr doesn't record shared-memory multithreading, so it forces your application's threads to execute serially.  Your application can see an additional slowdown if it takes advantage of multicore parallelism.
 
+The `record` token is optional.
+
 ## Debugging a recording
 
 To debug your most recent recording, run
@@ -134,8 +136,6 @@ rr -m replay -a
 </pre>
 
 ## Limitations
-
-Unlike in "normal" gdb, the rr debug server doesn't allow you to set register or memory values.  A corollary of this restriction is that you can't call tracee functions from within a debugging session.  For example, `(gdb) call Foo()` won't work.  Eventually this will be supported.
 
 Currently, the `/path/to/your/application` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  This will be fixed in the future.
 
