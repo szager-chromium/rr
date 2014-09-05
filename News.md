@@ -1,12 +1,10 @@
-**June 24, 2014**
-* rr 1.5.0 released.
+**June 24, 2014**    rr 1.5.0 released.
 
-**June 16, 2014**
-* rr 1.4.0 released.
+**June 16, 2014**    rr 1.4.0 released.
 
-**April 15, 2014** rr 1.2.1 released.
+**April 15, 2014**    rr 1.2.1 released.
 
-**April 15, 2014** rr 1.2.0 released.
+**April 15, 2014**    rr 1.2.0 released.
 
 **April 2, 2014** rr 1.1.0 released.
 
