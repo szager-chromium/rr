@@ -1,0 +1,1 @@
+**March 26, 2014** Blog post: (Introducing rr)[http://robert.ocallahan.org/2014/03/introducing-rr.html]
