@@ -1,3 +1,5 @@
+**September 9, 2014**: rr 2.0.0 released. See [announcement](http://robert.ocallahan.org/2014/09/rr-20-released.html)
+
 **June 24, 2014**: rr 1.5.0 released.
 
 **June 16, 2014**: rr 1.4.0 released.
