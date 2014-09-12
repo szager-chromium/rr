@@ -6,12 +6,13 @@ sudo yum install \
   ccache cmake gcc gcc-c++ \
   glibc-devel glibc-devel.i686 \
   libstdc++-devel libstdc++-devel.i686 \
+  zlib-devel zlib-devel.i686 \
   python-pexpect man-pages
 ```
 Ubuntu
 ```bash
 sudo apt-get install ccache cmake g++-multilib \
-  realpath python-pexpect manpages-dev
+  libz-dev realpath python-pexpect manpages-dev
 ```
 then
 ```bash
