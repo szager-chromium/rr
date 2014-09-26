@@ -25,8 +25,9 @@ Also it sounds like they don't have divergence support. Of course Java VMs don't
 </blockquote>
 
 [http://undo-software.com/ UndoDB]
-* Similar design to rr
+* Similar design to rr: records whole Linux process
 * Relies on code instrumentation in some manner
+* Single-core execution
 * Currently (4.0.3363) crashes when trying to record Firefox
 * Integrates with gdb
 
