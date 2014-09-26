@@ -31,6 +31,8 @@ Also it sounds like they don't have divergence support. Of course Java VMs don't
 * Currently (4.0.3363) crashes when trying to record Firefox
 * Integrates with gdb
 
+[http://research.cs.wisc.edu/areas/pl/seminar/fall05/Bhansali.ppt Nirvana]
+
 == Hypervisor recording ==
 
 [http://www.cs.uiuc.edu/homes/kingst/Research_files/dunlap02.pdf ReVirt]
