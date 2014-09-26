@@ -95,7 +95,3 @@ See [http://read.seas.harvard.edu/cs261/2011/doubleplay.html this page].
 [http://iacoma.cs.uiuc.edu/iacoma-papers/isca13_1.pdf QuickRec / Capo3]
 
 [https://www.usenix.org/legacy/event/usenix04/tech/general/full_papers/srinivasan/srinivasan_html/paper.html FlashBack]
-
-[http://dl.acm.org/citation.cfm?id=1772958 PinPlay]
-
-[http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java Chronon] [http://chrononsystems.com/blog/design-and-architecture-of-the-chronon-record-0#!/]
