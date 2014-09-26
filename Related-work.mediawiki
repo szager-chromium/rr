@@ -11,9 +11,9 @@ No target recompilation or VM hypervisor required.
 cjones: <blockquote>
 Process record and replay works by logging the execution of each machine instruction in the child process (the program being debugged), together with each corresponding change in machine state (the values of memory and registers).
 </blockquote>
-* unclear how modification of user memory during syscalls is recorded
-* unclear how process-shared memory is dealt with
-* very very high overhead
+* unclear how modification of user memory during syscalls is recorded (apparently not at all)
+* unclear how process-shared memory is dealt with (apparently not at all)
+* very very high overhead (singlesteps the program using ptrace)
 * good approach for efficient replaying reverse-step et al.
 
 [http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java Chronon]
@@ -24,11 +24,18 @@ It sounds like a very similar architecture to Chronomancer, but for the Java VM:
 Also it sounds like they don't have divergence support. Of course Java VMs don't support cloning, so they could only implement divergence using emulation, but you'd need a lot of heap data to make that work reliably.
 </blockquote>
 
+[http://undo-software.com/ UndoDB]
+* Similar design to rr
+* Relies on code instrumentation in some manner
+* Currently (4.0.3363) crashes when trying to record Firefox
+* Integrates with gdb
+
 == Hypervisor recording ==
 
 [http://www.cs.uiuc.edu/homes/kingst/Research_files/dunlap02.pdf ReVirt]
 
 [http://blogs.vmware.com/workstation/2008/04/enhanced-execut.html VMWare Record & Replay]
+* Project canceled
 
 [https://github.com/moyix/panda/blob/master/docs/record_replay.md PANDA]
 
