@@ -101,3 +101,5 @@ See [http://read.seas.harvard.edu/cs261/2011/doubleplay.html this page].
 ORDER: Object centRic DEterministic Replay for Java
 
 PRES: Probabilistic replay with execution sketching on multiprocessors
+
+[https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-devecsery.pdf Arnold]
