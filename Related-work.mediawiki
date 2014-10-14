@@ -97,3 +97,5 @@ See [http://read.seas.harvard.edu/cs261/2011/doubleplay.html this page].
 [http://iacoma.cs.uiuc.edu/iacoma-papers/isca13_1.pdf QuickRec / Capo3]
 
 [https://www.usenix.org/legacy/event/usenix04/tech/general/full_papers/srinivasan/srinivasan_html/paper.html FlashBack]
+
+PRES: Probabilistic replay with execution sketching on multiprocessors
