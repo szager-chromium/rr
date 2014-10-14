@@ -42,6 +42,8 @@ Also it sounds like they don't have divergence support. Of course Java VMs don't
 
 [https://github.com/moyix/panda/blob/master/docs/record_replay.md PANDA]
 
+[http://www.cs.utah.edu/~aburtsev/xen-tt-doc/ Xen-TT]
+
 == Performance Counters ==
 
 [http://web.eece.maine.edu/~vweaver/projects/deterministic/deterministic_counters.pdf Non-Determinism and Overcount on Modern Hardware Performance Counter Implementations (Weaver, Terpstra, Moore)]
