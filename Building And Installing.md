@@ -12,7 +12,7 @@ sudo yum install \
 Ubuntu
 ```bash
 sudo apt-get install ccache cmake g++-multilib \
-  libz-dev realpath python-pexpect manpages-dev git
+  libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
 ```
 then
 ```bash
