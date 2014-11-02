@@ -1,4 +1,5 @@
 This page describes the plan to add x86-64 support to rr.
+See [Nathan's blog article](https://blog.mozilla.org/nfroyd/2014/10/30/porting-rr-to-x86-64/#compiling-rr-for-64bit) for some notes on progress.
 
 # General sketch:
 
