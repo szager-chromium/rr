@@ -30,6 +30,8 @@ make check
 
 Currently rr only supports recording and replaying of 32-bit x86 Linux processes.  rr and its dependencies must be built as a 32-bit objects on x86-64 kernels; instructions are below.
 
+Supported microarchitectures are the ones newer than Merom and Penryn, ie Nehalem and beyond.
+
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**. 
 * VMWare Workstation 9: The default is for counter virtualization to be disabled.
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
