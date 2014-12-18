@@ -145,7 +145,7 @@ rr supports gdb's `checkpoint`, `restart` and `delete checkpoint` commands.
 
 ### The 'when' command
 
-During replay, the 'when' command returns rr's internal current event number. Event numbers can be used as a parameter to the 'run' command. E.g.
+During replay, the `when` command returns rr's internal current event number. Event numbers can be used as a parameter to the `run` command. E.g.
 ````
 (gdb) when
 $12 = 33818
