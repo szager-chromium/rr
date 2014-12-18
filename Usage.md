@@ -143,6 +143,16 @@ When you call a program function from the debugger, rr temporarily clones the cu
 
 rr supports gdb's `checkpoint`, `restart` and `delete checkpoint` commands.
 
+### The 'when' command
+
+During replay, the 'when' command returns rr's internal current event number. Event numbers can be used as a parameter to the 'run' command. E.g.
+````
+(gdb) when
+$12 = 33818
+(gdb) run 32818
+... restarts 1000 events earlier ...
+````
+
 ## Limitations
 
 Currently, the `/path/to/your/application` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  This will be fixed in the future.
