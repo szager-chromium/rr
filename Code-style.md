@@ -114,3 +114,4 @@ static float recip(float x) {
   return newtons_method(x);
 }
 ```
+rr uses a lot of run-time assertions, as an aid to debugging and to improve the power of our test suite. rr's efficiency is based on avoiding traps from tracees to the rr supervisor process, so code in the supervisor is always in a known slow path. Therefore, even release builds of rr are compiled with `-O0` and assertions enabled --- except for `librrpreload`, which runs in the tracee and can be hot code. In the same vein, don't bother trying to optimize for speed in the supervisor; focus on writing clear, concise code instead.
