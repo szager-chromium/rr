@@ -71,8 +71,9 @@ template<typename T>
 class my_special_ptr {
   //...
 };
-
-// In the foo.cc file, your header is included first.
+````
+In a `foo.cc` file, its header is included first:
+````
 #include "foo.h"
 
 // Followed by C system headers.  In alphabetical order.
@@ -94,18 +95,16 @@ using namespace std;
 // Use C++ smart pointers when ownership semantics is important or not immediately obvious.
 shared_ptr<T> bar;
 unique_ptr<T> baz;
-
-// Comments like
-
+````
+Comments like
+````
   // Get x from t.
   int x = t->get_x();
+````
+don't help anyone and just occupy space.  Don't write them!
 
-// don't help anyone and just occupy space.  Don't write them!
-
-// Strive to write code clear enough that it documents itself.  When that's not possible,
-// write high-level comments that define a specification and/or set of invariants for the
-// implementation that follows.  Then document non-obvious parts of the implementation inline.
-
+Strive to write code clear enough that it documents itself.  When that's not possible, write high-level comments that define a specification and/or set of invariants for the implementation that follows.  Then document non-obvious parts of the implementation inline.
+````
 /**
  * Return the reciprocal of |x|, which must be non-zero.
  */
