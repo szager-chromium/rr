@@ -1,5 +1,3 @@
-rr can currently only record and replay 32-bit objects.  This restriction will be lifted in a future version.
-
 ## tl;dr
 
 ```bash
