@@ -18,8 +18,7 @@ rr uses 2-character indent with only spaces, no tabs.
 /**
  * "API" comments look like this.
  */
-static void local_bare_function(Type* t)
-{
+static void local_bare_function(Type* t) {
 	// "Inline" comments look like this.
 	// Note that "*" snuggles to type, |Type*|.  Not |Type *t|.
 }
