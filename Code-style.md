@@ -23,7 +23,7 @@ static void local_bare_function(Type* t) {
 	// Note that "*" snuggles to type, |Type*|.  Not |Type *t|.
 }
 ````
-Use a `class` when all/most members are private and/or when a strict object lifetime cycle needs to enforced by careful use of copy/assignment. Use a |struct| when all/most members are public and objects can be copied willy-nilly.
+Use a `class` when all/most members are private and/or when a strict object lifetime cycle needs to enforced by careful use of copy/assignment. Use a `struct` when all/most members are public and objects can be copied willy-nilly.
 ````
 /**
  * Summary comments for classes encouraged.
