@@ -84,16 +84,16 @@ For application/x-test found plugin libnptest.so
 (Remember, rr sets things up so that processes look like they have the same PID in replay as they did during recording.)  If you instead want to launch the debugger when that process is `fork`d, use the `-f 
 PID` option.
 
-rr associates an "event number" with each event it records.  You can have rr mark writes to stdio with the corresponding event number and PID that made the write by using the `-m` switch
+rr associates an "event number" with each event it records.  You can have rr mark writes to stdio with the corresponding event number and PID that made the write by using the `-M` switch
 <pre>
-$ rr -m replay
+$ rr -M replay
 ...
 [rr 2789 163548]LoadPlugin() /tmp/tmpUrp7e7/plugins/libnptest.so returned 5a7c7140
 [rr 2789 164788][2789] WARNING: '!compMgr', file /home/cjones/rr/mozilla-central/xpcom/glue/nsComponentManagerUtils.cpp, line 59
 </pre>
 Note that rr tagged the output with `[rr PID EVENT-NUMBER]`, in this case 2789/164788.  You can program rr to launch the debugger at a specific event by using the `-g EVENT` options
 <pre>
-$ rr -m replay -g 164788
+$ rr -M replay -g 164788
 ...
 [rr 2789 163548]LoadPlugin() /tmp/tmpUrp7e7/plugins/libnptest.so returned 5a7c7140
 
@@ -130,7 +130,7 @@ If you want to restart replay at a different event, you can pass the event numbe
 
 If you just want to replay your recording without attaching a debugger client, invoke
 <pre>
-rr -m replay -a
+rr -M replay -a
 </pre>
 
 ### Calling program functions from gdb
@@ -157,11 +157,11 @@ Currently, the `/path/to/your/application` image you recorded *must not change* 
 
 ## Other command line options
 
-Run `rr -h` or `rr --help` to see the most up-to-date list.  The options below are most useful for rr users, as opposed to developers of rr.
+Run `rr -H` or `rr --help` to see the most up-to-date list.  The options below are most useful for rr users, as opposed to developers of rr.
 
 General options:
-* `-v, --verbose`: log messages that may not be urgently critical to the user.
-* `-m, --mark-stdio`: write "current event number" before every stdio output line (see `rr replay -g` below).
+* `-V, --verbose`: log messages that may not be urgently critical to the user.
+* `-M, --mark-stdio`: write "current event number" before every stdio output line (see `rr replay -g` below).
 
 Recorder parameters:
 * `-c, --num-cpu-ticks=<NUM>`: maximum number of 'CPU ticks' (currently retired conditional branches) to allow a task to run before interrupting it.
