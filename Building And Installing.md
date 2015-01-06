@@ -4,9 +4,7 @@ Fedora
 ```bash
 sudo yum install \
   ccache cmake gcc gcc-c++ \
-  glibc-devel glibc-devel.i686 \
-  libstdc++-devel libstdc++-devel.i686 \
-  zlib-devel zlib-devel.i686 \
+  glibc-devel libstdc++-devel zlib-devel \
   python-pexpect man-pages
 ```
 Ubuntu
@@ -28,9 +26,7 @@ make check
 
 ## Hardware/software requirements
 
-Currently rr only supports recording and replaying of 32-bit x86 Linux processes.  rr and its dependencies must be built as a 32-bit objects on x86-64 kernels; instructions are below.
-
-Supported microarchitectures are the ones newer than Merom and Penryn, ie Nehalem and beyond.
+Supported microarchitectures are the ones newer than Merom and Penryn, i.e. Nehalem and beyond.
 
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**. 
 * VMWare Workstation 9: The default is for counter virtualization to be disabled.
@@ -46,24 +42,21 @@ On Fedora:
 <pre>
 sudo yum install \
   ccache cmake gcc gcc-c++ \
-  glibc-devel glibc-devel.i686 \
-  libstdc++-devel libstdc++-devel.i686 \
+  glibc-devel libstdc++-devel zlib-devel \
   python-pexpect man-pages
 </pre>
 
 On Ubuntu:
 <pre>
 sudo apt-get install ccache cmake g++-multilib \
-  realpath python-pexpect manpages-dev 
+  libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
 </pre>
 
 ## Building
 
 rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because cmake generates a *lot* of auxiliary files.
 
-If you intend to use rr to debug Firefox, follow [these instructions](https://developer.mozilla.org/en-US/docs/Compiling_32-bit_Firefox_on_a_Linux_64-bit_OS#Instructions_for_Fedora_19) to create a Firefox build for Fedora 19 that's compatible with rr.
-
-**NB**: you must disable the gstreamer media backend to record Firefox.  gstreamer uses some features that aren't currently supported (mmaps of unlinked inodes and exec'ing 64-bit processes).  Add this option to your mozconfig
+**NB**: you must disable the gstreamer media backend to record Firefox.  gstreamer uses some features that aren't currently supported (mmaps of unlinked inodes).  Add this option to your mozconfig
 
     ac_add_options --disable-gstreamer
 
