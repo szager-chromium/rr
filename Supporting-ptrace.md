@@ -17,3 +17,5 @@ Supporting more ptrace functionality would be interesting:
 * `PTRACE_SINGLESTEP` would be tricky but not too hard.
 * `PTRACE_SYSCALL` would be very hard. The basic problem is that right now, in certain syscall-handling states, the tracee is not switchable and we depend on it not being switched away from. With `PTRACE_SYSCALL` we must *always* be able to switch away from the tracee when we emulate a ptrace-stop and need to run its ptracer. So to implement `PTRACE_SYSCALL` we would first need to eliminate `PREVENT_SWITCH`.
 * Other miscellaneous ptrace events like `PTRACE_EVENT_EXIT` and `PTRACE_EVENT_CLONE` would have similar problems.
+
+Ultimately it would be neat to have rr support enough `ptrace` functionality that it can record itself; however, this seems like a ton of work for little practical benefit.
