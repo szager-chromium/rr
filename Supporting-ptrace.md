@@ -1,4 +1,4 @@
-rr supports a subset of `ptrace` --- enough to run Firefox's crash reporter (which uses Google Breakpad). Functionality currently supported:
+rr supports recording processes that use a subset of `ptrace` --- enough to run Firefox's crash reporter (which uses Google Breakpad). Functionality currently supported:
 * `PTRACE_ATTACH`
 * `PTRACE_DETACH` (with no signal)
 * `PTRACE_CONT` (with no signal)
