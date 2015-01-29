@@ -103,3 +103,11 @@ ORDER: Object centRic DEterministic Replay for Java
 PRES: Probabilistic replay with execution sketching on multiprocessors
 
 [https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-devecsery.pdf Arnold]
+
+[https://www.usenix.org/system/files/conference/osdi12/osdi12-final-117.pdf> Dune]
+cjones:
+<blockquote>
+This isn't a record/replay tool per se, but rather creates a framework on which one could be built.  The elevator pitch is approximately that Dune exposes hardware virtualization features to userspace.  So userspace can manage its own page tables, directly process exceptions, and so forth.  With those tools, one could build a userspace-only ptrace equivalent.  And that, in theory, could allow building an rr-like tool without rr's libpreload hackery (syscallbuf and seccomp-bpf) but with comparable performance.  There are further interesting things that could be done with custom page-table entries.  Lingering issues
+* does Dune expose rdtsc and cpuid virtualization?
+* does Dune expose some kind of interrupting programmable hwtimer?
+</blockquote>
