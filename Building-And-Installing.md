@@ -38,7 +38,7 @@ If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
 [    0.311273] Performance Events: Fam15h core perfctr, Broken PMU hardware detected, using software events only.
 [    0.311279] Failed to access perfctr msr (MSR c0010201 is 25c6c8c489)
 ````
-then something is disabled in your BIOS, or perhaps you have a broken hardware configuration.
+then something is disabled in your BIOS, or perhaps you have a broken hardware configuration, or you're in a VM without PMU virtualization.
 
 ## Build prerequisites
 
