@@ -26,13 +26,19 @@ make check
 
 ## Hardware/software requirements
 
-Supported microarchitectures are the ones newer than Merom and Penryn, i.e. Nehalem and beyond.
+Supported microarchitectures are Intel architectures newer than Merom and Penryn, i.e. Nehalem and beyond.
 
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**. 
 * VMWare Workstation 9: The default is for counter virtualization to be disabled.
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
 
+If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
+````
+[    0.311273] Performance Events: Fam15h core perfctr, Broken PMU hardware detected, using software events only.
+[    0.311279] Failed to access perfctr msr (MSR c0010201 is 25c6c8c489)
+````
+then something is disabled in your BIOS, or perhaps you have a broken hardware configuration.
 
 ## Build prerequisites
 
