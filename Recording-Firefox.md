@@ -6,6 +6,7 @@ You must have Linux installed with a recent kernel. If you're not running Linux 
 
 * rr requires a VM hypervisor that virtualizes CPU performance counters.  VMWare Workstation supports that.
 * there's a 20% or so performance hit from running in a VM; generally speaking recorder overhead increases from ~1.2x to ~1.4x.  (It's a feather in the cap of the hypervisor authors that the hit is that small, though!)
+* Some features (reverse execution) may not work well in VMWare due to [VMWare's hypervisor bug](http://robert.ocallahan.org/2014/09/vmware-cpuid-conditional-branch.html).
 
 Ensure that you've [installed](http://rr-project.org/) or [built](https://github.com/mozilla/rr/wiki/Installation) rr and have [used it successfully](https://github.com/mozilla/rr/wiki/Usage).
 
@@ -15,18 +16,24 @@ Firefox developers are strongly encouraged to build rr from source.  If your Fir
 
 To record Firefox running normally, simply launch it under rr as you would if running it under valgrind or gdb
 <pre>
-rr $ff-objdir/dist/bin/firefox -no-remote ...
+rr $ff-objdir/dist/bin/firefox ...
 </pre>
 This will save a trace to your working directory as described in the [usage instructions](https://github.com/mozilla/rr/wiki/Usage).  Please refer to [those instructions](https://github.com/mozilla/rr/wiki/Usage) for details on how to debug the recording, which isn't covered in this document.
 
 ## Recording test suites
 
-You need to use the test runners' `--debugger` feature to punch rr down through the layers of python script to where Firefox is launched.  This is used in the same way you would use `--debugger` to run valgrind or gdb, for example:
+You can use the test runners' `--debugger` feature to punch rr down through the layers of python script to where Firefox is launched.  This is used in the same way you would use `--debugger` to run valgrind or gdb, for example:
 <pre>
-./mach mochitest-plain --debugger=rr
+./mach mochitest-plain --debugger=rr ...
 </pre>
 
 The test harnesses disable the slow-script timeout when the `--debugger` argument is passed.  That's usually sensible, because you don't want those warnings being generated while Firefox is stopped in gdb.  However, this has been [observed to change Gecko behavior](https://bugzilla.mozilla.org/show_bug.cgi?id=986673).  rr doesn't need to have the slow-script timeout disabled, so to avoid those kinds of pitfalls, pass the `--slowscript` argument to the test harness.
+
+Alternatively, it also works to run the entire test harness in rr:
+<pre>
+rr ./mach mochitest-plain ...
+</pre>
+The trace will contain many processes, so to debug the correct one, you'll want to use `rr ps` or `rr replay -p firefox` etc.
 
 ## Get help!
 
