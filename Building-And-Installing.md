@@ -3,13 +3,13 @@
 Fedora
 ```bash
 sudo yum install \
-  ccache cmake gcc gcc-c++ \
-  glibc-devel libstdc++-devel zlib-devel \
+  ccache cmake make gcc gcc-c++ \
+  glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 zlib-devel \
   python-pexpect man-pages
 ```
 Ubuntu
 ```bash
-sudo apt-get install ccache cmake g++-multilib \
+sudo apt-get install ccache cmake make g++-multilib \
   libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
 ```
 then
