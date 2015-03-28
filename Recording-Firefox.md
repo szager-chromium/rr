@@ -8,7 +8,7 @@ You must have Linux installed with a recent kernel. If you're not running Linux 
 * there's a 20% or so performance hit from running in a VM; generally speaking recorder overhead increases from ~1.2x to ~1.4x.  (It's a feather in the cap of the hypervisor authors that the hit is that small, though!)
 * Some features (reverse execution) may not work well in VMWare due to [VMWare's hypervisor bug](http://robert.ocallahan.org/2014/09/vmware-cpuid-conditional-branch.html).
 
-Ensure that you've [installed](http://rr-project.org/) or [built](https://github.com/mozilla/rr/wiki/Installation) rr and have [used it successfully](https://github.com/mozilla/rr/wiki/Usage).
+Ensure that you've [installed](http://rr-project.org/) or [built](https://github.com/mozilla/rr/wiki/Building-And-Installing) rr and have [used it successfully](https://github.com/mozilla/rr/wiki/Usage).
 
 Firefox developers are strongly encouraged to build rr from source.  If your Firefox patch triggers a bug in rr, rr developers will fix that bug with high priority.  You might be able to pull a fix within a few hours or days instead of waiting for the next release.
 
