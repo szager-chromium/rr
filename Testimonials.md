@@ -2,6 +2,9 @@
 
   -- Robert O'Callahan
 
-***
+> rr has taken the application I work on from borderline-impossible to use inside a debugger to comically easy. I've got all my coworkers hooked on it. If you're using gdb, you should probably be using rr.
 
+  -- @kellerb
+
+***
 _If you find rr useful, please add your testimonial here!_
