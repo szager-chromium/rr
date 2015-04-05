@@ -173,3 +173,7 @@ Replay parameters:
 * `-f, --onfork=<PID>`: debug <PID> when forked
 * `-p, --onprocess=<PID>`: debug <PID> when execed
 * `-g, --goto=<EVENT-NUM>`: execute forward until event <EVENT-NUM> is reached before debugging
+
+## Environment Variables
+
+`_RR_TRACE_DIR`: set this to the directory where traces will be recorded. Defaults to `$HOME/.rr`.
