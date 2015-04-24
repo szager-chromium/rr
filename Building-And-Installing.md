@@ -54,8 +54,8 @@ sudo yum install \
 
 On Ubuntu:
 <pre>
-sudo apt-get install ccache cmake g++-multilib \
-  libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
+sudo apt-get install ccache cmake make g++-multilib \
+  pkg-config libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
 </pre>
 
 ## Building
