@@ -1,4 +1,4 @@
-rr uses [travis-ci](https://travis-ci.org/mozilla/rr) for automated builds and tests.  The lifetime of a build/test run is as follows
+rr uses [travis-ci](https://travis-ci.org/mozilla/rr) for automated builds.  The lifetime of a build/test run is as follows
 
 0. A committer pushes commit _X_ to mozilla/rr
 0. _X_ triggers a github service hook that notifies travis-ci
@@ -8,3 +8,9 @@ rr uses [travis-ci](https://travis-ci.org/mozilla/rr) for automated builds and t
 Commits that break the build or tests will notify the [rr-builds](https://mail.mozilla.org/listinfo/rr-builds) mailing list, and the committer who broke the build.  Anyone can subscribe to the list.
 
 The travis-ci configuration file is stored in `$rr/.travis.yml`.  It first invokes the script `src/script/setup_travis.sh` to configure the travis slave for rr, and then invokes the `make` and `make check` targets.  (It's really that simple!)
+
+There is now [a Jenkins instance](http://45.55.219.138:8080/job/rr/) running builds and tests for rr commits. It's similar to the Travis setup described above, except it simply runs:
+
+    ./configure && make -j`getconf _NPROCESSORS_ONLN` && make fastcheck
+
+Jenkins is not currently configured to send email notifications.
