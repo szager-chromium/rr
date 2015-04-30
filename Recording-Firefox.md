@@ -16,7 +16,7 @@ Firefox developers are strongly encouraged to build rr from source.  If your Fir
 
 To record Firefox running normally, simply launch it under rr as you would if running it under valgrind or gdb
 <pre>
-rr $ff-objdir/dist/bin/firefox ...
+rr record $ff-objdir/dist/bin/firefox ...
 </pre>
 This will save a trace to your working directory as described in the [usage instructions](https://github.com/mozilla/rr/wiki/Usage).  Please refer to [those instructions](https://github.com/mozilla/rr/wiki/Usage) for details on how to debug the recording, which isn't covered in this document.
 
