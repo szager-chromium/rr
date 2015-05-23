@@ -6,5 +6,10 @@
 
   -- @kellerb
 
+> I was ecstatic when gdb gained reverse debugging abilities, but quickly had to realize it didn't work for me in practice because I was trying to debug something too big for it (Firefox). I've recently used rr to do some debugging on Firefox, and it didn't fail to deliver.
+> While things like reverse-continue were relatively slow, having to wait for those was totally worth it if you look at the pain you'd have had to go through if you hadn't been able to reverse-continue in the first place.
+> My only complaint about rr is that it didn't exist earlier!
+
+  -- @glandium
 ***
 _If you find rr useful, please add your testimonial here!_
