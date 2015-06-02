@@ -11,5 +11,10 @@
 > My only complaint about rr is that it didn't exist earlier!
 
   -- @glandium
+
+> The idea of record-and-replay is not new; where rr is different is that it’s very low overhead and capable of handling complex programs like QEMU and Mozilla. It’s a usable production quality debug tool, not just a research project. I can’t recommend rr highly enough — I think it deserves to become a standard part of the Linux C/C++ developer’s toolkit, as valgrind has done before it.
+
+  -- @pm215
+
 ***
 _If you find rr useful, please add your testimonial here!_
