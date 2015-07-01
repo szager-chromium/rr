@@ -169,7 +169,7 @@ $1 = (Task *) 0x818c1c8
 </pre>
 Then in another shell, follow the instructions above for attaching to a tracee.
 
-#### rr and tracees can be debugged simulataneously
+#### rr and tracees can be debugged simultaneously
 
 For example, if an `assert_exec()` fails and you want to inspect both the tracee and rr, it's perfectly find to `gdb -p $(pidof rr)` in one session and `gdb failing-prog; (gdb) target remote :X` in another.  Obviously though, rr has to be not-stopped to respond to debugger requests.
 
