@@ -153,7 +153,7 @@ $12 = 33818
 
 ### Debugging a child process
 
-rr automatically records all processes forked by the initial process. Use `rr ps` to dump the pids of all processes recorded by rr. Use `rr replay -p <pid>` to attach gdb to a particular process after its first exec, or `rr replay -f <pid>` to attach gdb immediately after the fork. As a shortcut you can use `rr replay -p <filename>` to attach gdb after the first exec of <filename> (excluding directory components).
+rr automatically records all processes forked by the initial process. Use `rr ps` to dump the pids of all processes recorded by rr. Use `rr replay -p <pid>` to attach gdb to a particular process after its first exec, or `rr replay -f <pid>` to attach gdb immediately after the fork. As a shortcut you can use `rr replay -p <filename>` to attach gdb after the first exec of `<filename>` (excluding directory components).
 
 ## Limitations
 
