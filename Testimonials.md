@@ -16,5 +16,8 @@
 
   -- @pm215
 
+> Even though we started using rr very recently, it has already cut down what would have been weeks of painful debugging for a couple of really nasty bugs.  Simply put, rr with reverse debugging is mindblowing.  We are excited to use it more and more in the future!
+-- @kavindaw-optumsoft
+
 ***
 _If you find rr useful, please add your testimonial here!_
