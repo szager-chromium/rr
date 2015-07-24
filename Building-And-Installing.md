@@ -32,6 +32,7 @@ If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS 
 * VMWare Workstation 9: The default is for counter virtualization to be disabled.
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
+* Digital Ocean: The only VPS provider known to work with RR.
 
 If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
 ````
