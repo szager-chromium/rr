@@ -24,14 +24,14 @@ This will save a trace to your working directory as described in the [usage inst
 
 You can use the test runners' `--debugger` feature to punch rr down through the layers of python script to where Firefox is launched.  This is used in the same way you would use `--debugger` to run valgrind or gdb, for example:
 <pre>
-./mach mochitest-plain --debugger=rr ...
+./mach mochitest --debugger=rr ...
 </pre>
 
 The test harnesses disable the slow-script timeout when the `--debugger` argument is passed.  That's usually sensible, because you don't want those warnings being generated while Firefox is stopped in gdb.  However, this has been [observed to change Gecko behavior](https://bugzilla.mozilla.org/show_bug.cgi?id=986673).  rr doesn't need to have the slow-script timeout disabled, so to avoid those kinds of pitfalls, pass the `--slowscript` argument to the test harness.
 
 Alternatively, it also works to run the entire test harness in rr:
 <pre>
-rr ./mach mochitest-plain ...
+rr ./mach mochitest ...
 </pre>
 The trace will contain many processes, so to debug the correct one, you'll want to use `rr ps` or `rr replay -p firefox` etc.
 
