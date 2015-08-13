@@ -19,7 +19,7 @@ cd rr
 git clone https://github.com/mozilla/rr.git
 mkdir obj
 cd obj
-cmake ..
+cmake ../rr
 make -j8
 make check
 ```
@@ -72,7 +72,7 @@ rr uses the CMake build system, which is able to generate multiple build environ
     cd ../
     mkdir obj
     cd obj
-    cmake -G "Eclipse CDT4 - Unix Makefiles" ..
+    cmake -G "Eclipse CDT4 - Unix Makefiles" ../rr
 
 Next, import the project into Eclipse.  By default Eclipse will automatically build the project when files change.  You can force Eclipse to rebuild the project by pressing Ctrl-B.
 
@@ -81,7 +81,7 @@ Next, import the project into Eclipse.  By default Eclipse will automatically bu
     cd ../
     mkdir obj
     cd obj
-    cmake ..
+    cmake ../rr
 
 Then the command
 
@@ -100,10 +100,10 @@ Be sure to read the [usage instructions](Usage) before running tests.
 rr has a suite of tests in `$rr/src/test`.  The test harness expects that your rr disk environment is layed out like the following
 <pre>
 $rr/     # toplevel
-  src/    # srcdir
+  rr/    # srcdir
   $obj/  # objdir
 </pre>
-The actual names of the `$rr` toplevel and `$obj` directories don't actually matter.  However, the `rr` srcdir actually has to be named "src" for the tests to run correctly.  If you run the tests and see errors like
+The actual names of the `$rr` toplevel and `$obj` directories don't actually matter.  However, the `rr` srcdir actually has to be named "rr" for the tests to run correctly.  If you run the tests and see errors like
 <pre>
 27: Test 'breakpoint' FAILED
 27: Test breakpoint failed, leaving behind /tmp/rr-test-breakpoint-nChiktKdP
