@@ -136,7 +136,26 @@ rr -M replay -a
 ### Reverse execution with gdb
 
 Where rr really shines is reverse execution! gdb's `reverse-continue`, `reverse-step`, `reverse-next`, and `reverse-finish` commands all work under rr. They're especially powerful combined with hardware data watchpoints. For example:
-
+<pre>
+Breakpoint 1, nsCanvasFrame::BuildDisplayList (this=0x2aaadd7dbeb0, aBuilder=0x7fffffffaaa0, aDirtyRect=..., aLists=...)
+    at /home/roc/mozilla-inbound/layout/generic/nsCanvasFrame.cpp:460
+460   if (GetPrevInFlow()) {
+(gdp) p mRect.width
+12000
+</pre>
+We happen to know that that value is wrong. We want to find out where it was set. rr makes that quick and easy.
+<pre>
+(gdb) watch -l mRect.width
+(gdb) reverse-cont
+Continuing.
+Hardware watchpoint 2: -location mRect.width
+Old value = 12000
+New value = 11220
+0x00002aaab100c0fd in nsIFrame::SetRect (this=0x2aaadd7dbeb0, aRect=...)
+    at /home/roc/mozilla-inbound/layout/base/../generic/nsIFrame.h:718
+718       mRect = aRect;
+</pre>
+Here the "New value" is actually the value before this statement was executed, since we just executed backwards past it.
 
 ### Calling program functions from gdb
 
