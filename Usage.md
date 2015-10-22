@@ -143,7 +143,7 @@ Breakpoint 1, nsCanvasFrame::BuildDisplayList (this=0x2aaadd7dbeb0, aBuilder=0x7
 (gdp) p mRect.width
 12000
 </pre>
-We happen to know that that value is wrong. We want to find out where it was set. rr makes that quick and easy.
+We happen to know that that value is wrong. We want to find out where it was set. rr makes that quick and easy:
 <pre>
 (gdb) watch -l mRect.width
 (gdb) reverse-cont
@@ -156,6 +156,8 @@ New value = 11220
 718       mRect = aRect;
 </pre>
 Here the "New value" is actually the value before this statement was executed, since we just executed backwards past it.
+
+Using `watch -l` is important. Without `-l`, reverse execution is often very slow or apparently buggy, because gdb will try to reevaluate the expression as the program executes through different scopes.
 
 ### Calling program functions from gdb
 
