@@ -133,7 +133,7 @@ If you just want to replay your recording without attaching a debugger client, i
 rr -M replay -a
 </pre>
 
-### Reverse execution with gdb
+### Reverse execution
 
 Where rr really shines is reverse execution! gdb's `reverse-continue`, `reverse-step`, `reverse-next`, and `reverse-finish` commands all work under rr. They're especially powerful combined with hardware data watchpoints. For example:
 <pre>
