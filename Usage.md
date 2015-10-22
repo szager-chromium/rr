@@ -133,6 +133,11 @@ If you just want to replay your recording without attaching a debugger client, i
 rr -M replay -a
 </pre>
 
+### Reverse execution with gdb
+
+Where rr really shines is reverse execution! gdb's `reverse-continue`, `reverse-step`, `reverse-next`, and `reverse-finish` commands all work under rr. They're especially powerful combined with hardware data watchpoints. For example:
+
+
 ### Calling program functions from gdb
 
 When you call a program function from the debugger, rr temporarily clones the current program state, runs your function in the clone (echoing console output), and then throws away the clone so replay can continue from the state before running the function. Therefore attempting to alter program state persistently by calling functions will not work.
