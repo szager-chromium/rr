@@ -1,3 +1,7 @@
+**October 28, 2015**: Some nice blog posts about rr:
+* [Rreverrse Debugging]http://huonw.github.io/blog/2015/10/rreverse-debugging/
+* [Tricks for debugging QEMU - rr](http://www.linaro.org/blog/core-dump/tricks-for-debugging-qemu-rr/)
+
 **October 23, 2015**: rr 4.0.0 released. This is the first stable release with reverse execution enabled. [More here](http://robert.ocallahan.org/2015/10/rr-40-released-with-reverse-execution.html).
 
 **June 6, 2015**: A user-visible behavior change [documented here](http://robert.ocallahan.org/2015/06/small-change-to-rr-behavior.html) makes rr send fake SIGKILL events to gdb just before the debuggee process exits, giving users a chance to reverse-execute from that point.
