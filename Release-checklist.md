@@ -34,10 +34,10 @@ We of course want to automate this process as soon as possible/practical.
 ## Step 2: Building and shipping
 
 - [ ] Bump version: `cd $rr && ./src/script/tag-release.sh MAJOR MINOR PATCH`.
-- [ ] `git fetch` and `merge` changes on the x64 build machine.
-- [ ] `git checkout` the tag that was created.
-- [ ] `mkdir obj && cd obj && cmake ../rr && make && make check && make package`
-- [ ] Copy `obj/dist/` files to directory `reldist` on machine hosting rr/gh-pages branch.
-- [ ] Repeat above steps for x86 build machine.
-- [ ] Update gh-pages: `cd $gh-pages-dir && ../rr/src/script/update-gh-pages.sh MAJOR MINOR PATCH reldist`
+- [ ] `git fetch` and `merge` changes on the x86-32 build machine. `git checkout` the tag that was created.
+- [ ] On both machines, `make && make check && make package`
+- [ ] Copy `obj/dist/*` files from x86-32 build machine to `obj/dist` on x86-64 machine.
+- [ ] Push changes to Github: `git push origin; git push --tags origin`
+- [ ] Create release, upload packages and update gh-pages: `./src/script/push-release.sh`
+- [ ] Update (wiki)[https://github.com/mozilla/rr/wiki/News].
 - [ ] Post to rr-dev mailing list.
