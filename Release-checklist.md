@@ -38,6 +38,7 @@ We of course want to automate this process as soon as possible/practical.
 - [ ] On both machines, `make && make check && make package`
 - [ ] Copy `obj/dist/*` files from x86-32 build machine to `obj/dist` on x86-64 machine.
 - [ ] Push changes to Github: `git push origin; git push --tags origin`
-- [ ] Create release, upload packages and update gh-pages: `./src/script/push-release.sh`
+- [ ] [Create release and upload packages](https://github.com/mozilla/rr/releases)
+- [ ] Update gh-pages: `./src/script/push-release.sh`
 - [ ] Update [News wiki page](https://github.com/mozilla/rr/wiki/News)
 - [ ] Post to rr-dev mailing list.
