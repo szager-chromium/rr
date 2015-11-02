@@ -1,3 +1,6 @@
+**November 3, 2015**: Another nice blog post about rr:
+* [Back to the Futu-rr-e](http://fitzgeraldnick.com/weblog/64/)
+
 **November 2, 2015**: rr 4.0.1 released. This makes some minor fixes and adds the `rr replay -d <debugger'` option.
 
 **October 28, 2015**: Some nice blog posts about rr:
