@@ -20,5 +20,9 @@
 
   -- @kavindaw-optumsoft
 
+> `rr` has quickly become the number one tool I reach for when debugging complicated C++ code. `rr` only runs on Linux and I don't even use Linux as my day-to-day operating system! But `rr` provides such a great debugging experience, and gives me such a huge productivity boost, that I will reboot into Fedora *just to use `rr`* for all but the most trivial bugs. Take note of that, Linux advocates.
+
+  -- @fitzgen, [Back to the Futu-rr-e: Determinisitc Debugging with `rr`](http://fitzgeraldnick.com/weblog/64/)
+
 ***
 _If you find rr useful, please add your testimonial here!_
