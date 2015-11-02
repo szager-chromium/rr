@@ -1,3 +1,5 @@
+**November 2, 2015**: rr 4.0.1 released. This makes some minor fixes and adds the `rr replay -d <debugger'` option.
+
 **October 28, 2015**: Some nice blog posts about rr:
 * [Rreverrse Debugging](http://huonw.github.io/blog/2015/10/rreverse-debugging/)
 * [Tricks for debugging QEMU - rr](http://www.linaro.org/blog/core-dump/tricks-for-debugging-qemu-rr/)
