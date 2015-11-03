@@ -19,7 +19,7 @@ cd rr
 git clone https://github.com/mozilla/rr.git
 mkdir obj
 cd obj
-cmake ../rr
+cmake ..
 make -j8
 make check
 ```
