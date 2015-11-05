@@ -1,6 +1,6 @@
 `rr` does not support tracing DRM-related ioctl. rr tries to block access to `/dev/dri/*`, which is normally enough to avoid DRI and trigger fallback to llvmpipe.
 
-If this does not happen automatically for you, you can check if you have llvmpipe installed and forcing it manually:
+If this does not happen automatically for you, you can check if you have llvmpipe installed and try forcing it manually:
 
 ```
 $ LIBGL_ALWAYS_SOFTWARE=1 glxinfo | grep OpenGL
