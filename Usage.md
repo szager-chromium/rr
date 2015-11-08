@@ -33,7 +33,7 @@ Running rr in "record" mode saves the execution history of your application into
 
     rr record /path/to/your/application [arguments to application]
 
-The recorded trace is saved to the path `~/.rr/application-$n` by default.
+The recorded trace is saved to the path `$_RR_TRACE_DIR/application-$n` by default. See [environment variables below](#environment-variables).
 
 The overhead of recording an application with rr is pretty low, but it depends on the application's workload.  In general you should expect around a 1.2x to 1.4x slowdown.  At the lowest end, a purely CPU-bound tracee will incur around 1.1x-1.2x overhead.  At the high end, a tracee that just makes syscalls in a tight loop can have 4x slowdown or more.
 
@@ -206,4 +206,6 @@ Replay parameters:
 
 ## Environment Variables
 
-`_RR_TRACE_DIR`: set this to the directory where traces will be recorded. Defaults to `$HOME/.rr`.
+`_RR_TRACE_DIR`: set this to the directory where traces will be recorded. Defaults to `$HOME/.local/share/rr` for new users.
+
+If `$HOME/.rr` exists (e.g. after you used rr < 4.0.1), it is used instead. rr also respects [`$XDG_DATA_HOME`](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) environment variable if it's set.
