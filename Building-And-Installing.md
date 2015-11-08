@@ -30,7 +30,7 @@ make check
 Supported microarchitectures are Intel architectures newer than Merom and Penryn, i.e. Nehalem and beyond.
 
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**. 
-* VMWare Workstation 9: The default is for counter virtualization to be disabled.
+* VMWare Workstation 9 / Fusion 7: The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options). Also add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
 * Digital Ocean: The only VPS provider known to work with RR.
