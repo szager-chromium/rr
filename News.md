@@ -1,3 +1,5 @@
+**November 12, 2015**: Jeff Muizelaar [blogged](http://muizelaar.blogspot.co.nz/2015/11/debugging-reftests-with-rr.html) about his [rr-dataflow](https://github.com/jrmuizel/rr-dataflow/) tool that extends rr with an `origin` command that provides cool data-flow tracking capabilities. 
+
 **November 11, 2015**: rr 4.0.2 released. This was another minor release fixing bugs and supporting a few more syscalls.
 
 **November 3, 2015**: Another nice blog post about rr:
