@@ -6,7 +6,7 @@ You must have Linux installed with a recent kernel. If you're not running Linux 
 
 * rr requires a VM hypervisor that virtualizes CPU performance counters.  VMWare Workstation supports that.
 * there's a 20% or so performance hit from running in a VM; generally speaking recorder overhead increases from ~1.2x to ~1.4x.  (It's a feather in the cap of the hypervisor authors that the hit is that small, though!)
-* Some features (reverse execution) may not work well in VMWare due to [VMWare's hypervisor bug](http://robert.ocallahan.org/2014/09/vmware-cpuid-conditional-branch.html).
+* Some features (reverse execution) [may not work well in VMWare](http://robert.ocallahan.org/2014/09/vmware-cpuid-conditional-branch.html) due to a VMWare optimization that can be disabled [this way](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html).
 
 Ensure that you've [installed](http://rr-project.org/) or [built](https://github.com/mozilla/rr/wiki/Building-And-Installing) rr and have [used it successfully](https://github.com/mozilla/rr/wiki/Usage).
 
