@@ -1,3 +1,5 @@
+**December 2, 2015**: [Replay performance](http://robert.ocallahan.org/2015/11/even-more-rr-replay-performance.html) has been considerably improved on master.
+
 **November 23, 2015**: rr 4.0.3 released. This was another minor release fixing bugs and adding the `real-tid` command.
 
 **November 12, 2015**: Jeff Muizelaar [blogged](http://muizelaar.blogspot.co.nz/2015/11/debugging-reftests-with-rr.html) about his [rr-dataflow](https://github.com/jrmuizel/rr-dataflow/) tool that extends rr with an `origin` command that provides cool data-flow tracking capabilities. 
