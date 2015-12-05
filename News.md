@@ -1,3 +1,5 @@
+**December 5, 2015**: CppCast did [a podcast interview](http://cppcast.com/2015/12/robert-ocallahan/] about rr with Robert O'Callahan.
+
 **December 2, 2015**: [Replay performance](http://robert.ocallahan.org/2015/11/even-more-rr-replay-performance.html) has been considerably improved on master.
 
 **November 23, 2015**: rr 4.0.3 released. This was another minor release fixing bugs and adding the `real-tid` command.
