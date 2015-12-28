@@ -64,8 +64,6 @@ sudo apt-get install ccache cmake make g++-multilib \
 
 rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because cmake generates a *lot* of auxiliary files.
 
-**NB**: you must disable the gstreamer media backend to record Firefox.  gstreamer uses some features that aren't currently supported (mmaps of unlinked inodes).  Add this option to your mozconfig
-
     ac_add_options --disable-gstreamer
 
 ### To use Eclipse
