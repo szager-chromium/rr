@@ -117,3 +117,7 @@ This isn't a record/replay tool per se, but rather creates a framework on which 
 * does Dune expose rdtsc and cpuid virtualization?
 * does Dune expose some kind of interrupting programmable hwtimer?
 </blockquote>
+
+== seccomp-bpf ==
+
+[https://github.com/tsgates/mbox/blob/master/doc/paper.pdf Mbox]
