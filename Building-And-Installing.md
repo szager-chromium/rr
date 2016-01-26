@@ -106,4 +106,17 @@ or with full output
 
     make check
 
-Each test consists of a C source file and a `.run` file, which is a shell script.
+Each test consists of a C source file and a `.run` file, which is a shell script. To run an individual BASIC_TEST $test outside the harness:
+
+    cd $rr/src/test
+    bash basic_test.run -b $rr '' $test
+
+To run a non-basic test:
+
+    cd $rr/src/test
+    bash $test.run -b $rr '' $test
+
+To run a non-basic test in 32-bit mode:
+
+    cd $rr/src/test
+    bash $test.run -b $rr '' $test_32
