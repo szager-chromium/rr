@@ -1,3 +1,5 @@
+**February 10, 2016**: [rr chaos mode landed](http://robert.ocallahan.org/).
+
 **February 3, 2016**: rr 4.1.0 released. The main feature of this release is major replay performance improvements: replaying buffered syscalls avoids trapping to rr. Replay is generally faster than recording now; before, it was generally slower. This release also implements support for gdb's `find` command. Various bugs have been fixed. Intel Skylake is supported. A kernel bug that caused machines to lock up during rr tests has been worked around.
 
 **December 5, 2015**: CppCast did [a podcast interview](http://cppcast.com/2015/12/robert-ocallahan) about rr with Robert O'Callahan.
