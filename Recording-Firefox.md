@@ -29,6 +29,11 @@ You can use the test runners' `--debugger` feature to punch rr down through the 
 
 The test harnesses disable the slow-script timeout when the `--debugger` argument is passed.  That's usually sensible, because you don't want those warnings being generated while Firefox is stopped in gdb.  However, this has been [observed to change Gecko behavior](https://bugzilla.mozilla.org/show_bug.cgi?id=986673).  rr doesn't need to have the slow-script timeout disabled, so to avoid those kinds of pitfalls, pass the `--slowscript` argument to the test harness.
 
+To run rr in chaos mode:
+<pre>
+./mach mochitest --debugger=rr --debugger-args=--chaos
+</pre>
+
 Alternatively, it also works to run the entire test harness in rr:
 <pre>
 rr ./mach mochitest ...
