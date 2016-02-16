@@ -34,7 +34,7 @@ To run rr in chaos mode:
 ./mach mochitest --debugger=rr --debugger-args=--chaos
 </pre>
 
-Alternatively, it also works to run the entire test harness in rr:
+You can also run the entire test harness in rr:
 <pre>
 rr ./mach mochitest ...
 </pre>
