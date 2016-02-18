@@ -22,7 +22,7 @@ mkdir obj
 cd obj
 cmake ..
 make -j8
-make check
+make test
 ```
 
 ## Hardware/software requirements
