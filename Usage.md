@@ -5,6 +5,10 @@ rr record /path/to/my/program --args
 rr replay
 ```
 
+## Malicious code
+
+*rr is not designed to handle malicious code safely!* In particular if you record an application that runs untrusted code in a sandbox based on `seccomp` or kernel namespaces, rr intentionally makes holes in the sandbox to facilitate the recording of the sandboxed code. In theory, an attacker could design malicious code to identify when it's being run under rr and use those holes to escape the sandbox.
+
 ## Getting the best performance on your machine (especially laptops!)
 
 If you're running rr on an (un-docked) laptop, the CPU scaling governor can make a big difference in recording overhead; at least up to 2x.  This has been observed to happen whether or not your laptop is on AC power.  (However, laptops running in desktop docks have been observed not to be affected by this issue.)
