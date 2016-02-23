@@ -34,9 +34,10 @@ Supported microarchitectures are Intel architectures newer than Merom and Penryn
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  The virtual machines that do work with rr and the settings required are listed below.  If a virtual machine isn't on this list, then it cannot be used with rr.
 * VMWare Workstation 9 / Fusion 7: The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options). Also add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
-* Libvirt: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
-* VirtualBox **does not work** at this time because it doesn't support PMU virtualization. Because it's open-source, someone just needs to contribute one...
+* Libvirt/KVM: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
+* Xen: ''insert instructions here...''
 * Digital Ocean: The only VPS provider known to work with RR.
+VirtualBox **does not work** at this time because it doesn't support PMU virtualization. Because it's open-source, someone just needs to contribute that...
 
 If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
 ````
