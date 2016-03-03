@@ -126,6 +126,12 @@ This isn't a record/replay tool per se, but rather creates a framework on which 
 * does Dune expose some kind of interrupting programmable hwtimer?
 </blockquote>
 
+== Checkpointing ==
+
+[https://criu.org/Main_Page CRIU checkpointing of user-space Linux processes]
+
+[http://blog.tonicdev.com/2015/09/10/time-traveling-in-node.js-notebooks.html Tonic Docker-based checkpointing for JS REPLs]
+
 == seccomp-bpf ==
 
 [https://github.com/tsgates/mbox/blob/master/doc/paper.pdf Mbox]
