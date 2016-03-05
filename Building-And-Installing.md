@@ -2,7 +2,7 @@
 
 Fedora
 ```bash
-sudo yum install \
+sudo dnf install \
   ccache cmake make gcc gcc-c++ gdb \
   glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 zlib-devel \
   python-pexpect man-pages
