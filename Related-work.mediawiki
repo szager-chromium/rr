@@ -21,7 +21,8 @@ Process record and replay works by logging the execution of each machine instruc
 * Relies on code instrumentation in some manner
 * Single-core execution
 * Currently (4.0.3363) crashes when trying to record Firefox
-* Integrates with gdb
+* Integrates with gdb and some other similar debuggers
+* Offers "Live Recorder" which you link into your program and lets you turn on recording in the field
 
 [http://research.cs.wisc.edu/areas/pl/seminar/fall05/Bhansali.ppt Nirvana]
 
