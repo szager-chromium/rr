@@ -48,13 +48,16 @@ Process record and replay works by logging the execution of each machine instruc
 
 [http://everythingsysadmin.com/2014/04/time-travel-pdb.html Python Time Travel Debugger]
 
-[http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java Chronon]
+[http://chrononsystems.com Chronon]
 * Similar to Chronomancer for Java.
 * Chronon instruments bytecode to record variable changes and memory writes. Raw trace data goes to helper threads which use carefully optimized compression.
 * It's unclear, but there's an "unpacker" step that probably performs some kind of indexing.
-* Overheads quoted in that slide deck range from >200x (even more than Chronomancer) for well-optimized Java code that's CPU bound, down to 2x when you spend plenty of time in I/O or code that's excluded from Chronon instrumentation. That's probably a reasonable thing to do for J2EE code, and they get to use multiple cores to run the application. There's a tradeoff between the scope of code recorded and the overhead of recording. For something like Firefox though, where you really want to instrument the entire software stack and parallelism is not a big issue, rr's approach seems much better. Also I suspect they don't actually have complete heap information when they're not instrumenting the entire program, though they might do some heap traversal to mitigate that. Scalability issues mentioned here: http://blog.jetbrains.com/idea/2014/03/try-chronon-debugger-with-intellij-idea-13-1-eap/#comment-55286. Prediction-based compression described here: http://chrononsystems.com/blog/chronon-3-recorder-internals.
-
-No divergence support: of course Java VMs don't support cloning, so they could only implement divergence using emulation, but you'd need a lot of heap data to make that work reliably.</blockquote>
+* Overheads quoted in [http://www.slideshare.net/tsauerwein/chronon-a-backintimedebugger-for-java this slide deck] range from >200x (even more than Chronomancer) for well-optimized Java code that's CPU bound, down to 2x when you spend plenty of time in I/O or code that's excluded from Chronon instrumentation. That's probably a reasonable thing to do for J2EE code, and they get to use multiple cores to run the application.
+* There's a tradeoff between the scope of code recorded and the overhead of recording [http://chrononsystems.com/blog/choosing-what-to-record-part-1-controlling-pe described here].
+* Scalability issues mentioned [http://blog.jetbrains.com/idea/2014/03/try-chronon-debugger-with-intellij-idea-13-1-eap/#comment-55286 here].
+* Prediction-based compression described [http://chrononsystems.com/blog/chronon-3-recorder-internals here]
+* For something like Firefox, where you really want to instrument the entire software stack and parallelism is not a big issue, rr's approach seems much better.
+* No divergence support: of course Java VMs don't support cloning, so they could only implement divergence using emulation, but you'd need a lot of heap data to make that work reliably.
 
 == GUI-level Record And Replay ==
 
