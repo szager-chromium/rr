@@ -31,7 +31,7 @@ The test harnesses disable the slow-script timeout when the `--debugger` argumen
 
 To run rr in chaos mode:
 <pre>
-./mach mochitest --debugger=rr --debugger-args=--chaos
+./mach mochitest --debugger=rr --debugger-args="record --chaos"
 </pre>
 
 You can also run the entire test harness in rr:
