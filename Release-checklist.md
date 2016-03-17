@@ -8,46 +8,7 @@ Bare minimum requirements
 Recommended testing
 
 * multiple runs of rr test suite (tests can fail intermittently)
-* LibreOffice and Firefox start up and shut down in virtual machines running various Linux releases (e.g. Ubuntu 14.04 32 and 64, Ubuntu 15.10 64).
-The following `xvnc-runner.sh` script is helpful:
-````
-#!/bin/bash
-
-CMD=$1
-EXPECT=$2
-
-rm -f ~/tmp/xvnc ~/tmp/xvnc-client ~/tmp/xvnc-wininfo ~/tmp/xvnc-client-replay
-
-Xvnc :9 > ~/tmp/xvnc 2>&1 &
-until grep -q "Listening" ~/tmp/xvnc; do
-  sleep 1
-done
-DISPLAY=:9 ~/rr/obj/bin/rr $CMD > ~/tmp/xvnc-client 2>&1 &
-DISPLAY=:9 xwininfo -tree -root > ~/tmp/xvnc-wininfo 2>&1
-until grep -q "$EXPECT" ~/tmp/xvnc-wininfo; do
-  sleep 1
-  DISPLAY=:9 xwininfo -tree -root > ~/tmp/xvnc-wininfo 2>&1
-done
-kill %1
-wait %2
-~/rr/obj/bin/rr replay -a > ~/tmp/xvnc-client-replay 2>&1
-if [[ $? != 0 ]]; then
-  echo FAILED: replay failed
-  exit 1
-fi
-diff ~/tmp/xvnc-client ~/tmp/xvnc-client-replay
-if [[ $? != 0 ]]; then
-  echo FAILED: replay differs
-  exit 1
-fi
-echo PASSED: $CMD
-exit 0
-````
-Run it like this:
-````
-(rm -rf ~/tmp/firefox-profile ; mkdir ~/tmp/firefox-profile ; ~/rr/vm/xvnc-runner.sh "firefox --profile $HOME/tmp/firefox-profile $HOME/rr/vm/test.html" "rr Test Page")
-(rm -rf ~/.config/libreoffice ; ~/rr/vm/xvnc-runner.sh "libreoffice $HOME/rr/vm/rr-test-doc.odt" "rr-test-doc.odt")
-````
+* LibreOffice and Firefox start up and shut down in virtual machines running various Linux releases (e.g. Ubuntu 14.04 32 and 64, Ubuntu 15.10 64). Scripts in https://github.com/rocallahan/rr-vm-testing help automate this.
 * the following Firefox mochitest suites pass when recorded and replayed by rr
     * dom/tests/mochitest/ajax/jquery (short, simple, CPU intensive)
     * dom/browser-element (heavily multiprocess)
