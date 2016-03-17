@@ -1,12 +1,14 @@
+**March 17, 2016**: [rr 4.2.0 released](https://github.com/mozilla/rr/releases/tag/4.2.0). The main feature of this release is chaos mode. There are many other improvements; see release notes.
+
 **February 10, 2016**: [rr chaos mode landed](http://robert.ocallahan.org/).
 
-**February 3, 2016**: rr 4.1.0 released. The main feature of this release is major replay performance improvements: replaying buffered syscalls avoids trapping to rr. Replay is generally faster than recording now; before, it was generally slower. This release also implements support for gdb's `find` command. Various bugs have been fixed. Intel Skylake is supported. A kernel bug that caused machines to lock up during rr tests has been worked around.
+**February 3, 2016**: [rr 4.1.0 released](https://github.com/mozilla/rr/releases/tag/4.1.0). The main feature of this release is major replay performance improvements: replaying buffered syscalls avoids trapping to rr. Replay is generally faster than recording now; before, it was generally slower. This release also implements support for gdb's `find` command. Various bugs have been fixed. Intel Skylake is supported. A kernel bug that caused machines to lock up during rr tests has been worked around.
 
 **December 5, 2015**: CppCast did [a podcast interview](http://cppcast.com/2015/12/robert-ocallahan) about rr with Robert O'Callahan.
 
 **December 2, 2015**: [Replay performance](http://robert.ocallahan.org/2015/11/even-more-rr-replay-performance.html) has been considerably improved on master.
 
-**November 23, 2015**: rr 4.0.3 released. This was another minor release fixing bugs and adding the `real-tid` command.
+**November 23, 2015**: [rr 4.0.3 released](https://github.com/mozilla/rr/releases/tag/4.0.3). This was another minor release fixing bugs and adding the `real-tid` command.
 
 **November 12, 2015**: Jeff Muizelaar [blogged](http://muizelaar.blogspot.co.nz/2015/11/debugging-reftests-with-rr.html) about his [rr-dataflow](https://github.com/jrmuizel/rr-dataflow/) tool that extends rr with an `origin` command that provides cool data-flow tracking capabilities. 
 
