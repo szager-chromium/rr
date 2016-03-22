@@ -17,10 +17,9 @@ then
 mkdir rr
 cd rr
 git clone https://github.com/mozilla/rr.git
-cd rr
 mkdir obj
 cd obj
-cmake ..
+cmake ../rr
 make -j8
 make test
 ```
