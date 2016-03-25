@@ -30,7 +30,8 @@ make test
 Or to use clang and Ninja to build (faster!):
 ````
 CC=clang CXX=clang++ cmake -G Ninja ../rr
-ninja-build -j8
+ninja-build
+ninja-build test
 ````
 
 ## Hardware/software requirements
