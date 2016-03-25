@@ -5,12 +5,13 @@ Fedora
 sudo dnf install \
   ccache cmake make gcc gcc-c++ gdb \
   glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 zlib-devel \
-  python-pexpect man-pages
+  python-pexpect man-pages ninja-build
 ```
 Ubuntu
 ```bash
 sudo apt-get install ccache cmake make g++-multilib gdb \
-  pkg-config libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
+  pkg-config libz-dev realpath python-pexpect manpages-dev git zlib1g-dev \
+  ninja-build
 ```
 then
 ```bash
@@ -19,10 +20,18 @@ cd rr
 git clone https://github.com/mozilla/rr.git
 mkdir obj
 cd obj
+````
+Then to use `make` and the system default compiler to build:
+```
 cmake ../rr
 make -j8
 make test
 ```
+Or to use clang and Ninja to build (faster!):
+````
+CC=clang CXX=clang++ cmake -G Ninja ../rr
+ninja-build -j8
+````
 
 ## Hardware/software requirements
 
