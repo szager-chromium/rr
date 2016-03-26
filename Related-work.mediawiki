@@ -24,6 +24,8 @@ Process record and replay works by logging the execution of each machine instruc
 * Integrates with gdb and some other similar debuggers
 * Offers "Live Recorder" which you link into your program and lets you turn on recording in the field
 
+[http://www.roguewave.com/getattachment/3a1cae85-60df-48a5-810a-8ff27344afd6/Finding-Hard-to-Reproduce-Bugs-Reverse-Debugging?sitename=RogueWave RogueWave ReplayEngine]
+
 [http://research.cs.wisc.edu/areas/pl/seminar/fall05/Bhansali.ppt Nirvana]
 
 == Hypervisor recording ==
