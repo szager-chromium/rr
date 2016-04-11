@@ -57,6 +57,9 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 
 [http://web.eece.maine.edu/~vweaver/projects/deterministic/deterministic_counters.pdf Non-Determinism and Overcount on Modern Hardware Performance Counter Implementations (Weaver, Terpstra, Moore)]
 
+[http://groups.csail.mit.edu/commit/papers/09/asplos073-olszewski.pdf Kendo: Efficient Deterministic Multithreading in Software]
+Out of date with its observations on performance counter behavior, but first paper to use performance counters for async event timing AFAIK.
+
 == Language/VM-specific Replay ==
 
 [https://developer.mozilla.org/en-US/docs/Mozilla/Projects/WebReplay WebReplay]
