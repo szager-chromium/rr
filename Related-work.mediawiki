@@ -30,7 +30,15 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 
 [http://research.cs.wisc.edu/areas/pl/seminar/fall05/Bhansali.ppt Nirvana]
 
-== Hypervisor recording ==
+== In-Kernel Userspace Recording ==
+
+[https://homes.cs.washington.edu/~luisceze/publications/osdi10-dos.pdf Deterministic Process Groups in dOS]
+
+[http://home.gna.org/jockey/ Jockey]
+
+[https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-devecsery.pdf Arnold]
+
+== Full-System recording ==
 
 [http://www.cs.uiuc.edu/homes/kingst/Research_files/dunlap02.pdf ReVirt]
 
@@ -88,8 +96,6 @@ There are a few major differences between Scribe and rr:
 
 [http://cseweb.ucsd.edu/~calder/papers/thesis-satish.pdf iDNA]
 
-[http://home.gna.org/jockey/ Jockey]
-
 [http://dl.acm.org/citation.cfm?id=1772954.1772958 Pinplay]
 
 [http://web.eecs.umich.edu/~nsatish/papers/ASPLOS-10-Respec.pdf Respec]
@@ -127,8 +133,6 @@ See [http://read.seas.harvard.edu/cs261/2011/doubleplay.html this page].
 ORDER: Object centRic DEterministic Replay for Java
 
 PRES: Probabilistic replay with execution sketching on multiprocessors
-
-[https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-devecsery.pdf Arnold]
 
 [https://www.usenix.org/system/files/conference/osdi12/osdi12-final-117.pdf Dune]
 cjones:
