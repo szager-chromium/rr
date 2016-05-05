@@ -24,5 +24,9 @@
 
   -- @fitzgen, [Back to the Futu-rr-e: Determinisitc Debugging with `rr`](http://fitzgeraldnick.com/weblog/64/)
 
+> I've been using `rr` for some time now, but in the last 3 days I hit a situation where it really saved my bacon. I had a mysterious problem in a data structure delivered to my gcc plugin, and I'm really not all that familiar with the inner workings of gcc. First of all, `rr` was enormously helpful in getting a debugger onto the right subprocess without messing around with dummy shell scripts to intercept and hack things in. Then `rr` made it possible for me to go back and forth through the cryptic internal gcc processing, tracing the origins of data embedded in structures one step at a time and keeping my head straight about chronology via heavy use of the `when-ticks` command. Not only did I track down my bug, but I learned a huge amount about the gcc internals I was looking at. I can't imagine how I could have tracked my bug down without `rr`.
+
+  -- @sfink (Steve Fink)
+
 ***
 _If you find rr useful, please add your testimonial here!_
