@@ -1,3 +1,5 @@
+**June 2, 2016**: Sean Heelan published [a nice blog post](https://sean.heelan.io/2016/05/31/tracking-down-heap-overflows-with-rr/) about tracking down exploitable heap overflows with rr.
+
 **March 17, 2016**: [rr 4.2.0 released](https://github.com/mozilla/rr/releases/tag/4.2.0). The main feature of this release is chaos mode. There are many other improvements; see release notes.
 
 **February 10, 2016**: [rr chaos mode landed](http://robert.ocallahan.org/).
