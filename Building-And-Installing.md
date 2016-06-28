@@ -100,6 +100,16 @@ Then the command
 
 will build the project.
 
+### PaX kernels
+
+If your kernel is a PaX kernel (if these words don't mean anything to you, you can skip this paragraph), then you will need to disable MPROTECT on the built files `bin/rr`, `bin/rr_exec_stub` and `bin/rr_exec_stub_32`.
+
+If you use PT header flags, for example, you should run
+
+    paxctl -cm bin/rr bin/rr_exec_stub bin/rr_exec_stub_32
+
+in your build directory.
+
 ## Usage
 
 See [this page](Usage).
