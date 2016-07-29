@@ -26,12 +26,14 @@ Then to use `make` and the system default compiler to build:
 cmake ../rr
 make -j8
 make test
+make install
 ```
 Or to use clang and Ninja to build (faster!):
 ````
 CC=clang CXX=clang++ cmake -G Ninja ../rr
 ninja-build
 ninja-build test
+ninja-build install
 ````
 
 ## Hardware/software requirements
@@ -58,21 +60,7 @@ then something is disabled in your BIOS, or perhaps you have a broken hardware c
 
 ## Build prerequisites
 
-First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. 
-
-On Fedora:
-<pre>
-sudo yum install \
-  ccache cmake gcc gcc-c++ \
-  glibc-devel libstdc++-devel zlib-devel \
-  python-pexpect man-pages
-</pre>
-
-On Ubuntu:
-<pre>
-sudo apt-get install ccache cmake make g++-multilib \
-  pkg-config libz-dev realpath python-pexpect manpages-dev git zlib1g-dev
-</pre>
+First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. See the package lists at the top of this page.
 
 ## Building
 
@@ -99,6 +87,11 @@ Then the command
     make
 
 will build the project.
+
+### Building and installing with a custom prefix
+
+    cmake -DCMAKE_INSTALL_PREFIX=<prefix> ../rr
+    make install
 
 ### PaX kernels
 
