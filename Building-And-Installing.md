@@ -60,7 +60,7 @@ then something is disabled in your BIOS, or perhaps you have a broken hardware c
 
 ## Build prerequisites
 
-First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. See the package lists at (the top of this page)[https://github.com/mozilla/rr/wiki/Building-And-Installing#tldr].
+First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. See the package lists at [the top of this page](#tldr).
 
 ## Building
 
