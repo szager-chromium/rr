@@ -43,7 +43,7 @@ Supported microarchitectures are Intel architectures newer than Merom and Penryn
 `/proc/sys/kernel/perf_event_paranoid` must be <= 1 for rr to work efficiently. Some distros set it to 2 or higher, in which case you either need to set it to 1 or use `rr record -n`, which is slow.
 
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  The virtual machines that do work with rr and the settings required are listed below.  If a virtual machine isn't on this list, then it cannot be used with rr.
-* VMWare Workstation 9 / Fusion 7: The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options). Also add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
+* VMWare Workstation 9 / Fusion 7 & 8: The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options). Also add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt/KVM: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
 * Xen: *insert instructions here...*
