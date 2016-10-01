@@ -1,3 +1,5 @@
+**October 1, 2016**: [rr 4.4.0 released](https://github.com/mozilla/rr/releases/tag/4.4.0). This is a maintenance release with lots of small improvements; see release notes.
+
 **July 1, 2016**: [rr 4.3.0 released](https://github.com/mozilla/rr/releases/tag/4.3.0). This is a maintenance release with lots of small improvements; see release notes.
 
 **June 2, 2016**: Sean Heelan published [a nice blog post](https://sean.heelan.io/2016/05/31/tracking-down-heap-overflows-with-rr/) about tracking down exploitable heap overflows with rr.
