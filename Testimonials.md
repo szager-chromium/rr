@@ -28,5 +28,9 @@
 
   -- @sfink (Steve Fink)
 
+> `rr` is just the most awesome debugging tool I've ever used. It's been super-useful to diagnose all kind of strange, nondeterministic, or racy difficult to reproduce bugs in both Servo (where race conditions are unfortunately common and usually really hard to track down) and Gecko. It's simply fantastic.
+
+  -- @emilio (Emilio Cobos Álvarez)
+
 ***
 _If you find rr useful, please add your testimonial here!_
