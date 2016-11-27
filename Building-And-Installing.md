@@ -36,6 +36,8 @@ ninja-build test
 ninja-build install
 ````
 
+Use `ninja` rather than `ninja-build` on Ubuntu.
+
 ## Hardware/software requirements
 
 Supported microarchitectures are Intel architectures newer than Merom and Penryn, i.e. Nehalem and beyond.
