@@ -8,12 +8,10 @@ It would often be useful to be able to gather traces on one machine and move the
 
 rr should probably have a `rr pack` command which prepares a trace directory for transportation by copying all necessary system files into the trace, de-duping file data, and cutting out unused file data.
 
-* `CPUID` can't be virtualized by rr so moving traces between systems with different CPUID values probably won't work; machines will need to have exactly the same CPU (including stepping etc), or very close to it. Possibly this could be worked around to some extent with some careful dynamic glibc patching.
+* `CPUID` can't be virtualized by rr so moving traces between systems with different CPUID values probably won't work; machines will need to have exactly the same CPU (including stepping etc), or very close to it.
 
-It's also possible on at least some Intel CPUs for the kernel to trap userspace `CPUID`s using MSRs. Someone should write a kernel patch adding `prctl` commands to disable/virtualize `CPUID` like we have for `RDTSC` --- then this would be solved for rr.
-
-* Currently rr assumes that if we give unvarying inputs to `execve` (and specify the right syscall options to disable ASLR and force compat layout), the initial address space after exec will always be the same. This might not be the case across kernel versions. This can probably be addressed in rr without much trouble by rewriting memory after exec.
+At least some Intel CPUs can trap userspace `CPUID`s using MSRs. Kyle Huey is working on getting `CPUID` trapping exposed by the Linux kernel.
 
 There are probably unknown issues as well.
 
-Moving traces between identically configured VM instances can probably be made to work without much trouble, since VMs are usually able to virtualize `CPUID`.
+Moving traces between identically configured VM instances can probably already work without much trouble, since VMs are usually able to virtualize `CPUID`.
