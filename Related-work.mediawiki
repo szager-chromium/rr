@@ -64,7 +64,7 @@ Out of date with its observations on performance counter behavior, but first pap
 
 [https://developer.mozilla.org/en-US/docs/Mozilla/Projects/WebReplay WebReplay]
 
-[https://github.com/Microsoft/ChakraCore/commits/TimeTravelDebugging Chakra JS Debugger]
+[https://github.com/nodejs/node-chakracore/blob/xplat/TTD-README.md ChakraCore NodeJS Debugger]
 
 [http://everythingsysadmin.com/2014/04/time-travel-pdb.html Python Time Travel Debugger]
 
