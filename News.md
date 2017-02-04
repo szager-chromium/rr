@@ -1,3 +1,5 @@
+**February 4, 2017**: [rr 4.5.0 released](https://github.com/mozilla/rr/releases/tag/4.5.0). This is a maintenance release with lots of small improvements; see release notes.
+
 **October 1, 2016**: [rr 4.4.0 released](https://github.com/mozilla/rr/releases/tag/4.4.0). This is a maintenance release with lots of small improvements; see release notes.
 
 **July 1, 2016**: [rr 4.3.0 released](https://github.com/mozilla/rr/releases/tag/4.3.0). This is a maintenance release with lots of small improvements; see release notes.
