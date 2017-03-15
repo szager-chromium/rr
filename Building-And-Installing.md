@@ -126,14 +126,14 @@ The `video_capture` test may briefly turn on an attached camera, if you have one
 Each test consists of a C source file and a `.run` file, which is a shell script. To run an individual BASIC_TEST $test outside the harness:
 
     cd $rr/src/test
-    bash basic_test.run -b $rr '' $test
+    bash basic_test.run $test
 
 To run a non-basic test:
 
     cd $rr/src/test
-    bash $test.run -b $rr '' $test
+    bash $test.run
 
 To run a non-basic test in 32-bit mode:
 
     cd $rr/src/test
-    bash $test.run -b $rr '' $test_32
+    bash $test.run $test_32
