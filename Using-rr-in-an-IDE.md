@@ -38,20 +38,19 @@ For use with rr, use at CLion version 2017.1 or greater, with rr version (strict
     ```
 3. Record an rr trace from command line [as usual](Usage). (You could perhaps add a Run configuration in CLion if you are doing this often.)
 4. In CLion:
-
-  1. Open `Run` -> `Edit Configurations`
-  2. Click the green `+` sign, and add a `GDB Remote Debug` configuration
-  3. Under `target remote args`, enter `:50505`, or another port of your choice
-  4. For the symbol file, point CLion to the executable that you are running (it is located in the build directory). You can also use the hard link in the rr trace directory, if it is there:
-
-        ```bash
-      ~/.local/share/rr/latest-trace/mmap_hardlink_3_executable_name
-        ```
-  5. Invoke rr:
+    1. Open `Run` -> `Edit Configurations`
+    2. Click the green `+` sign, and add a `GDB Remote Debug` configuration
+    3. Under `target remote args`, enter `:50505`, or another port of your choice
+    4. For the symbol file, point CLion to the executable that you are running (it is located in the build directory). You can also use the hard link in the rr trace directory, if it is there:
 
         ```bash
-      $ rr replay -s 50505 -k
+        ~/.local/share/rr/latest-trace/mmap_hardlink_3_executable_name
         ```
-  6. Start debugging in CLion by clicking the debug button. Make sure that the GDB remote configuration is selected.
+    5. Invoke rr:
+
+          ```bash
+          $ rr replay -s 50505 -k
+          ```
+    6. Start debugging in CLion by clicking the debug button. Make sure that the GDB remote configuration is selected.
 
 The buttons for the reverse-step gdb commands can be added to CLion by installing [UndoDB's plugin](https://plugins.jetbrains.com/clion/plugin/8620-undo-reversible-debugging-integration) for CLion.
