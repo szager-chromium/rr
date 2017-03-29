@@ -137,6 +137,10 @@ ORDER: Object centRic DEterministic Replay for Java
 
 PRES: Probabilistic replay with execution sketching on multiprocessors
 
+[https://www.cs.purdue.edu/homes/xyzhang/Comp/ecoop14.pdf Infrastructure-Free Logging and Replay of Concurrent
+Execution on Multiple Cores]
+A bit like ODR; records some input syscalls while allowing threads to run concurrently, then detects divergence and searches for shared-memory races that allow for alternative schedules that would fix the divergence.
+
 [https://www.usenix.org/system/files/conference/osdi12/osdi12-final-117.pdf Dune]
 cjones:
 <blockquote>
