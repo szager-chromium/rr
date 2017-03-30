@@ -1,5 +1,7 @@
 ## Step 1: Do the tests pass?
 
+Build with `cmake -DCMAKE_BUILD_TYPE=Release`!
+
 Bare minimum requirements
 
 * rr test suite passes on x86 and x86-64 machines with updated kernels
