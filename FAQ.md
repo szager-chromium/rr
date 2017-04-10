@@ -3,3 +3,5 @@
 * Will rr record automatically start recording forked processes?
 
 * How do you record / replay a multi process session?
+
+* Are there any plans to support BSD / MacOS?
