@@ -1,0 +1,1 @@
+* Does rr work in docker on an arbitrary host system?
