@@ -212,6 +212,4 @@ Replay parameters:
 
 `TMPDIR`: rr needs plenty of space for temporary files, in a filesystem that is *not* mounted `noexec`. So if `/tmp` is mounted `noexec` on your system, set `TMPDIR` to a directory in a different filesystem.
 
-`_RR_TRACE_DIR`: set this to the directory where traces will be recorded. Defaults to `$HOME/.local/share/rr` for new users.
-
-If `$HOME/.rr` exists (e.g. after you used rr < 4.0.1), it is used instead. rr also respects [`$XDG_DATA_HOME`](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) environment variable if it's set.
+`_RR_TRACE_DIR`: set this to the directory where traces will be recorded. Defaults to `$HOME/.local/share/rr` for new users. If `$HOME/.rr` exists (e.g. after you used rr < 4.0.1), it is used instead. rr also respects [`$XDG_DATA_HOME`](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) environment variable if it's set.
