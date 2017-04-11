@@ -212,6 +212,8 @@ Replay parameters:
 
 `TMPDIR`: rr needs plenty of space for temporary files, in a filesystem that is *not* mounted `noexec`. So if `/tmp` is mounted `noexec` on your system, set `TMPDIR` to a directory in a different filesystem.
 
+`RR_TMPDIR`: rr uses this instead of `TMPDIR` if it's set. Use this to give rr a different TMPDIR than the program you're recording.
+
 `_RR_TRACE_DIR`: set this to the directory where traces will be recorded. Defaults to `$HOME/.local/share/rr` for new users. If `$HOME/.rr` exists (e.g. after you used rr < 4.0.1), it is used instead. rr also respects [`$XDG_DATA_HOME`](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) environment variable if it's set.
 
 `RR_LOG`: set `RR_LOG=<module>` to enable full logging of a specific rr module (source file name minus directories and suffix, e.g. `Task`), or `RR_LOG=all` to enable all logging.
