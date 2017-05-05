@@ -53,6 +53,8 @@ If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS 
 
 VirtualBox **does not work** at this time because it doesn't support PMU virtualization. Because it's open-source, someone just needs to contribute that...
 
+Hyper-V also does not seem to support PMU virtualization.
+
 If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
 ````
 [    0.311273] Performance Events: Fam15h core perfctr, Broken PMU hardware detected, using software events only.
