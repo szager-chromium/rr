@@ -49,7 +49,7 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 
 [https://github.com/moyix/panda/blob/master/docs/record_replay.md PANDA]
 
-[http://www.cs.utah.edu/~aburtsev/xen-tt-doc/ Xen-TT]
+[http://www.cs.utah.edu/~aburtsev/xen-tt-doc/ Xen-TT]; [https://www.flux.utah.edu/download?uid=225 VEE paper]
 
 [http://wiki.qemu.org/Features/record-replay QEMU]
 
