@@ -2,6 +2,10 @@
 
   -- Robert O'Callahan
 
+> I'm the author of OpenResty. I recently successfully used rr to quickly track down and fix a very obscure JIT stack overflow bug inside LuaJIT, with the help of LuaJIT's author. The patch is already merged to mainline: https://goo.gl/D5i47I The issue could only be randomly reproduced with a very large Lua script (1.8MB) in stress testing. `rr record` quickly recorded down a single run that hit this issue in stress testing on `x86_64`. The data breakpoints and reverse execution features in `rr replay` make debugging this nasty bug even enjoyable. Our [advanced gdb tools in Python](https://github.com/openresty/openresty-gdb-utils#readme) can also work flawlessly in `rr replay`. I really wish I had rr when I was tracking ~10 very deep LuaJIT bugs with LuaJIT's author a few years ago. At that time I could only analyze core dumps. Alas. rr is such an amazing tool!
+
+  -- Yichun Zhang (@agentzh)
+
 > rr has taken the application I work on from borderline-impossible to use inside a debugger to comically easy. I've got all my coworkers hooked on it. If you're using gdb, you should probably be using rr.
 
   -- @kellerb
