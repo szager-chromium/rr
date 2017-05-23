@@ -87,6 +87,10 @@ Out of date with its observations on performance counter behavior, but first pap
 
 [http://www.cs.ucr.edu/~neamtiu/pubs/icse13gomez.pdf Reran]
 
+== Full-tracing debugging ==
+
+[https://github.com/BinaryAnalysisPlatform/qira Qira]
+
 == (Not yet categorized) ==
 
 [http://www.cs.columbia.edu/~nieh/pubs/sigmetrics2010_scribe.pdf‎ Scribe]
