@@ -5,3 +5,5 @@
 * How do you record / replay a multi process session?
 
 * Are there any plans to support BSD / MacOS?
+
+* How does one pronounce 'rr' ?
