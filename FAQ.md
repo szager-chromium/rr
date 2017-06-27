@@ -7,4 +7,5 @@
 * Are there any plans to support BSD / MacOS?
 
 * How does one pronounce 'rr' ?
-  Like a pirate me harties.
+
+  Like a pirate me hearties.
