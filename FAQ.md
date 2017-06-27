@@ -1,3 +1,7 @@
+* How does one pronounce 'rr' ?
+
+  Like a pirate me hearties.
+
 * Does rr work in docker on an arbitrary host system?
 
 * Will rr record automatically start recording forked processes?
@@ -6,6 +10,4 @@
 
 * Are there any plans to support BSD / MacOS?
 
-* How does one pronounce 'rr' ?
-
-  Like a pirate me hearties.
+* Can rr be used to (effectively) debug java/jvm programs?
