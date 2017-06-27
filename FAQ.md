@@ -10,4 +10,4 @@
 
 * Are there any plans to support BSD / MacOS?
 
-* Can rr be used to (effectively) debug java/jvm programs?
+* Can rr be used to (effectively) debug java/jvm programs? webdriver tests?
