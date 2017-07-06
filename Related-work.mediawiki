@@ -47,6 +47,8 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 [http://blogs.vmware.com/workstation/2008/04/enhanced-execut.html VMWare Record & Replay]
 * Project canceled
 
+[http://xenon.stanford.edu/~talg/papers/VEE10/crosscut-vee2010.pdf Crosscut] builds on the VMWare system and lets you "relog" to generate new logs during replay, including leveraging Chronicle to generate a Chronicle database!
+
 [https://github.com/moyix/panda/blob/master/docs/record_replay.md PANDA]
 
 [http://www.cs.utah.edu/~aburtsev/xen-tt-doc/ Xen-TT]; [https://www.flux.utah.edu/download?uid=225 VEE paper]
