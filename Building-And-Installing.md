@@ -5,13 +5,13 @@ Fedora
 sudo dnf install \
   ccache cmake make gcc gcc-c++ gdb libgcc libgcc.i686 \
   glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 zlib-devel \
-  python-pexpect man-pages ninja-build
+  python-pexpect man-pages ninja-build capnproto capnproto-libs capnproto-devel \
 ```
 Ubuntu
 ```bash
 sudo apt-get install ccache cmake make g++-multilib gdb \
   pkg-config libz-dev realpath python-pexpect manpages-dev git zlib1g-dev \
-  ninja-build
+  ninja-build capnproto libcapnp-dev \
 ```
 then
 ```bash
