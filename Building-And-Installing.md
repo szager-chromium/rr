@@ -4,16 +4,18 @@ Fedora
 ```bash
 sudo dnf install \
   ccache cmake make gcc gcc-c++ gdb libgcc libgcc.i686 \
-  glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 zlib-devel \
+  glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 \
   python-pexpect man-pages ninja-build capnproto capnproto-libs capnproto-devel \
 ```
 Ubuntu
 ```bash
 sudo apt-get install ccache cmake make g++-multilib gdb \
-  pkg-config libz-dev realpath python-pexpect manpages-dev git zlib1g-dev \
+  pkg-config realpath python-pexpect manpages-dev git \
   ninja-build capnproto libcapnp-dev \
 ```
-then
+On Ubuntu 14.04 (and maybe other distros) `libcapnp-dev` doesn't include `capnp.pc`. To build rr on such distros, manually install `capnproto` using [the instructions here](https://capnproto.org/install.html#installation-unix).
+
+Then
 ```bash
 mkdir rr
 cd rr
