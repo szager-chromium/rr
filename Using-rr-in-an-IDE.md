@@ -2,6 +2,13 @@
 
 rr implements the standard gdb server interface, and also can present the gdb command-line interface. This means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb/gdbserver.
 
+Known to work
+* Visual Studio Code
+* Clion
+* QtCreator
+* Eclipse
+* emacs GUD/gdb-mi
+
 ### Setting up [CLion](https://www.jetbrains.com/clion/)/[QtCreator](http://doc.qt.io/qtcreator/)
 
 Use at CLion version 2017.1 or greater, with rr version (strictly) greater than 4.5.0 (until 4.6.0 is released, you will have to [build](Building-And-Installing) rr from the latest source).
@@ -80,3 +87,7 @@ In __QtCreator__:
 5. Create a debugging configuration specifying the debugger as `rrgdb`. Don't enable Eclipse's reverse debugging, it doesn't work with rr.
 6. Launch the debugging configuration. It should work. You may need to manually set a breakpoint at `main` and then continue to it.
 7. To reverse-execute, open the Debugger Console tab in the Console view and enter manual commands such as `reverse-continue` (`rc`), `reverse-step` (`rs`), etc
+
+### Setting up emacs
+
+See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-rr-to-gdb-in-gnu-emacs.html).
