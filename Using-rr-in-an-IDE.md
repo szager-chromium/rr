@@ -4,7 +4,7 @@ rr implements the standard gdb server interface, and also can present the gdb co
 
 Known to work
 * Visual Studio Code
-* Clion
+* CLion
 * QtCreator
 * Eclipse
 * emacs GUD/gdb-mi
@@ -90,4 +90,5 @@ In __QtCreator__:
 
 ### Setting up emacs
 
-See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-rr-to-gdb-in-gnu-emacs.html).
+See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-rr-to-gdb-in-gnu-emacs.html):
+> you simply take the suggested command (`gdb --fullname` or `gdb -i=mi`), replace `gdb` with `rr replay`
