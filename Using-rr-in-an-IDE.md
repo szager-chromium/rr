@@ -1,6 +1,6 @@
 ## Using rr in an IDE
 
-Since rr has implemented a standard gdb server interface, this means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb.
+rr implements the standard gdb server interface, and also can present the gdb command-line interface. This means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb/gdbserver.
 
 ### Setting up [CLion](https://www.jetbrains.com/clion/)/[QtCreator](http://doc.qt.io/qtcreator/)
 
@@ -65,4 +65,18 @@ In __QtCreator__:
     ```bash
     ~/.local/share/rr/latest-trace/mmap_hardlink_3_executable_name
     ```
-5. Start debugging by clicking the "Ok" button.  
+5. Start debugging by clicking the "Ok" button.
+
+### Setting up [Eclipse](https://eclipse.org/)
+
+1. Install the Eclipse CDT as usual.
+2. Install rr master or >= 4.6.0.
+3. Create a script somewhere like so, calling it e.g. `rrgdb`:
+    ```bash
+    #!/bin/bash
+    exec rr replay -- "$@"
+    ```
+4. Record something using rr.
+5. Create a debugging configuration specifying the debugger as `rrgdb`. Don't enable Eclipse's reverse debugging, it doesn't work with rr.
+6. Launch the debugging configuration. It should work. You may need to manually set a breakpoint at `main` and then continue to it.
+7. To reverse-execute, open the Debugger Console tab in the Console view and enter manual commands such as `reverse-continue` (`rc`), `reverse-step` (`rs`), etc
