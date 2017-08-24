@@ -2,7 +2,7 @@
 
 rr implements the standard gdb server interface, and also can present the gdb command-line interface. This means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb/gdbserver.
 
-Known to work
+Known to work:
 * Visual Studio Code
 * CLion
 * QtCreator
