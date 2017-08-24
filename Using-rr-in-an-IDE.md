@@ -1,16 +1,10 @@
 ## Using rr in an IDE
 
-Since rr has implemented a standard gdb server interface, this means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb. The instructions below are written for CLion, but they should apply to other IDEs with gdb-based debugging too. Here is a list of some popular ones:
+Since rr has implemented a standard gdb server interface, this means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb.
 
-  * [CLion](https://www.jetbrains.com/clion/)  
-For use with rr, use at CLion version 2017.1 or greater, with rr version (strictly) greater than 4.5.0 (until 4.6.0 is released, you will have to [build](Building-And-Installing) rr from the latest source)
+### Setting up [CLion](https://www.jetbrains.com/clion/)/[QtCreator](http://doc.qt.io/qtcreator/)
 
-* [Qt Creator](https://www.qt.io/ide)
-* [Emacs](https://www.gnu.org/software/emacs/)
-* [KDevelop](https://www.kdevelop.org)
-* [Code::Blocks](http://www.codeblocks.org/)
-
-### Setting up CLion and QtCreator to use rr
+Use at CLion version 2017.1 or greater, with rr version (strictly) greater than 4.5.0 (until 4.6.0 is released, you will have to [build](Building-And-Installing) rr from the latest source).
 
 The buttons for the reverse-step gdb commands can be added to CLion by installing [UndoDB's plugin](https://plugins.jetbrains.com/clion/plugin/8620-undo-reversible-debugging-integration) for CLion.
 
@@ -72,4 +66,3 @@ In __QtCreator__:
     ~/.local/share/rr/latest-trace/mmap_hardlink_3_executable_name
     ```
 5. Start debugging by clicking the "Ok" button.  
-
