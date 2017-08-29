@@ -44,7 +44,7 @@ The trace will contain many processes, so to debug the correct one, you'll want 
 
 rr should work out of the box with multi-process Firefox. Once you have a recording you can use `rr ps` to show all the process that were recorded and `rr replay -p <pid>` to attach to a particular process.
 
-You can combine that with `rr record -M` and `rr replay -g` to jump to a particular point in a particular process' lifetime.
+You can combine that with the `-M` and `-g` flags to jump to a particular point in a particular process' lifetime.
 
 ## Get help!
 
