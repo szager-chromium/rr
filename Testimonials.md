@@ -1,4 +1,4 @@
-https://twitter.com/chandlerc1024/status/879962014860193792%22
+https://twitter.com/chandlerc1024/status/879962014860193792
 
 > I'm an rr developer, but my real job involves a lot of Gecko debugging. I find rr a great improvement over bare gdb and use it for almost all my Linux debugging tasks. It's an amazing tool!
 
