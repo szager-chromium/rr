@@ -1,6 +1,6 @@
 ## Step 1: Do the tests pass?
 
-Build with `cmake -DCMAKE_BUILD_TYPE=RELEASE`!
+Build with `cmake -DCMAKE_BUILD_TYPE=RELEASE -Dstaticlibs=TRUE`!
 
 Bare minimum requirements
 
