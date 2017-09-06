@@ -16,7 +16,7 @@ Recommended testing
     * dom/browser-element (heavily multiprocess)
     * layout/generic
     * layout/base
-    * content/media/test (exercises audio/video playback)
+    * dom/media/test (exercises audio/video playback)
     * dom/media/tests/mochitest (exercises WebRTC)
     * dom/workers/test (heavily multithreaded)
     * dom/indexedDB/test
