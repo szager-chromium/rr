@@ -36,7 +36,7 @@ We of course want to automate this process as soon as possible/practical.
 
 ## Step 2: Building and shipping
 
-- [ ] Bump version: `cd $rr && ./src/script/tag-release.sh MAJOR MINOR PATCH`.
+- [ ] Bump version: `cd $rr && ./script/tag-release.sh MAJOR MINOR PATCH`.
 - [ ] `git fetch` and `merge` changes on the x86-32 build machine. `git checkout` the tag that was created.
 - [ ] On both machines, `make && make check && make package`
 - [ ] Copy `obj/dist/*` files from x86-32 build machine to `obj/dist` on x86-64 machine.
