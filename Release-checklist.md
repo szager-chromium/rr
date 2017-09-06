@@ -1,6 +1,6 @@
 ## Step 1: Do the tests pass?
 
-Build with `cmake -DCMAKE_BUILD_TYPE=RELEASE -Dstaticlibs=TRUE`!
+Build with `cmake -DCMAKE_BUILD_TYPE=RELEASE -Dstaticlibs=TRUE`! You may need to build and install the latest stable version of `capnproto` to get static libraries you can link into rr.
 
 Bare minimum requirements
 
