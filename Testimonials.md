@@ -38,5 +38,9 @@ https://twitter.com/chandlerc1024/status/879962014860193792
 
   -- @emilio (Emilio Cobos Álvarez)
 
+> `rr` is a fantastically useful debugging tool. It has made root cause analysis of `cargo-fuzz`-found panics quicker when fuzzing Rust. However, it is at its best when debugging a large codebase you can't possible know thoroughly, such as Gecko. For example, it helps in a situation where a problem doesn't occur on the first attempt, because there's an empty cache far away elsewhere in the codebase and the problem being debugged requires the cache to already have the relevant entry. As another example, it helped me greatly when debugging invariant violations arising from nested event loops by allowing a narrowing back-and-forth execution. Each time you continue or reverse-continue over the problem, you can move breakpoints closer to the problem until your breakpoints are close enough that you can see the problem between them. Having objects reside in the same memory addresses throughout the debugging session also helps greatly and makes watchpoints more useful than they would otherwise be.
+
+  -- @hsivonen (Henri Sivonen)
+
 ***
 _If you find rr useful, please add your testimonial here!_
