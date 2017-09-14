@@ -20,6 +20,10 @@ rr $ff-objdir/dist/bin/firefox ...
 </pre>
 This will save a trace to your working directory as described in the [usage instructions](https://github.com/mozilla/rr/wiki/Usage).  Please refer to [those instructions](https://github.com/mozilla/rr/wiki/Usage) for details on how to debug the recording, which isn't covered in this document.
 
+## SIGSYS
+
+When recording and replaying Firefox running with the Linux sandbox, you will get SIGSYS signals frequently. This is expected behavior caused by the sandbox. In gdb, use `handle SIGSYS noprint nostop` to suppress the signals.
+
 ## Recording test suites
 
 You can use the test runners' `--debugger` feature to punch rr down through the layers of python script to where Firefox is launched.  This is used in the same way you would use `--debugger` to run valgrind or gdb, for example:
