@@ -112,7 +112,14 @@ See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-r
 >             "environment": [],
 >             "externalConsole": true,
 >             "linux": {
->               "MIMode": "gdb"
+>               "MIMode": "gdb",
+>               "setupCommands": [
+>                 {
+>                     "description": "Setup to resolve symbols",
+>                     "text": "set sysroot /",
+>                     "ignoreFailures": false
+>                 }
+>               ]
 >             },
 >             "osx": {
 >               "MIMode": "gdb"
@@ -120,7 +127,7 @@ See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-r
 >             "windows": {
 >               "MIMode": "gdb"
 >             }
->           }
+>         }
 5. Install rr master or >= 4.6.0.
 6. Record something using rr.
 7. Start rr with ```rr replay -s 50505 -k```
