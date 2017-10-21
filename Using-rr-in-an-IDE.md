@@ -8,7 +8,6 @@ Known to work:
 * QtCreator
 * Eclipse
 * emacs GUD/gdb-mi
-* Visual Studio Code
 
 ### Setting up [CLion](https://www.jetbrains.com/clion/)/[QtCreator](http://doc.qt.io/qtcreator/)
 
