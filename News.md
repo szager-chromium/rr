@@ -1,3 +1,5 @@
+**December 14, 2017**: [rr 5.1.0 released](https://github.com/mozilla/rr/releases/tag/5.1.0). This is a minor maintenance release.
+
 **September 7, 2017**: [rr 5.0.0 released](https://github.com/mozilla/rr/releases/tag/5.0.0). This is a pretty big release that introduces trace portability and a stable trace format; see release notes.
 
 **February 4, 2017**: [rr 4.5.0 released](https://github.com/mozilla/rr/releases/tag/4.5.0). This is a maintenance release with lots of small improvements; see release notes.
