@@ -143,3 +143,4 @@ You can set breakpoints like you would with a normal debugging session. To set h
 3. Record something using rr
 4. Replay: `gdbgui --rr`. Optionally specify the directory of the recording: `gdbgui DIRECTORY --rr`
 
+[View demo](https://www.youtube.com/watch?v=WijcPxOang0) on YouTube.
