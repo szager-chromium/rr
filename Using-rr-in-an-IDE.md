@@ -8,6 +8,7 @@ Known to work:
 * QtCreator
 * Eclipse
 * emacs GUD/gdb-mi
+* [gdbgui](https://gdbgui.com)
 
 ### Setting up [CLion](https://www.jetbrains.com/clion/)/[QtCreator](http://doc.qt.io/qtcreator/)
 
@@ -135,3 +136,10 @@ See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-r
 10. When rewinding the code, the display isn't refreshed. Step-in in the code once will fix that.
 
 You can set breakpoints like you would with a normal debugging session. To set hardware watchers, in the debug console enter the rr command preceded by ```-exec``` (like ```-exec watch -l mVar```)
+
+### Setting up [gdbgui](https://gdbgui.com/)
+1. Install gdbgui
+2. Install rr master or >= 5.1.0 (not tested with earlier versions, but may work)
+3. Record something using rr
+4. Replay: `gdbgui --rr`. Optionally specify the directory of the recording: `gdbgui DIRECTORY --rr`
+
