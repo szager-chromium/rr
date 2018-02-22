@@ -19,6 +19,7 @@ Then
 ```bash
 git clone https://github.com/mozilla/rr.git
 mkdir obj
+cd obj
 ````
 Then to use `make` and the system default compiler to build:
 ```
