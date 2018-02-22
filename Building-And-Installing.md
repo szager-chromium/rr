@@ -18,20 +18,18 @@ On Ubuntu 14.04 (and maybe other distros) `libcapnp-dev` doesn't include `capnp.
 Then
 ```bash
 git clone https://github.com/mozilla/rr.git
-cd rr
 mkdir obj
-cd obj
 ````
 Then to use `make` and the system default compiler to build:
 ```
-cmake ..
+cmake ../rr
 make -j8
 make test
 make install
 ```
 Or to use clang and Ninja to build (faster!):
 ````
-CC=clang CXX=clang++ cmake -G Ninja ..
+CC=clang CXX=clang++ cmake -G Ninja ../rr
 cmake --build .
 cmake --build . --target test
 sudo cmake --build . --target install
