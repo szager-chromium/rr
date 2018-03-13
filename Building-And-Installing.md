@@ -10,7 +10,7 @@ sudo dnf install \
 Ubuntu
 ```bash
 sudo apt-get install ccache cmake make g++-multilib gdb \
-  pkg-config realpath python-pexpect manpages-dev git \
+  pkg-config coreutils python-pexpect manpages-dev git \
   ninja-build capnproto libcapnp-dev
 ```
 On Ubuntu 14.04 (and maybe other distros) `libcapnp-dev` doesn't include `capnp.pc`. To build rr on such distros, manually install `capnproto` using [the instructions here](https://capnproto.org/install.html#installation-unix).
