@@ -1,17 +1,10 @@
-It would often be useful to be able to gather traces on one machine and move them to another machine for debugging.
+## Using `rr pack`
+rr traces can be made portable with the `rr pack` command. This will pack the trace directory to eliminate duplicate files and to include all files needed for transportation. As such, it allows you to gather traces on one machine and move them to another machine for debugging. It also makes it easy to run recordings for different versions of the software, since the trace no longer relies on hard links to the executable files.
 
-## Known Issues
-
-* rr tries to create hardlinks (or copies) of all used files in the trace directory, but it doesn't always do that completely (e.g. if the trace directory is on a different filesystem to system files, the hardlinks will fail and rr doesn't follow up by copying them, since this is inefficient and unnecessary for common use-cases).
-* rr creates multiple hardlinks to the same file, so just copying the trace directory naively will make multiple copies of many files, bloating the trace unnecessarily.
-* Copying hardlinked files is also suboptimal because tracees often don't need the entire file contents. The trace knows which file regions are needed.
-
-rr should probably have a `rr pack` command which prepares a trace directory for transportation by copying all necessary system files into the trace, de-duping file data, and cutting out unused file data.
-
-* `CPUID` can't be virtualized by rr so moving traces between systems with different CPUID values probably won't work; machines will need to have exactly the same CPU (including stepping etc), or very close to it.
-
-At least some Intel CPUs can trap userspace `CPUID`s using MSRs. Kyle Huey is working on getting `CPUID` trapping exposed by the Linux kernel.
-
-There are probably unknown issues as well.
-
-Moving traces between identically configured VM instances can probably already work without much trouble, since VMs are usually able to virtualize `CPUID`.
+## Issues
+According to [Robert O'Callahan](https://robert.ocallahan.org/2017/09/rr-trace-portability.html)
+> The user is responsible for ensuring the destination machine supports all instructions and other CPU features used by the recorded program. 
+>
+> At some point we could add an rr feature to mask the CPUID values reported during recording so you can limit the CPU features a recorded program uses.
+>
+>CPUID faulting is supported on most modern Intel CPUs, at least on Ivy Bridge and its successor Core architectures. Kyle also added support to upstream Xen and KVM to virtualize it, and even emulate it regardless of whether the underlying hardware supports it. However, VM guests running on older Xen or KVM hypervisors, or on other hypervisors, probably can't use it. And as mentioned, you will need a Linux 4.12 kernel or later. 
