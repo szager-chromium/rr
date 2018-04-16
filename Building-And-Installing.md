@@ -47,7 +47,7 @@ $ sudo sysctl kernel.perf_event_paranoid=1
 Apply the setup automatically on startup by running
 ```bash
 $ sudo bash 
-# echo 'kernel.perf_event_paranoid=1' > /etc/sysctl.d/51-enable-perf-events.conf'
+# echo 'kernel.perf_event_paranoid=1' > '/etc/sysctl.d/51-enable-perf-events.conf'
 # exit
 ```
 
