@@ -38,7 +38,10 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 * Would require customization of JIT routines that emit atomic ops
 
 [https://arxiv.org/pdf/1804.01226.pdf iReplay]
+* Supports multithreading
 * Library interception; assumes all synchronizing operations go through library calls
+* Only replays "in situ" since last "stop the world" epoch. Can't replay across an epoch boundary
+* Assumes no races; if divergence detected, just naively tries to replay hoping this will get the right schedule
 
 == In-Kernel Userspace Recording ==
 
