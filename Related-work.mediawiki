@@ -32,7 +32,13 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 
 [http://citeseer.ist.psu.edu/viewdoc/download;jsessionid=797078D41476F33C75D5E95C4F8D5042?doi=10.1.1.92.8688&rep=rep1&type=pdf TORNADO]
 
+[http://www.scs.stanford.edu/~dm/home/papers/mashtizadeh:castor.pdf Castor]
+* Supports multithreading
+* Based on library interception and a compiler plugin to instrument atomic operations
+* Would require customization of JIT routines that emit atomic ops
+
 [https://arxiv.org/pdf/1804.01226.pdf iReplay]
+* Library interception; assumes all synchronizing operations go through library calls
 
 == In-Kernel Userspace Recording ==
 
