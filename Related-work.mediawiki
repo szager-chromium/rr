@@ -146,6 +146,8 @@ See [http://read.seas.harvard.edu/cs261/2011/doubleplay.html this page].
 
 [http://www.jeffhuang.tk/academic/clap.pdf CLAP]
 
+[https://parasol.tamu.edu/~jeff/academic/h3.pdf H3]
+
 [http://iacoma.cs.uiuc.edu/iacoma-papers/asplos09.pdf Capo]
 
 [http://iacoma.cs.uiuc.edu/iacoma-papers/isca13_1.pdf QuickRec / Capo3]
