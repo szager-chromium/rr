@@ -3,12 +3,12 @@ Protips both for debugging rr and tracees.
 #### Debug logging
 Run RR as follows:
 <pre>
-RR_LOG=ClassName,ClassName2 rr ./executable # ClassName is the name of the class(es) where you would like to enable debug info.
+RR_LOG=ClassName,ClassName2 rr ... # ClassName is the name of the class(es) where you would like to enable debug info.
 </pre>
 
 To enable redirection to a file:
 <pre>
-RR_LOG_FILE=path/to/log RR_LOG=ClassName rr ./executable
+RR_LOG_FILE=path/to/log RR_LOG=ClassName rr ...
 </pre>
 
 Example:
