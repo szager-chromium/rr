@@ -1,14 +1,13 @@
 Protips both for debugging rr and tracees.
 
 #### Debug logging
-All .cc files (should) have a line near the top that looks like
-<pre>
-//#define DEBUGTAG "Sched"
-//...
-#include "dbg.h"
-</pre>
+Run RR as follows:
+`RR_LOG=<ClassName>,<ClassName2> rr <exec>` -- where ClassName is the name of the class(es) where you would like to enable debug info.
+To enable redirection to a file:
+`RR_LOG_FILE=path/to/log =<ClassName> rr <exec>` 
 
-Uncomment the definition and you'll get full, verbose, debug-level logging output.
+Example:
+`RR_LOG=ReplaySession rr replay`
 
 #### Send logging to non-default FILE
 In the .cc file you want to redirect
