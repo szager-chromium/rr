@@ -36,9 +36,15 @@ cmake --build . --target test
 sudo cmake --build . --target install
 ````
 
-## Hardware/software requirements
+## Hardware/software configuration
+
+### Supported hardware
 
 Supported microarchitectures are Intel architectures newer than Merom and Penryn, i.e. Nehalem and beyond.
+
+### OS configuration
+
+Linux kernel 3.11 or higher is required.
 
 `/proc/sys/kernel/perf_event_paranoid` must be <= 1 for rr to work efficiently (i.e. be able to use `perf` counters). Some distros set it to 2 or higher, in which case you either need to set it to 1 or use `rr record -n`, which is slow.  Temporarily change the setting by running
 ```bash
@@ -51,6 +57,8 @@ $ sudo bash
 # exit
 ```
 
+### Virtual machine guests
+
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  The virtual machines that do work with rr and the settings required are listed below.  If a virtual machine isn't on this list, then it cannot be used with rr.
 * VMWare Workstation 9 / Fusion 7 & 8:
   * The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options).
@@ -60,12 +68,20 @@ If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS 
 
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt/KVM: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
-* Xen: *insert instructions here...*
-* Digital Ocean: The only VPS provider known to work with RR.
 
-VirtualBox **does not work** at this time because it doesn't support PMU virtualization. Because it's open-source, someone just needs to contribute that...
+VirtualBox **does not work** at this time because it doesn't support PMU virtualization. It would be great if someone contributed that to the open-source project...
 
-Hyper-V also does not seem to support PMU virtualization.
+Hyper-V does not seem to support PMU virtualization.
+
+Xen's PMU virtualization has bugs that prevent rr from working.
+
+### Cloud virtual guests
+
+Some Digital Ocean instances have worked in the past.
+
+Amazon EC2 instance types `c5.9xlarge`, `c5.18xlarge`, `c5d.9xlarge` and `c5d.18xlarge` should work. All bare metal instance types should work. Some other instance types may work (those that use the "Nitro" hypervisor and where the instance occupies a whole CPU socket).
+
+### Troubleshooting
 
 If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
 ````
