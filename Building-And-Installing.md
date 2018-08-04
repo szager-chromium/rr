@@ -53,10 +53,11 @@ $ sudo bash
 
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  The virtual machines that do work with rr and the settings required are listed below.  If a virtual machine isn't on this list, then it cannot be used with rr.
 * VMWare Workstation 9 / Fusion 7 & 8:
-** The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options).
-** Set the Preferred virtualization engine in the Advanced tab to Intel VT-x with EPT (it may default to Automatic).
-** Enable the code profiling applications in the Processors & Memory tab.
-** Add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
+  * The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options).
+  * Set the Preferred virtualization engine in the Advanced tab to Intel VT-x with EPT (it may default to Automatic).
+  * Enable the code profiling applications in the Processors & Memory tab.
+  * Add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
+
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt/KVM: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
 * Xen: *insert instructions here...*
