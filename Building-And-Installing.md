@@ -79,7 +79,7 @@ Xen's PMU virtualization has bugs that prevent rr from working.
 
 Some Digital Ocean instances have worked in the past.
 
-Amazon EC2 instance types `c5.9xlarge`, `c5.18xlarge`, `c5d.9xlarge` and `c5d.18xlarge` should work. All bare metal instance types should work. Some other instance types may work (those that use the "Nitro" hypervisor and where the instance occupies a whole CPU socket).
+Amazon EC2 instance types `c5[d].9xlarge`, `c5[d].18xlarge`, `m5[d].12xlarge`, and `m5[d].24xlarge` should work. All bare metal instance types should work. Some other instance types may work (those that use the "Nitro" hypervisor and where the instance occupies a whole CPU socket).
 
 ### Troubleshooting
 
