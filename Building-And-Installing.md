@@ -15,6 +15,8 @@ sudo apt-get install ccache cmake make g++-multilib gdb \
 ```
 On Ubuntu 14.04 (and maybe other distros) `libcapnp-dev` doesn't include `capnp.pc`. To build rr on such distros, manually install `capnproto` using [the instructions here](https://capnproto.org/install.html#installation-unix).
 
+If you are using Python 3 then replace the above `python-pexpect` package with `python3-pexpect`.
+
 Then
 ```bash
 git clone https://github.com/mozilla/rr.git
