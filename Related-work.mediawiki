@@ -106,6 +106,12 @@ Out of date with its observations on performance counter behavior, but first pap
 
 == (Not yet categorized) ==
 
+[https://www.usenix.org/system/files/osdi18-cui.pdf REPT]
+* REPT captures recent control flow via Intel PT and stores that in a crash dump, then reconstructs data values
+* Integrates into WinDbg
+* Sometimes produces incorrect results, which could be bad
+* Obviously not as good as a proper recording if you can afford the overhead, but seems like a great addition for crash reporting
+
 [http://www.cs.columbia.edu/~nieh/pubs/sigmetrics2010_scribe.pdf‎ Scribe]
 
 roc:
