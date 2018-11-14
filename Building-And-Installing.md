@@ -25,14 +25,14 @@ cd obj
 ````
 Then to use `make` and the system default compiler to build:
 ```
-cmake ../rr
+cmake ..
 make -j8
 make test
 make install
 ```
 Or to use clang and Ninja to build (faster!):
 ````
-CC=clang CXX=clang++ cmake -G Ninja ../rr
+CC=clang CXX=clang++ cmake -G Ninja ..
 cmake --build .
 cmake --build . --target test
 sudo cmake --build . --target install
@@ -114,7 +114,7 @@ Next, import the project into Eclipse.  By default Eclipse will automatically bu
     cd ../
     mkdir obj
     cd obj
-    cmake ../rr
+    cmake ..
 
 Then the command
 
@@ -124,7 +124,7 @@ will build the project.
 
 ### Building and installing with a custom prefix
 
-    cmake -DCMAKE_INSTALL_PREFIX=<prefix> ../rr
+    cmake -DCMAKE_INSTALL_PREFIX=<prefix> ..
     make install
 
 ### PaX kernels
