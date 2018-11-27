@@ -25,7 +25,7 @@ cd obj
 ````
 Then to use `make` and the system default compiler to build:
 ```
-cmake ..
+cmake ../rr
 make -j8
 make test
 make install
