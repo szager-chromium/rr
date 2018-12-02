@@ -83,6 +83,10 @@ Some Digital Ocean instances have worked in the past.
 
 Amazon EC2 instance types `c5[d].9xlarge`, `c5[d].18xlarge`, `m5[d].12xlarge`, and `m5[d].24xlarge` should work. All bare metal instance types should work. Some other instance types may work (those that use the "Nitro" hypervisor and where the instance occupies a whole CPU socket).
 
+### Docker
+
+Make sure rr works on the machine outside of Docker, then follow the [Docker-specific instructions](https://github.com/mozilla/rr/wiki/Docker).
+
 ### Troubleshooting
 
 If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
