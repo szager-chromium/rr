@@ -75,7 +75,7 @@ VirtualBox **does not work** at this time because it doesn't support PMU virtual
 
 Hyper-V does not seem to support PMU virtualization.
 
-Xen's PMU virtualization has bugs that prevent rr from working.
+Xen's PMU virtualization has [bugs](https://lists.xen.org/archives/html/xen-devel/2017-07/msg02242.html) that prevent rr from working.
 
 ### Cloud virtual guests
 
