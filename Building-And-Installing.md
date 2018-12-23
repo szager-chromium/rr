@@ -1,4 +1,4 @@
-## tl;dr
+## Dependencies installation
 
 Fedora
 ```bash
@@ -17,26 +17,49 @@ On Ubuntu 14.04 (and maybe other distros) `libcapnp-dev` doesn't include `capnp.
 
 If you are using Python 3 then replace the above `python-pexpect` package with `python3-pexpect`.
 
-Then
+## Project builiding
+
+rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `build` directory.  This is recommended because `cmake` generates a *lot* of auxiliary files.:
+
 ```bash
 git clone https://github.com/mozilla/rr.git
-mkdir obj
-cd obj
-````
+cd rr
+mkdir build && cd build
+cmake ..
+```
+
 Then to use `make` and the system default compiler to build:
-```
-cmake ../rr
+```bash
 make -j8
-make test
-make install
+sudo make install
 ```
+
 Or to use clang and Ninja to build (faster!):
-````
+```bash
 CC=clang CXX=clang++ cmake -G Ninja ..
 cmake --build .
 cmake --build . --target test
 sudo cmake --build . --target install
-````
+```
+
+To use Eclipse:
+```bash
+cd rr
+mkdir build && cd build
+cmake -G "Eclipse CDT4 - Unix Makefiles" ..
+```
+
+Next, import the project into Eclipse.  By default Eclipse will automatically build the project when files change.  You can force Eclipse to rebuild the project by pressing Ctrl-B.
+
+PaX kernel:
+
+If your kernel is a PaX kernel (if these words don't mean anything to you, you can skip this paragraph), then you will need to disable `MPROTECT` on the built files `bin/rr`, `bin/rr_exec_stub` and `bin/rr_exec_stub_32`.
+
+If you use PT header flags, for example, you should run:
+```bash
+paxctl -cm bin/rr bin/rr_exec_stub bin/rr_exec_stub_32
+```
+in your build directory.
 
 ## Hardware/software configuration
 
@@ -96,51 +119,6 @@ If rr isn't working at all, run `dmesg|grep PMU`. If you get output like
 ````
 then something is disabled in your BIOS, or perhaps you have a broken hardware configuration, or you're in a VM without PMU virtualization.
 
-## Build prerequisites
-
-First, install the compiler toolchain and additional packages.  `python-pexpect` is required to run unit tests.  `man-pages` is optional but strongly recommended if you'll be doing rr development. See the package lists at [the top of this page](#tldr).
-
-## Building
-
-rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because cmake generates a *lot* of auxiliary files.
-
-### To use Eclipse
-
-    cd ../
-    mkdir obj
-    cd obj
-    cmake -G "Eclipse CDT4 - Unix Makefiles" ../rr
-
-Next, import the project into Eclipse.  By default Eclipse will automatically build the project when files change.  You can force Eclipse to rebuild the project by pressing Ctrl-B.
-
-### To use Makefiles
-
-    cd ../
-    mkdir obj
-    cd obj
-    cmake ..
-
-Then the command
-
-    make
-
-will build the project.
-
-### Building and installing with a custom prefix
-
-    cmake -DCMAKE_INSTALL_PREFIX=<prefix> ..
-    make install
-
-### PaX kernels
-
-If your kernel is a PaX kernel (if these words don't mean anything to you, you can skip this paragraph), then you will need to disable MPROTECT on the built files `bin/rr`, `bin/rr_exec_stub` and `bin/rr_exec_stub_32`.
-
-If you use PT header flags, for example, you should run
-
-    paxctl -cm bin/rr bin/rr_exec_stub bin/rr_exec_stub_32
-
-in your build directory.
-
 ## Usage
 
 See [this page](Usage).
@@ -149,27 +127,39 @@ See [this page](Usage).
 
 Be sure to read the [usage instructions](Usage) before running tests.
 
-rr has a suite of tests in `$rr/src/test`. To run the tests with minimal output,
+Remember to set `perf_event_paranoid` to level 1 or lower, because otherwise many tests will fail.
 
-    make test
+rr has a suite of tests in `$rr/src/test`. To run the tests with minimal output:
 
-or with full output
+```bash
+make test
+```
 
-    make check
+or with full output:
+
+```bash
+make check
+```
 
 The `video_capture` test may briefly turn on an attached camera, if you have one --- do not be alarmed!
 
-Each test consists of a C source file and a `.run` file, which is a shell script. To run an individual BASIC_TEST $test outside the harness:
+Each test consists of a C source file and a `.run` file, which is a shell script. To run an individual basic test outside the harness:
 
-    cd $rr/src/test
-    bash basic_test.run $test
+```bash
+cd $rr/src/test
+bash basic_test.run $test
+```
 
 To run a non-basic test:
 
-    cd $rr/src/test
-    bash $test.run
+```bash
+cd $rr/src/test
+bash $test.run
+```
 
 To run a non-basic test in 32-bit mode:
 
-    cd $rr/src/test
-    bash $test.run $test_32
+```bash
+cd $rr/src/test
+bash $test.run $test_32
+```
