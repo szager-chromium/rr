@@ -19,13 +19,12 @@ If you are using Python 3 then replace the above `python-pexpect` package with `
 
 ## Project builiding
 
-rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `build` directory.  This is recommended because `cmake` generates a *lot* of auxiliary files.:
+rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because `cmake` generates a *lot* of auxiliary files.:
 
 ```bash
 git clone https://github.com/mozilla/rr.git
-cd rr
-mkdir build && cd build
-cmake ..
+mkdir obj && cd obj
+cmake ../rr
 ```
 
 Then to use `make` and the system default compiler to build:
@@ -44,9 +43,8 @@ sudo cmake --build . --target install
 
 To use Eclipse:
 ```bash
-cd rr
-mkdir build && cd build
-cmake -G "Eclipse CDT4 - Unix Makefiles" ..
+mkdir obj && cd obj
+cmake -G "Eclipse CDT4 - Unix Makefiles" ../rr
 ```
 
 Next, import the project into Eclipse.  By default Eclipse will automatically build the project when files change.  You can force Eclipse to rebuild the project by pressing Ctrl-B.
