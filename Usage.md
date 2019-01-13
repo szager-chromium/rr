@@ -187,7 +187,7 @@ rr automatically records all processes forked by the initial process. Use `rr ps
 
 ## Limitations
 
-Currently, the `/path/to/your/application` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  You can use `rr pack` to copy the files into the trace and thus remove any dependencies the trace has on files elsewhere on your system.  Because this can substantially increase the disk space a trace requires, it is not done by default.
+The `/path/to/your/application` image you recorded *must not change* before you replay the recording.  If the executable image changes, all kinds of bad things will happen.  You can use `rr pack` to copy the files into the trace and thus remove any dependencies the trace has on files elsewhere on your system.  Because this can substantially increase the disk space a trace requires, it is not done by default.
 
 ## Other command line options
 
