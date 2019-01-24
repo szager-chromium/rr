@@ -17,7 +17,7 @@ On Ubuntu 14.04 (and maybe other distros) `libcapnp-dev` doesn't include `capnp.
 
 If you are using Python 3 then replace the above `python-pexpect` package with `python3-pexpect`.
 
-## Project builiding
+## Project building
 
 rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because `cmake` generates a *lot* of auxiliary files.:
 
