@@ -41,7 +41,7 @@ The recorded trace is saved to the path `$_RR_TRACE_DIR/application-$n` by defau
 
 The overhead of recording an application with rr is pretty low, but it depends on the application's workload.  In general you should expect around a 1.2x to 1.4x slowdown.  At the lowest end, a purely CPU-bound tracee will incur around 1.1x-1.2x overhead.  At the high end, a tracee that just makes syscalls in a tight loop can have 4x slowdown or more.
 
-rr doesn't record shared-memory multithreading, so it forces your application's threads to execute serially.  Your application can see an additional slowdown if it takes advantage of multicore parallelism.
+rr forces your application's threads to execute on a single core, so your application can see an additional slowdown if it takes advantage of multicore parallelism.
 
 The `record` token is optional.
 
