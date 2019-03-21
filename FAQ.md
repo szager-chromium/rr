@@ -16,7 +16,7 @@
 
 * Are there any plans to support BSD / MacOS?
 
-  No.
+  [No](https://joneschrisg.wordpress.com/2015/01/29/rr-on-os-x-can-it-be-ported/).
 
 * Can rr be used to (effectively) debug java/jvm programs? webdriver tests?
 
