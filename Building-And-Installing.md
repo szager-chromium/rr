@@ -33,7 +33,7 @@ sudo make install
 
 Or to use clang and Ninja to build (faster!):
 ```bash
-CC=clang CXX=clang++ cmake -G Ninja ..
+CC=clang CXX=clang++ cmake -G Ninja ../rr
 cmake --build .
 cmake --build . --target test
 sudo cmake --build . --target install
