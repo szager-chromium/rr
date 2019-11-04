@@ -49,7 +49,9 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 
 [http://home.gna.org/jockey/ Jockey]
 
-[https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-devecsery.pdf Arnold]
+[https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-devecsery.pdf Arnold] Low-overhead multicore record and replay based on instrumenting pthreads APIs (and atomics?) and assuming there are no data races.
+
+[http://seclab.illinois.edu/wp-content/uploads/2019/05/hojjati2019distributed.pdf BEEER] "BEEER: distributed record and replay for medical devices in hospital operating rooms". Extending Arnold to track inter-machine communication.
 
 == Full-System recording ==
 
