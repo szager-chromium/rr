@@ -38,6 +38,7 @@ cmake --build .
 cmake --build . --target test
 sudo cmake --build . --target install
 ```
+RHEL7 with EPEL requires installing `python36-pexpect` and running `cmake3`.
 
 To use Eclipse:
 ```bash
