@@ -1,6 +1,6 @@
-* #1989 Support checkpointing. The ability to create persistent checkpoints, and possibly even attach rr to a running process, would be pretty great.
-* #2410 Support x86 Android.
-* #2507 Support recording applications that use the GPU via GL. Currently we try to just force CPU rendering but we can do better.
+* [#1989](https://github.com/mozilla/rr/issues/1989) Support checkpointing. The ability to create persistent checkpoints, and possibly even attach rr to a running process, would be pretty great.
+* [#2410](https://github.com/mozilla/rr/issues/2410) Support x86 Android.
+* [#2507](https://github.com/mozilla/rr/issues/2507) Support recording applications that use the GPU via GL. Currently we try to just force CPU rendering but we can do better.
 * If rr worked in VirtualBox that would mean there's a free solution to running rr in Linux guests on Mac and Windows. That would require implementing PMU virtualization in VirtualBox, not really an rr issue, but very valuable!
-* #2034 Make progress on understanding the Ryzen issues. Requires deep dive into the kernel/AMD PMU driver and a lot of patience.
+* [#2034](https://github.com/mozilla/rr/issues/2034) Make progress on understanding the Ryzen issues. Requires deep dive into the kernel/AMD PMU driver and a lot of patience.
 * Ambitious: I'm interested in what could be done if we relax the "unmodified kernel" constraint. Arnold assumes no data races, which I would rather not do. UMich and VMWare did some hypervisor-based whole-OS record-and-replay work, using page permissions to prevent races, but performance was bad. But what if we tried to replay only userspace with a modified kernel (like Arnold), but unlike Arnold used existing page-permissions hardware to prevent races? AFAIK no-one has actually had a serious attempt at that design point. I have some specific ideas about how to structure this.
