@@ -4,10 +4,6 @@ List of linux kernel work that would help rr.
 
 Syscallbuf+vsyscall hooking works OK in practice, but the kernel can do so much better, so much more easily.  Essentially it "just" has to record copy_to_user() within syscall handlers, plus a bit of metadata.  Perhaps could be exposed through perf_event.
 
-### Trapping on CPUID, like the RDTSC traps
-
-Modern Intel chips can do this.
-
 ### Expose Branch Trace Store to userspace
 
 Probably through perf_event.  There was a previous attempt to do this, but I think it fizzled out.
