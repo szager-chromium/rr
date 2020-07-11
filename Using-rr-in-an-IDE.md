@@ -129,9 +129,9 @@ Set up `.gdbinit` as for CLion, following steps 1-4 above. Then:
 6. Launch the debugging configuration. It should work. You may need to manually set a breakpoint at `main` and then continue to it.
 7. To reverse-execute, open the Debugger Console tab in the Console view and enter manual commands such as `reverse-continue` (`rc`), `reverse-step` (`rs`), etc
 
-### Setting up emacs
+### Setting up [emacs](https://www.emacs.org)
 
-See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-rr-to-gdb-in-gnu-emacs.html):
+See this [blog post](https://notes.secretsauce.net/notes/2017/02/24_interfacing-rr-to-gdb-in-gnu-emacs.html):
 > you simply take the suggested command (`gdb --fullname` or `gdb -i=mi`), replace `gdb` with `rr replay`
 
 ### Setting up [gdbgui](https://gdbgui.com/)
