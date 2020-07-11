@@ -75,7 +75,7 @@ Set up `.gdbinit` as for CLion, following steps 1-4 above. Then:
 ### Setting up [Eclipse](https://eclipse.org/)
 
 1. Install the Eclipse CDT as usual.
-2. Install rr master or >= 4.6.0.
+2. Install rr >= 5.0.
 3. Create a script somewhere like so, calling it e.g. `rrgdb`:
     ```bash
     #!/bin/bash
@@ -125,7 +125,7 @@ See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-r
 >               "MIMode": "gdb"
 >             }
 >         }
-5. Install rr master or >= 4.6.0.
+5. Install rr >= 5.0.
 6. Record something using rr.
 7. Start rr with ```rr replay -s 50505 -k```
 8. Launch the rr debugging configuration in VS code
