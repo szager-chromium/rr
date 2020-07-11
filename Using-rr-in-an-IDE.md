@@ -55,7 +55,7 @@ The buttons for the reverse-step gdb commands can be added to CLion by installin
     ```
 10. Start debugging in CLion by clicking the debug button. Make sure that the GDB remote configuration is selected.
 
-### [QtCreator](http://doc.qt.io/qtcreator/)
+### Setting up [QtCreator](http://doc.qt.io/qtcreator/)
 
 Set up `.gdbinit` as for CLion, following steps 1-4 above. Then:
 
