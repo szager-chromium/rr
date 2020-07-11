@@ -3,12 +3,55 @@
 rr implements the standard gdb server interface, and also can present the gdb command-line interface. This means it can be used in integrated development environments (IDEs) which support GUI debugging based on gdb/gdbserver.
 
 Known to work:
-* Visual Studio Code
-* CLion
-* QtCreator
-* Eclipse
-* emacs GUD/gdb-mi
-* [gdbgui](https://gdbgui.com)
+* [Visual Studio Code](#setting-up-visual-studio-code)
+* [CLion](#setting-up-clion)
+* [QtCreator](#setting-up-qtcreator)
+* [Eclipse](#setting-up-eclipse)
+* [emacs GUD/gdb-mi](#setting-up-emacs)
+* [gdbgui](#setting-up-gdbgui)
+
+### Setting up [Visual Studio Code](https://code.visualstudio.com/)
+
+1. Install Visual Studio Code
+2. Install the C/C++ extension (https://code.visualstudio.com/docs/languages/cpp)
+3. Open the directory where your source code reside.
+4. Create a debugging configuration from Debug view (Ctrl+Shift+D) and add the following configuration (this was for debugging firefox, adjust as per your requirements)
+>         {
+>             "name": "rr",
+>             "type": "cppdbg",
+>             "request": "launch",
+>             "program": "${workspaceRoot}/../obj-ff-dbg/dist/bin/firefox",
+>             "args": [],
+>             "miDebuggerServerAddress": "localhost:50505",
+>             "stopAtEntry": false,
+>             "cwd": "${workspaceRoot}/../obj-ff-dbg/dist/bin",
+>             "environment": [],
+>             "externalConsole": true,
+>             "linux": {
+>               "MIMode": "gdb",
+>               "setupCommands": [
+>                 {
+>                     "description": "Setup to resolve symbols",
+>                     "text": "set sysroot /",
+>                     "ignoreFailures": false
+>                 }
+>               ]
+>             },
+>             "osx": {
+>               "MIMode": "gdb"
+>             },
+>             "windows": {
+>               "MIMode": "gdb"
+>             }
+>         }
+5. Install rr >= 5.0.
+6. Record something using rr.
+7. Start rr with ```rr replay -s 50505 -k```
+8. Launch the rr debugging configuration in VS code
+9. To reverse-execute, open the Debugger Console tab (Shift+Ctrl+Y) and enter manual commands such as `-exec reverse-continue` (`-exec rc`), `-exec reverse-step` (`-exec rs`), etc
+10. When rewinding the code, the display isn't refreshed. Step-in in the code once will fix that.
+
+You can set breakpoints like you would with a normal debugging session. To set hardware watchers, in the debug console enter the rr command preceded by ```-exec``` (like ```-exec watch -l mVar```)
 
 ### Setting up [CLion](https://www.jetbrains.com/clion/)
 
@@ -90,49 +133,6 @@ Set up `.gdbinit` as for CLion, following steps 1-4 above. Then:
 
 See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-rr-to-gdb-in-gnu-emacs.html):
 > you simply take the suggested command (`gdb --fullname` or `gdb -i=mi`), replace `gdb` with `rr replay`
-
-### Setting up [Visual Studio Code](https://code.visualstudio.com/)
-
-1. Install Visual Studio Code
-2. Install the C/C++ extension (https://code.visualstudio.com/docs/languages/cpp)
-3. Open the directory where your source code reside.
-4. Create a debugging configuration from Debug view (Ctrl+Shift+D) and add the following configuration (this was for debugging firefox, adjust as per your requirements)
->         {
->             "name": "rr",
->             "type": "cppdbg",
->             "request": "launch",
->             "program": "${workspaceRoot}/../obj-ff-dbg/dist/bin/firefox",
->             "args": [],
->             "miDebuggerServerAddress": "localhost:50505",
->             "stopAtEntry": false,
->             "cwd": "${workspaceRoot}/../obj-ff-dbg/dist/bin",
->             "environment": [],
->             "externalConsole": true,
->             "linux": {
->               "MIMode": "gdb",
->               "setupCommands": [
->                 {
->                     "description": "Setup to resolve symbols",
->                     "text": "set sysroot /",
->                     "ignoreFailures": false
->                 }
->               ]
->             },
->             "osx": {
->               "MIMode": "gdb"
->             },
->             "windows": {
->               "MIMode": "gdb"
->             }
->         }
-5. Install rr >= 5.0.
-6. Record something using rr.
-7. Start rr with ```rr replay -s 50505 -k```
-8. Launch the rr debugging configuration in VS code
-9. To reverse-execute, open the Debugger Console tab (Shift+Ctrl+Y) and enter manual commands such as `-exec reverse-continue` (`-exec rc`), `-exec reverse-step` (`-exec rs`), etc
-10. When rewinding the code, the display isn't refreshed. Step-in in the code once will fix that.
-
-You can set breakpoints like you would with a normal debugging session. To set hardware watchers, in the debug console enter the rr command preceded by ```-exec``` (like ```-exec watch -l mVar```)
 
 ### Setting up [gdbgui](https://gdbgui.com/)
 1. Install gdbgui
