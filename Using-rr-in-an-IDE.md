@@ -10,9 +10,9 @@ Known to work:
 * emacs GUD/gdb-mi
 * [gdbgui](https://gdbgui.com)
 
-### Setting up [CLion](https://www.jetbrains.com/clion/)/[QtCreator](http://doc.qt.io/qtcreator/)
+### Setting up [CLion](https://www.jetbrains.com/clion/)
 
-Use at CLion version 2017.1 or greater, with rr version (strictly) greater than 4.5.0 (until 4.6.0 is released, you will have to [build](Building-And-Installing) rr from the latest source).
+Use at CLion version 2017.1 or greater, with rr version 5.0 or greater.
 
 The buttons for the reverse-step gdb commands can be added to CLion by installing [UndoDB's plugin](https://plugins.jetbrains.com/clion/plugin/8620-undo-reversible-debugging-integration) for CLion.
 
@@ -41,39 +41,36 @@ The buttons for the reverse-step gdb commands can be added to CLion by installin
 
     ```
 3. Record an rr trace from command line [as usual](Usage). (You could perhaps add a Run configuration in CLion if you are doing this often.)
-
-In __CLion__:
-
-1. Open `Run` -> `Edit Configurations`
-2. Click the green `+` sign, and add a `GDB Remote Debug` configuration
-3. Under `target remote args`, enter `:50505`, or another port of your choice
-4. For the symbol file, point CLion to the executable that you are running (it is located in the build directory). You can also use the hard link in the rr trace directory, if it is there:
-
+4. Enter CLion.
+5. Open `Run` -> `Edit Configurations`
+6. Click the green `+` sign, and add a `GDB Remote Debug` configuration
+7. Under `target remote args`, enter `:50505`, or another port of your choice
+8. For the symbol file, point CLion to the executable that you are running (it is located in the build directory). You can also use the hard link in the rr trace directory, if it is there:
     ```bash
     ~/.local/share/rr/latest-trace/mmap_hardlink_3_executable_name
     ```
-5. Invoke rr:
-
+9. Invoke rr:
     ```bash
     $ rr replay -s 50505 -k
     ```
-6. Start debugging in CLion by clicking the debug button. Make sure that the GDB remote configuration is selected.
+10. Start debugging in CLion by clicking the debug button. Make sure that the GDB remote configuration is selected.
 
-In __QtCreator__:
+### [QtCreator](http://doc.qt.io/qtcreator/)
+
+Set up `.gdbinit` as for CLion, following steps 1-4 above. Then:
 
 1. Invoke rr:
-
     ```bash
     $ rr replay -s 50505 -k
     ```
-2. Open `Debug` -> `Start Debugging` -> `Attach to Running Debug Server...`
-3. Set the field `Server Port` to `50505` and `Override sever address` to `localhost`.
-4. In the field named `Local Executable`, select the executable that you are running (it is located in the build directory). You can also use the hard link in the rr trace directory, if it is there:
-
+2. Enter QtCreator.
+3. Open `Debug` -> `Start Debugging` -> `Attach to Running Debug Server...`
+4. Set the field `Server Port` to `50505` and `Override sever address` to `localhost`.
+5. In the field named `Local Executable`, select the executable that you are running (it is located in the build directory). You can also use the hard link in the rr trace directory, if it is there:
     ```bash
     ~/.local/share/rr/latest-trace/mmap_hardlink_3_executable_name
     ```
-5. Start debugging by clicking the "Ok" button.
+6. Start debugging by clicking the "Ok" button.
 
 ### Setting up [Eclipse](https://eclipse.org/)
 
