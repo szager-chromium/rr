@@ -1,4 +1,4 @@
-rr can run inside [docker](https://www.docker.com/). If rr can run on the same system outside of docker, simply start your container with the additional arguments ```--cap-add=SYS_PTRACE --security-opt seccomp=unconfined```.  You should be aware of the security implications of these flags before using them.
+rr can run inside [docker](https://www.docker.com/). If rr can run on the same Linux system outside of docker, simply start your container with the additional arguments ```--cap-add=SYS_PTRACE --security-opt seccomp=unconfined```.  You should be aware of the security implications of these flags before using them.
 
 rr needs to be able to ptrace the tracee process group. By [default](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) docker drops the ```SYS_PTRACE``` capability which prevents ptrace from being used inside the container.  That capability must be restored.
 
