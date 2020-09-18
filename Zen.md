@@ -2,7 +2,6 @@ Experimental support for AMD Zen-based CPUs has been merged on September 18, 202
 
 So far it has been validated to work on:
 - Threadripper 3970X
-- Ryzen 1800X
 
 You may see the following message when running `rr`:
 ```
