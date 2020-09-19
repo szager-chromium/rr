@@ -33,9 +33,9 @@ Note: it doesn't work on Linux kernel >= 5.7.
 
 Download both `Makefile` and `zen_workaround.c` files, and run `make`. Assuming you have all the right packages installed to build kernel modules, and that the path for modules is `/lib/modules/$(uname -r)`.
 
-Loading the module with `insmod zen_workaround.ko` should apply the workaround. This can be validated with `scripts/zen_workaround.py --check`.
+Loading the module with `insmod zen_workaround.ko` (as root) should apply the workaround. This can be validated with `scripts/zen_workaround.py --check`.
 
-Unloading the module with `rmmod zen_workaround` resets the workaround.
+Unloading the module with `rmmod zen_workaround` (as root) resets the workaround.
 
 The module currently doesn't preserve the workaround after resuming from suspend. You'll have to unload and reload the module.
 
