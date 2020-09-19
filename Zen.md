@@ -27,7 +27,7 @@ After boot, running the `scripts/zen_workaround.py` script should work.
 
 Status: untested.
 
-Note: it doesn't work on Linux kernel >= 5.7.
+Note: it doesn't work on Linux kernel >= 5.7. Requires a kernel with `CONFIG_KALLSYMS_ALL` enabled.
 
 [A kernel module](https://gist.github.com/glandium/01d54cefdb70561b5f6675e08f2990f2) can be used to apply the workaround in a way that prevents SSB mitigation from resetting it.
 
