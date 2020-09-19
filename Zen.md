@@ -43,7 +43,9 @@ The module currently doesn't preserve the workaround after resuming from suspend
 
 Status: Untested
 
-Recent versions of grub have a way to set MSRs. Doing so before the Linux kernel boots ensures the kernel will preserve the workaround, at the expense of not being able to disable it when not necessary.
+Recent versions of grub have a way to set MSRs. Older versions can use an [external module](https://github.com/jesusdf/grub-msr).
+
+Setting MSRs from grub, before the Linux kernel boots ensures the kernel will preserve the workaround, at the expense of not being able to disable it when not necessary.
 
 First, determine the current MSR value with `rdmsr` from `msr-tools`:
 ```
