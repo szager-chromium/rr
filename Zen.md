@@ -1,7 +1,7 @@
 Experimental support for AMD Zen-based CPUs has been merged on September 18, 2020.
 
 So far it has been validated to work on:
-- Threadripper 3970X
+- Threadripper 3970X, 3990X
 - Ryzen 9 3900X, 3950X
 - Threadripper 2950X
 
