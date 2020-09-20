@@ -28,7 +28,8 @@ After boot, running the `scripts/zen_workaround.py` script should work.
 
 Status: untested.
 
-Note: it doesn't work on Linux kernel >= 5.7. Requires a kernel with `CONFIG_KALLSYMS_ALL` enabled.
+Note: it doesn't work on Linux kernel >= 5.7. Requires a kernel with `CONFIG_KALLSYMS_ALL` enabled.  
+(while [there are ways around these limitations](https://github.com/mozilla/rr/issues/2034#issuecomment-695184812), they rely on the `System.map` file, which contains all kernel symbols, and there is a risk it doesn't match the running kernel, leading to kernel panics or worse)
 
 [A kernel module](https://gist.github.com/glandium/01d54cefdb70561b5f6675e08f2990f2) can be used to apply the workaround in a way that prevents SSB mitigation from resetting it.
 
