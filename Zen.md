@@ -16,7 +16,7 @@ If the `scripts/zen_workaround.py` script tells your the workaround doesn't stic
 
 ## [SSB mitigation](https://en.wikipedia.org/wiki/Speculative_Store_Bypass)
 
-Status: untested.
+Status: confirmed.
 
 The reason why the workaround doesn't stick is that the kernel switches Speculative Store Bypass mitigation on and off when switching between processes with different mitigation configuration. When doing so, it resets the workaround on a core. After some time, all cores have the workaround reset.
 
@@ -26,7 +26,7 @@ After boot, running the `scripts/zen_workaround.py` script should work.
 
 ## Kernel module
 
-Status: untested.
+Status: confirmed.
 
 Note: it doesn't work on Linux kernel >= 5.7. Requires a kernel with `CONFIG_KALLSYMS_ALL` enabled.  
 (while [there are ways around these limitations](https://github.com/mozilla/rr/issues/2034#issuecomment-695184812), they rely on the `System.map` file, which contains all kernel symbols, and there is a risk it doesn't match the running kernel, leading to kernel panics or worse)
