@@ -40,7 +40,7 @@ Unloading the module with `rmmod zen_workaround` (as root) resets the workaround
 
 The module currently doesn't preserve the workaround after resuming from suspend. You'll have to unload and reload the module.
 
-[A previous version of the module](https://gist.github.com/glandium/01d54cefdb70561b5f6675e08f2990f2/6147e24ad62ba3b3023eabb6aedfd0bd592839da), limited to kernel versions < 5.7 and requiring `CONFIG_KALLSYMS_ALL` had no performance impact at all.
+[A previous version of the module](https://gist.github.com/glandium/01d54cefdb70561b5f6675e08f2990f2/6147e24ad62ba3b3023eabb6aedfd0bd592839da), limited to kernel versions < 5.7 and requiring `CONFIG_KALLSYMS_ALL` had no performance impact other than the workaround itself.
 
 ## Grub
 
