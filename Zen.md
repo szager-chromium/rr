@@ -28,8 +28,7 @@ After boot, running the `scripts/zen_workaround.py` script should work.
 
 Status: confirmed.
 
-Note: it doesn't work on Linux kernel >= 5.7. Requires a kernel with `CONFIG_KALLSYMS_ALL` enabled.  
-(while [there are ways around these limitations](https://github.com/mozilla/rr/issues/2034#issuecomment-695184812), they rely on the `System.map` file, which contains all kernel symbols, and there is a risk it doesn't match the running kernel, leading to kernel panics or worse)
+Note: Requires a kernel with `CONFIG_TRACEPOINTS` enabled. Has a small (probably unnoticeable) performance impact.
 
 [A kernel module](https://gist.github.com/glandium/01d54cefdb70561b5f6675e08f2990f2) can be used to apply the workaround in a way that prevents SSB mitigation from resetting it.
 
@@ -41,9 +40,11 @@ Unloading the module with `rmmod zen_workaround` (as root) resets the workaround
 
 The module currently doesn't preserve the workaround after resuming from suspend. You'll have to unload and reload the module.
 
+[A previous version of the module](https://gist.github.com/glandium/01d54cefdb70561b5f6675e08f2990f2/6147e24ad62ba3b3023eabb6aedfd0bd592839da), limited to kernel versions < 5.7 and requiring `CONFIG_KALLSYMS_ALL` had no performance impact at all.
+
 ## Grub
 
-Status: Untested
+Status: Confirmed
 
 Recent versions of grub have a way to set MSRs. Older versions can use an [external module](https://github.com/jesusdf/grub-msr).
 
