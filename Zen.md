@@ -10,7 +10,7 @@ You may see the following message when running `rr`:
 On Zen CPUs, rr will not work reliably unless you disable the hardware SpecLockMap optimization.
 ```
 
-In that case, please run the [`scripts/zen_workaround.py` script](https://github.com/mozilla/rr/blob/master/scripts/zen_workaround.py) from the `rr` repository as root. You will need to rerun this script after each reboot/suspend.
+In that case, please run the [`scripts/zen_workaround.py` script](https://github.com/mozilla/rr/blob/master/scripts/zen_workaround.py) from the `rr` repository as root. You will need to rerun this script after each reboot/suspend. If you want the workaround to resist suspend, you may want to check the kernel module below.
 
 If the `scripts/zen_workaround.py` script tells your the workaround doesn't stick, it means you'll have to try some other or additional workaround:
 
