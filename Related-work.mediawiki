@@ -104,7 +104,7 @@ Out of date with its observations on performance counter behavior, but first pap
 
 == Omniscient debugging ==
 
-[https://github.com/BinaryAnalysisPlatform/qira Qira] Pretty naive impleemntation.
+[https://github.com/BinaryAnalysisPlatform/qira Qira] Pretty naive implementation.
 
 [https://www.tetrane.com/index.html Tetrane] Looks like a great implementation of omniscience. Focused on reverse-engineering applications so has a quite different feature set to Pernosco.
 
