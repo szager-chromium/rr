@@ -37,9 +37,7 @@ We of course want to automate this process as soon as possible/practical.
 ## Step 2: Building and shipping
 
 - [ ] Bump version: `cd $rr && ./scripts/tag-release.sh MAJOR MINOR PATCH`.
-- [ ] `git fetch` and `merge` changes on the x86-32 build machine. `git checkout` the tag that was created.
-- [ ] On both machines, `make && make check && make package`
-- [ ] Copy `obj/dist/*` files from x86-32 build machine to `obj/dist` on x86-64 machine.
+- [ ] On the build machine (running an old Linux distro, e.g. Ubuntu 16.06), `make && make check && make package`
 - [ ] Push changes to Github: `git push origin; git push --tags origin`
 - [ ] [Create release and upload packages](https://github.com/mozilla/rr/releases)
 - [ ] Update gh-pages: `./scripts/update-gh-pages.sh && git push origin`
