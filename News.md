@@ -1,3 +1,5 @@
+**Oct 29, 2020**: [rr 5.4.0 released](https://github.com/mozilla/rr/releases/tag/5.4.0). Main features are [Zen support](https://github.com/mozilla/rr/wiki/Zen) and experimental Aarch64 support.
+
 **Dec 19, 2019**: [rr 5.3.0 released](https://github.com/mozilla/rr/releases/tag/5.3.0). This is a maintenance release with various bug fixes and performance improvements. The `rr sources`, `rr traceinfo`, `rr buildid` and `rr ls` commands have been added.
 
 **May 26, 2018**: [rr 5.2.0 released](https://github.com/mozilla/rr/releases/tag/5.2.0). This is a minor maintenance release with some improvements to trace portability: https://robert.ocallahan.org/2018/04/cpuid-features-xsave-and-rr-trace.html
