@@ -35,7 +35,6 @@ Or to use clang and Ninja to build (faster!):
 ```bash
 CC=clang CXX=clang++ cmake -G Ninja ../rr
 cmake --build .
-cmake --build . --target test
 sudo cmake --build . --target install
 ```
 RHEL7 with EPEL requires installing `python36-pexpect` and running `cmake3`.
@@ -126,13 +125,13 @@ Remember to set `perf_event_paranoid` to level 1 or lower, because otherwise man
 rr has a suite of tests in `$rr/src/test`. To run the tests with minimal output:
 
 ```bash
-make test
+ctest -j$(nproc)
 ```
 
 or with full output:
 
 ```bash
-make check
+ctest -j$(nproc) -VV
 ```
 
 The `video_capture` test may briefly turn on an attached camera, if you have one --- do not be alarmed!
