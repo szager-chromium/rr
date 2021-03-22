@@ -20,7 +20,7 @@ On some old distros such as Ubuntu 14.04 `libcapnp-dev` doesn't include `capnp.p
 rr uses the CMake build system, which is able to generate multiple build environments.  This enables you to choose whichever build driver you prefer to use.  The commands below show building rr in a separate `obj` directory.  This is recommended because `cmake` generates a *lot* of auxiliary files.:
 
 ```bash
-git clone https://github.com/mozilla/rr.git
+git clone https://github.com/rr-debugger/rr.git
 mkdir obj && cd obj
 cmake ../rr
 ```
