@@ -59,6 +59,8 @@ in your build directory.
 
 ## Hardware/software configuration
 
+For a quick check: [Will rr work on my system?](Will-rr-work-on-my-system)
+
 ### Supported hardware
 
 Supported microarchitectures are Intel architectures newer than Merom and Penryn, i.e. Nehalem and beyond.
