@@ -5,6 +5,7 @@ So far it has been validated to work on:
 - Ryzen 7 1700, 1800X, 2700X, 3700U, 3700X
 - Ryzen 9 3900X, 3950X
 - Ryzen 9 5950X as of [9c5bc8fa](https://github.com/rr-debugger/rr/commit/9c5bc8fa5ee1deb9a4be65d79105a867e9930ece)
+- Ryzen 7 5800HS as of [030e34f8](https://github.com/rr-debugger/rr/commit/030e34f8f78ac32517552644e17ce2eb8cb42e20)
 - Threadripper 2950X, 3970X, 3990X
 
 You may see the following message when running `rr`:
