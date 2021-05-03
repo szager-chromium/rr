@@ -88,10 +88,9 @@ If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS 
   * Add `monitor_control.disable_hvsim_clusters = true` to the VM's `.vmx` file ([more information](http://robert.ocallahan.org/2015/11/rr-in-vmware-solved.html)).
 * Qemu: On QEMU command line use <pre>-cpu host</pre>
 * Libvirt/KVM: Specify CPU passthrough in domain XML definition:<pre>\<cpu mode='host-passthrough'/\></pre>
+* Hyper-V: Run the PowerShell command `Set-VMProcessor MyVMName -Perfmon @("pmu")`
 
 VirtualBox **does not work** at this time because it doesn't support PMU virtualization. It would be great if someone contributed that to the open-source project...
-
-Latest versions of Hyper-V seem to support PMU virtualization but we don't know if rr works there. If you try it out, [let us know](https://mail.mozilla.org/listinfo/rr-dev)!
 
 Xen's PMU virtualization has [bugs](https://lists.xen.org/archives/html/xen-devel/2017-07/msg02242.html) that prevent rr from working.
 
