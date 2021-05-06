@@ -70,6 +70,8 @@ Sounds similar to rr/UndoDB but no mention of performance counters (in 2008 they
 
 [https://sourceware.org/ml/gdb/2009-08/msg00170.html Simics]
 
+[https://www.raytheonintelligenceandspace.com/capabilities/products/dejavm DejaVM]
+
 == Performance Counters ==
 
 [http://web.eece.maine.edu/~vweaver/projects/deterministic/deterministic_counters.pdf Non-Determinism and Overcount on Modern Hardware Performance Counter Implementations (Weaver, Terpstra, Moore)]
