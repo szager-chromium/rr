@@ -123,7 +123,9 @@ Be sure to read the [usage instructions](Usage) before running tests.
 
 Remember to set `perf_event_paranoid` to level 1 or lower, because otherwise many tests will fail.
 
-rr has a suite of tests in `$rr/src/test`. To run the tests with minimal output:
+rr has a suite of tests in `$rr/src/test`. To run them you first need to enter the build directory, and then, depending on the build system you chose, execute a `ninja test` or `make -j$(nproc) test`.
+
+Alternatively, you can run them manually, by calling `ctest`. E.g. with minimal output:
 
 ```bash
 ctest -j$(nproc)
@@ -137,7 +139,24 @@ ctest -j$(nproc) -VV
 
 The `video_capture` test may briefly turn on an attached camera, if you have one --- do not be alarmed!
 
-Each test consists of a C source file and a `.run` file, which is a shell script. To run an individual basic test outside the harness:
+### Running individual tests
+
+Easiest way is `ctest -R test_name`. For example:
+
+```
+ $ ctest -R 64bit_child-no-syscallbuf
+Test project /home/constantine/Projects/rr/build
+    Start 3: 64bit_child-no-syscallbuf
+1/1 Test #3: 64bit_child-no-syscallbuf ........   Passed    0.62 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.72 sec
+```
+
+See also `man ctest`.
+
+Alternatively, each test consists of a C source file and a `.run` file, which is a shell script. To run an individual basic test outside the harness:
 
 ```bash
 cd $rr/src/test
