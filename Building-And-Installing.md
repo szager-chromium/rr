@@ -154,6 +154,12 @@ Test project /home/constantine/Projects/rr/build
 Total Test time (real) =   0.72 sec
 ```
 
+This runs tests matching a regular expression. So for example, given tests `pro-foo`, `foo`, `foo-2`, `foo-3`, running a `ctest -r foo` will result in all of them running. If you want to run exactly the tests `foo`, `bar`, `buzz`, but not anything else like a `foo-3`, you can execute the following:
+
+```
+ $ ctest -R '^(foo|bar|buzz)$'
+```
+
 See also `man ctest`.
 
 Alternatively, each test consists of a C source file and a `.run` file, which is a shell script. To run an individual basic test outside the harness:
