@@ -4,7 +4,7 @@ Fedora
 ```bash
 sudo dnf install \
   ccache cmake make gcc gcc-c++ gdb libgcc libgcc.i686 \
-  glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 \
+  glibc-devel glibc-devel.i686 libstdc++-devel libstdc++-devel.i686 libstdc++-devel.x86_64 \
   python3-pexpect man-pages ninja-build capnproto capnproto-libs capnproto-devel
 ```
 Ubuntu
