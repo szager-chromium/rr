@@ -10,6 +10,8 @@ Known to work:
 * [emacs GUD/gdb-mi](#setting-up-emacs)
 * [gdbgui](#setting-up-gdbgui)
 
+If your IDE does not run on the same machine as the replay: see [debugging from a different host](#debugging-from-a-different-host).
+
 ### Setting up [Visual Studio Code](https://code.visualstudio.com/)
 
 1. Install Visual Studio Code
@@ -141,3 +143,7 @@ See this [blog post](http://notes.secretsauce.net/notes/2017/02/24_interfacing-r
 4. Replay: `gdbgui --rr`. Optionally specify the directory of the recording: `gdbgui DIRECTORY --rr`
 
 [View demo](https://www.youtube.com/watch?v=WijcPxOang0) on YouTube.
+
+### Debugging from a different host
+
+As gdbserver binds to INADDR_ANY by default and rr binds to localhost by default, any debugging, including IDE based, by default only work from the same machine. To allow debugging from another machine follow the steps above, but start the replay with `rr replay -h 0.0.0.0` (so other hosts may connect, too) and when attaching drop the `sysroot` part in the IDE. Note: GDB (on the local machine) will then read _all_ binaries via the remote connection, which may take some time and network io.
