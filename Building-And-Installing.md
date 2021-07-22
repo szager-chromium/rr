@@ -37,7 +37,7 @@ CC=clang CXX=clang++ cmake -G Ninja ../rr
 cmake --build .
 sudo cmake --build . --target install
 ```
-RHEL7 with EPEL requires installing `python36-pexpect` and running `cmake3`.
+RHEL7/CentOS7 with EPEL requires installing `python36-pexpect` and running `cmake3`; **it will only work with an [updated kernel](#os-configuration)**.
 
 To use Eclipse:
 ```bash
@@ -67,7 +67,7 @@ Supported microarchitectures are Intel architectures newer than Merom and Penryn
 
 ### OS configuration
 
-Linux kernel 3.11 or higher is required.
+Linux kernel 3.11 or higher is required (check with `uname -r`).
 
 `/proc/sys/kernel/perf_event_paranoid` must be <= 1 for rr to work efficiently (i.e. be able to use `perf` counters). Some distros set it to 2 or higher, in which case you either need to set it to 1 or use `rr record -n`, which is slow.  Temporarily change the setting by running
 ```bash
