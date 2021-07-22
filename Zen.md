@@ -1,6 +1,7 @@
 Experimental support for AMD Zen-based CPUs was merged on September 18, 2020.
 
 So far it has been validated to work on:
+- Ryzen 3 3250U
 - Ryzen 5 3600
 - Ryzen 7 1700, 1800X, 2700X, 3700U, 3700X
 - Ryzen 9 3900X, 3950X
