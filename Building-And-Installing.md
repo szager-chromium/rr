@@ -81,7 +81,7 @@ Apply the setup automatically on startup by running
 ### Virtual machine guests
 
 If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS IS ENABLED**.  Virtual machines that work with rr and the settings required are listed below.
-* VMWare Workstation/Fusion:
+* VMWare Workstation/Fusion (Windows):
   * The default is for counter virtualization to be _disabled_. You have to enable it in the VM settings (advanced processor options).
   * Set the Preferred virtualization engine in the Advanced tab to Intel VT-x with EPT (it may default to Automatic).
   * Enable the code profiling applications in the Processors & Memory tab.
@@ -93,6 +93,8 @@ If you run rr in a virtual machine, **MAKE SURE VIRTUALIZATION OF PERF COUNTERS 
 VirtualBox **does not work** at this time because it doesn't support PMU virtualization. It would be great if someone contributed that to the open-source project...
 
 Xen's PMU virtualization has [bugs](https://lists.xen.org/archives/html/xen-devel/2017-07/msg02242.html) that prevent rr from working.
+
+[Apparently](https://github.com/rr-debugger/rr/issues/2897#issuecomment-893349129) VMWare on MacOS Big Sur and later does not support performance counter virtualization, and therefore does not support rr. No other virtualization on Mac does either.
 
 ### Cloud virtual guests
 
