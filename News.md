@@ -1,3 +1,5 @@
+**Sep 20, 2021**: [rr 5.5.0 released](https://github.com/mozilla/rr/releases/tag/5.5.0). Many bug fixes but no major new features.
+
 **Nov 14, 2020**: The repository was [migrated](https://robert.ocallahan.org/2020/11/rr-repository-moved-to-independent.html) to https://github.com/rr-debugger/rr from https://github.com/mozilla/rr.
 
 **Oct 29, 2020**: [rr 5.4.0 released](https://github.com/mozilla/rr/releases/tag/5.4.0). Main features are [Zen support](https://github.com/mozilla/rr/wiki/Zen) and experimental Aarch64 support.
