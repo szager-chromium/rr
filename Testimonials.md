@@ -42,5 +42,8 @@ https://twitter.com/chandlerc1024/status/879962014860193792
 
   -- @hsivonen (Henri Sivonen)
 
+> I've been a C++ programmer for just shy of 20 years, the last six of them working on chromium. I have a well-established workflow and a pretty big bag of tricks, and I have always relied heavily on runtime debuggers. I can say without exaggeration that switching to `rr` has been my biggest single productivity boost in probably 10 years. Bugs that might have taken me days to root-cause using `gdb`, I can now root-cause in an hour using `rr`. It has been especially helpful in debugging race conditions that don't reproduce reliably, or won't reproduce under `gdb`. It's magic.
+
+  -- @szager-chromium (Stefan Zager)
 ***
 _If you find rr useful, please add your testimonial here!_
